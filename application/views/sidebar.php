@@ -36,7 +36,16 @@
 						<li><?php echo anchor('jenis', 'Jenis Pemeriksaan'); ?></li>
 					</ul>
 				</li>
-				<li><?php echo anchor('hasil', '<i class="fa fa-home"></i>Hasil Pemeriksaan'); ?>
+				<li><?php echo anchor('hasil', '<i class="fa fa-home"></i>Hasil Pemeriksaan'); ?></li>
+				
+				<li><?php echo anchor('company_profile', '<i class="fa fa-home"></i>Profil Perusahaan'); ?></li>
+				<li><a><i class="fa fa-edit"></i> Informasi <span class="fa fa-chevron-down"></span></a>
+					<ul class="nav child_menu" style="display: none">
+						<li><?php echo anchor('information/', 'Informasi'); ?></li>
+						<li><?php echo anchor('information/certification_procedure', 'Prosedur Sertifikasi'); ?></li>
+						<li><?php echo anchor('information/schedule', 'Jadwal Uji Kompetensi'); ?></li>
+						<li><?php echo anchor('information/news_event', 'Berita dan Kegiatan'); ?></li>
+					</ul>
 				</li>
 			</ul>
 		</div>

@@ -13,6 +13,7 @@ class Home extends MY_Controller {
 	public function index(){
 		
 		render_template('home');
+
 	}
 	
 }
