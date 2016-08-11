@@ -52,7 +52,7 @@
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('profile/user_certification', 'Riwayat Sertifikasi'); ?></li>
 						<li><?php echo anchor('profile/user_education', 'Riwayat Pendidikan'); ?></li>
-						<li><?php echo anchor('profile/user_course', 'Riwayat Diklat/Kursus'); ?></li>
+						<li><?php echo anchor('profile/user_course', 'Riwayat Diklat&nbsp;/&nbsp;Kursus'); ?></li>
 						<li><?php echo anchor('profile/user_experience', 'Riwayat Pekerjaan'); ?></li>
 					</ul>
 				</li>
