@@ -22,6 +22,10 @@ class Begin extends BackendController {
     }
 
     public function index(){
-        redirect('auth/login', 'refresh');
+        if (!$this->ion_auth->logged_in()){
+			redirect('auth/login', 'refresh');
+		}else{
+            redirect('home', 'refresh');
+        }
     }
 }

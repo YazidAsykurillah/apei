@@ -18,7 +18,7 @@ class Auth extends MY_Controller {
 		}elseif (!$this->ion_auth->is_admin()){
 			return show_error('You must be an administrator to view this page.');
 		}else{
-			redirect('home', refresh);
+			redirect('home', 'refresh');
 		}
 	}
 
