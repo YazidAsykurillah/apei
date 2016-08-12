@@ -333,3 +333,13 @@ if (typeof NProgress != 'undefined') {
     });
 }
 /** ******  NProgress  *********************** **/
+
+
+/* Alertify Error */
+function alertifyError(err){
+    err = (err == undefined) ? "Error Connection" : "Error : " + err;
+    alertify.error(err);
+    $(':submit').removeAttr('disabled');
+}
+
+/* Alertify Error */

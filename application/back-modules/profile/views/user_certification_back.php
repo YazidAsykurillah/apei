@@ -76,7 +76,7 @@
 					<div class="clearfix"></div>
 				  <hr>
 				</div>
-				<div id="dtUserCertification">
+				<div id="dtBarang">
 					<table id="datatable-buttons" class="table table-striped table-bordered">
 	                    <thead>
 	                      <tr>
@@ -91,9 +91,27 @@
 	                      </tr>
 	                    </thead>
 
-	                    <tbody> </tbody>
-	                </table>
-                </div>
+
+	                    <tbody>
+	                      <tr>
+	                        <td>0000121212</td>
+	                        <td>CRT-567890</td>
+	                        <td>Listrik</td>
+	                        <td>Elektomagnetika</td>
+	                        <td>Teori Elektromagnetika</td>
+	                        <td>3</td>
+	                        <td>31-01-2031</td>
+							<td>
+								<div class="btn-group">
+									<button class="btn btn-sm btn-warning" onclick="edit_form()"><i class="fa fa-edit"></i></button>
+									<button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+								</div>
+							</td>
+	                      </tr>
+	                      
+	                    </tbody>
+	                  </table>
+                  </div>
 			</div>
 
 			<div class="clearfix"></div>
