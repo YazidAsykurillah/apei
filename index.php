@@ -305,6 +305,11 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
+    $assign_to_config['modules_locations'] = array(
+        APPPATH.'front-modules/' => '../front-modules/',
+
+    );  
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
