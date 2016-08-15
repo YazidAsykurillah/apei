@@ -9,57 +9,11 @@
 		<div class="x_panel">
 			<div class="x_title">
                 <h2><i class="fa fa-list"></i> <?php echo get_page_title(); ?></h2>
-                <div class="nav navbar-right">
-					<div class="btn-group">
-						<button id="btn-add" class="btn btn-sm btn-success" href="#"><i class="fa fa-plus"></i> Add</button>
-					</div>
-                </div>
 				<div class="clearfix"></div>
             </div>
 
 			<div class="x_content">
-        		<div id="form-container" class="collapse">
-        			<input type="hidden" id="user-certification-id" value="" />
-					<form id="form-user-education" name="form-user-education" class="form-horizontal" method="post" action="user_eduation/save_user_education">
-
-                    <div class="form-group">
-					    <label for="start_date" class="col-sm-2 control-label">Tahun Mulai</label>
-					    <div class="col-sm-6">
-					    	<input type="text" class="form-control" id="start_date" name="start_date" placeholder="Start Date">
-					    </div>
-					</div>
-					<div class="form-group">
-					    <label for="end_date" class="col-sm-2 control-label">Tahun Selesai</label>
-					    <div class="col-sm-6">
-					    	<input type="text" class="form-control" id="end_date" name="end_date" placeholder="End Date">
-					    </div>
-					</div>
-					<div class="form-group">
-					    <label for="school_name" class="col-sm-2 control-label">Nama Sekolah</label>
-					    <div class="col-sm-6">
-					    	<input type="text" class="form-control" id="school_name" name="school_name" placeholder="School name">
-					    </div>
-					</div>
-					<div class="form-group">
-					    <label for="title" class="col-sm-2 control-label">Gelar</label>
-					    <div class="col-sm-6">
-					    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
-					    </div>
-					</div>
-					<div class="form-group">
-                    	<label for="" class="col-sm-2 control-label"></label>
-                      	<div class="col-md-6">
-                        	<button type="submit" class="btn btn-success">Submit</button>
-                        	<button id="btnReset" type="reset" class="btn btn-primary">Cancel</button>
-                      	</div>
-                    </div>
-                    
-                  </form>
-				  
-					<div class="clearfix"></div>
-				  <hr>
-				</div>
-				<div id="dtMember">
+        		<div id="dtMember">
 					<table id="datatable-buttons" class="table table-striped table-bordered">
 	                    <thead>
 	                      <tr>
@@ -67,6 +21,7 @@
 	                        <th>Nama</th>
 	                        <th>Email</th>
 	                        <th>Foto</th>
+	                        <th>Tempat, tanggal lahir</th>
 							<th width="5%">Aksi</th>
 	                      </tr>
 	                    </thead>
@@ -80,3 +35,28 @@
 		</div>
 	</div>
 </div>
+
+
+<!--Approve modal-->
+<div id="modal-approve" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="form-approve-member" name="form-approve-member" class="form-horizontal" method="post" action="member/approve">
+    	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        	<h4 class="modal-title">Konfirmasi</h4>
+      	</div>
+      
+      	<div class="modal-body">
+       		<p>Klik Approve untuk melakukan persetujuan</p>
+			<input type="hidden" name="member_id" id="member_id" value="">
+      	</div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<button type="submit" class="btn btn-primary">Approve</button>
+      	</div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--ENDApprove modal-->
