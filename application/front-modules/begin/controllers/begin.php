@@ -22,6 +22,6 @@ class Begin extends FrontendController {
     }
 
     public function index(){
-        redirect('welcome', 'refresh');
+        redirect('home', 'refresh');
     }
 }

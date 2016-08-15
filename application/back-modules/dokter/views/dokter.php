@@ -46,9 +46,9 @@
                         <button type="submit" class="btn btn-success pull-right">Submit</button>
                       </div>
                     </div>
-                    
+
                   </form>
-				  
+
 					<div class="clearfix"></div>
 				  <hr>
 				</div>
@@ -95,7 +95,7 @@
 							</div>
 						</td>
                       </tr>
-                      
+
                     </tbody>
                   </table>
 					</div>

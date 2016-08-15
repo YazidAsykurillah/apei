@@ -5,7 +5,7 @@ $config['js_path'] = 'assets/js/';
 $config['img_path'] = 'assets/images/';
 $config['custom_js'] = 'assets/customjs/';
 
-$config['web_title'] = 'Test';
+$config['web_title'] = 'PT. APEI';
 $config['favicon'] = '';
 
 $config['default_css'] = array(
@@ -29,3 +29,25 @@ $config['default_js'] = array(
 );
 
 $config['page_title'] = "";
+
+// Frontend
+$config['css_front_path'] = 'assets/front/css/';
+$config['js_front_path'] = 'assets/front/js/';
+$config['img_front_path'] = 'assets/front/images/';
+$config['custom_front_js'] = 'assets/front/customjs/';
+
+$config['default_css_front'] = array(
+	'assets/front/css/bootstrap.min.css',
+	'assets/front/css/font-awesome.min.css',
+	'assets/front/css/prettyPhoto.css',
+	'assets/front/css/animate.css',
+	'assets/front/css/datetime.css',
+	'assets/front/css/fileinput.css',
+	'assets/front/css/main.css'
+);
+
+$config['default_js_front'] = array(
+	'assets/front/js/jquery.js',
+	'assets/front/js/bootstrap.min.js',
+	'assets/front/js/jquery.prettyPhoto.js'
+);
