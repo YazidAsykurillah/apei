@@ -4,18 +4,15 @@ var table = $('#datatable-buttons').DataTable({
     autoWidth: false,
     scrollX: "100%",
     ajax: {
-        url: 'user_certification/get_user_certification',
+        url: 'user_education/get_user_education',
         type: 'POST'
     },
     columns: [
         {data: "#", orderable: false, searchable: false},
-        {data: 'registration_number'},
-        {data: 'certificate_number'},
-        {data: 'division_id'},
-        {data: 'subdivision_id'},
-        {data: 'competence_unit'},
-        {data: 'level'},
-        {data: 'validity_period'},
+        {data: 'start_date'},
+        {data: 'end_date'},
+        {data: 'school_name'},
+        {data: 'title'},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
         	return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>';
@@ -54,46 +51,36 @@ $('#btn-add').click(function(){
 
 $('#btnReset').click(function(){
 	$('#form-container').slideUp("slow");
-	$('#form-user-certification')[0].reset();
+	$('#form-user-education')[0].reset();
 	$('#btn-add').removeClass('collapse');
 	//remove value of input id
 	$('#user-certification-id').val('');
 });
 
-$('#dtUserCertification').on('click', 'a[title~=Edit]', function (e){
+$('#dtUserEducation').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#user-certification-id').val(d.id);
-    $('#registration_number').val(d.registration_number);
-    $('#certificate_number').val(d.certificate_number);
-    $('#division_id').val(d.division_id);
-    $('#subdivision_id').val(d.subdivision_id);
-    $('#competence_unit').val(d.competence_unit);
-    $('#level').val(d.level);
-    $('#validity_period').val(d.validity_period);
+    $('#start_date').val(d.start_date);
+    $('#end_date').val(d.end_date);
+    $('#school_name').val(d.school_name);
+    $('#title').val(d.title);
     $('#form-container').slideDown('slow');
     
 });
 
-/*function edit_form(){
-	$('#form-container').slideDown('slow');
-	console.log($(this));
-	//$('#btn-add').addClass('collapse');
-}*/
-
-
-$('#form-user-certification').on('submit', function(event){
+$('#form-user-education').on('submit', function(event){
 	event.preventDefault();
 	if($('#user-certification-id').val() != ''){
 		//--- Edit Mode
 		var id = $('#user-certification-id').val();
-	    $.post('user_certification/update_user_certification', $("#form-user-certification").serialize()+ "&id=" + id, function (obj) {
+	    $.post('user_education/update_user_education', $("#form-user-education").serialize()+ "&id=" + id, function (obj) {
 	        if (obj.msg == 'success') {
 	            alertify.success("Update Data Success");
-	            $('#form-user-certification')[0].reset();
+	            $('#form-user-education')[0].reset();
 				$('#form-container').slideUp('slow');
-	            $('#dtUserCertification .table').DataTable().ajax.reload();
+	            $('#dtUserEducation .table').DataTable().ajax.reload();
 	            //remove value of input id
 	            $('#user-certification-id').val('');
 	        }else{
@@ -106,12 +93,12 @@ $('#form-user-certification').on('submit', function(event){
 	}	
 	else{
 		//--- Insert
-	    $.post('user_certification/save_user_certification', $("#form-user-certification").serialize(), function (obj) {
+	    $.post('user_education/save_user_education', $("#form-user-education").serialize(), function (obj) {
 	        if (obj.msg == 'success') {
 	            alertify.success("Insert Data Success");
-	            $('#form-user-certification')[0].reset();
+	            $('#form-user-education')[0].reset();
 				$('#form-container').slideUp('slow');
-	            $('#dtUserCertification .table').DataTable().ajax.reload();
+	            $('#dtUserEducation .table').DataTable().ajax.reload();
 	            //remove value of input id
 	            $('#user-certification-id').val();
 	            
@@ -128,7 +115,12 @@ $('#form-user-certification').on('submit', function(event){
 });
 
 
-$('#validity_period').daterangepicker({
+$('#start_date').daterangepicker({
+	"singleDatePicker": true,
+	"showDropdowns": true
+
+});
+$('#end_date').daterangepicker({
 	"singleDatePicker": true,
 	"showDropdowns": true
 

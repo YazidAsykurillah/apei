@@ -19,7 +19,8 @@
 
 			<div class="x_content">
         		<div id="form-container" class="collapse">
-					<form name="form-user-certification" class="form-horizontal" id="form-user-certification" method="post" action="profile/save_user_certification">
+        			<input type="hidden" id="user-certification-id" value="" />
+					<form id="form-user-certification" name="form-user-certification" class="form-horizontal" method="post" action="profile/save_user_certification">
 
                     <div class="form-group">
 					    <label for="registration_number" class="col-sm-2 control-label">Nomor Registrasi</label>
@@ -67,7 +68,7 @@
                     	<label for="" class="col-sm-2 control-label"></label>
                       	<div class="col-md-6">
                         	<button type="submit" class="btn btn-success">Submit</button>
-                        	<button id="reset" type="reset" class="btn btn-primary">Cancel</button>
+                        	<button id="btnReset" type="reset" class="btn btn-primary">Cancel</button>
                       	</div>
                     </div>
                     
@@ -80,6 +81,7 @@
 					<table id="datatable-buttons" class="table table-striped table-bordered">
 	                    <thead>
 	                      <tr>
+	                        <th>#</th>
 	                        <th>Nomor Registrasi</th>
 	                        <th>Nomor Sertifikat</th>
 	                        <th>ID Bidang</th>

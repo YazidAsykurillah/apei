@@ -1,7 +1,8 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends BackendController {
+class Member extends BackendController {
 
 	var $data = array();
 	var $cust_css = array(
@@ -19,15 +20,20 @@ class Profile extends BackendController {
 
 	public function __construct(){
 		parent::__construct();
-		set_page_title('Profile');
 	}
 
 	public function index(){
 		$this->load->helper('data_table_helper');
+		set_page_title('Members ');
 		set_css($this->cust_css);
+		set_js($this->cust_js);
 		set_js(get_datatables_js());
-		set_js(get_customjs_path('profile/profile.js'));
-		render_template('profile');
-	}	
+		set_js(get_customjs_path('profile/member.js'));
+		render_template('member_v');
+	}
+
+	
+
+
 
 }
