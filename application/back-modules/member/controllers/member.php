@@ -3,9 +3,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Member extends BackendController {
-	protected $what = '';
-	var $data = array();
-	var $cust_css = array(
+	
+	protected $data = array();
+	protected $cust_css = array(
 		'assets/js/datatables/jquery.dataTables.min.css',
 		'assets/js/datatables/buttons.bootstrap.min.css',
 		'assets/js/datatables/fixedHeader.bootstrap.min.css',
@@ -18,9 +18,12 @@ class Member extends BackendController {
 		'assets/js/alertify/alertify.js',
 	);
 
+	protected $jsonResponse;
+
 	public function __construct(){
 		parent::__construct();
 	}
+
 
 	public function index(){
 		$this->load->helper('data_table_helper');
@@ -43,22 +46,20 @@ class Member extends BackendController {
 	public function approve(){
 
 		$this->load->library('form_validation');
-
+		$this->load->model('Member_m');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('member_id', 'ID', 'required|integer');
 		if($this->form_validation->run() == FALSE){
-			$json['msg'] = validation_errors();
-            echo json_encode( $json );
-            exit();
+			$this->jsonResponse['msg'] = validation_errors();
 		}
-		$approve = $this->db
-					->set('status', 'ak')
-					->where('id', $postData['member_id'])
-					->update('members');
-
-		$json['msg'] = 'success';
-        echo json_encode( $json );
-        exit();
+		$approve = $this->Member_m->approve($postData['member_id']);
+		if($approve == TRUE){
+			$this->jsonResponse['msg'] = 'success';
+		}
+		else{
+			$this->jsonResponse['msg'] = $approve;
+		}
+		echo json_encode($this->jsonResponse);
 
 	}
 

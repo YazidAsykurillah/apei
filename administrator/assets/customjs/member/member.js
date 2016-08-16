@@ -16,6 +16,16 @@ var table = $('#datatable-buttons').DataTable({
         	$("body").data("R" + row.id, row);
         	return row.birth_place+','+' '+row.birth_date;
         }},
+        {data:'status', render:function(data, type, row, met){
+        	var status_display = '';
+        	if(data == 'ak'){
+        		status_display = 'Approved';
+        	}
+        	else{
+        		status_display = 'N/A';
+        	}
+        	return status_display;
+        }},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
         	return '<a title="Approve" href="#" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-check-circle"></i></a>';

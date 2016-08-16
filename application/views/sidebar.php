@@ -36,8 +36,7 @@
 						<li><?php echo anchor('jenis', 'Jenis Pemeriksaan'); ?></li>
 					</ul>
 				</li>
-				<li><?php echo anchor('hasil', '<i class="fa fa-home"></i>Hasil Pemeriksaan'); ?></li>
-				
+				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
 				<li><?php echo anchor('company_profile', '<i class="fa fa-home"></i>Profil Perusahaan'); ?></li>
 				<li><a><i class="fa fa-edit"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
@@ -47,15 +46,15 @@
 						<li><?php echo anchor('information/news_event', 'Berita dan Kegiatan'); ?></li>
 					</ul>
 				</li>
-
-				<li><a><i class="fa fa-user"></i> Profile <span class="fa fa-chevron-down"></span></a>
+				<!-- <li><a><i class="fa fa-user"></i> Profile <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('profile/user_certification', 'Riwayat Sertifikasi'); ?></li>
 						<li><?php echo anchor('profile/user_education', 'Riwayat Pendidikan'); ?></li>
 						<li><?php echo anchor('profile/user_course', 'Riwayat Diklat&nbsp;/&nbsp;Kursus'); ?></li>
 						<li><?php echo anchor('profile/user_experience', 'Riwayat Pekerjaan'); ?></li>
 					</ul>
-				</li>
+				</li> -->
+				
 			</ul>
 		</div>
 	</div>

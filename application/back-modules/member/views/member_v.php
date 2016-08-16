@@ -22,6 +22,7 @@
 	                        <th>Email</th>
 	                        <th>Foto</th>
 	                        <th>Tempat, tanggal lahir</th>
+	                        <th>Approval Status</th>
 							<th width="5%">Aksi</th>
 	                      </tr>
 	                    </thead>
