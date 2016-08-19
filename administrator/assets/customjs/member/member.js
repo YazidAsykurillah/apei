@@ -2,7 +2,7 @@
 var table = $('#datatable-buttons').DataTable({
 	serverSide: true,
     processing: true,
-    autoWidth: false,
+    autoWidth: true,
     scrollX: "100%",
     ajax: {
         url: 'member/get_member',
@@ -14,7 +14,7 @@ var table = $('#datatable-buttons').DataTable({
         {data: 'email'},
         {data: 'foto_file', render:function(data, type, row, meta){
         	var host = window.location.origin;
-        	return '<img src="'+host+'/apei/uploads/'+data+'" class="img-thumbnail" >';
+        	return '<img src="'+host+'/apei/uploads/'+data+'" class="thumbnail" >';
         }},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
@@ -32,7 +32,8 @@ var table = $('#datatable-buttons').DataTable({
         }},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
-        	return '<a title="Approve" href="#" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-check-circle"></i></a>';
+        	return '<a title="Approve" href="#" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-check-circle"></i></a>'+
+        		   '<a title="Disapprove" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa fa-ban"></i></a>';
         }},
         {data: 'id', visible: false, searchable: false, className: 'never'},
         {data: 'birth_place', visible: false, searchable: false, className: 'never'},
@@ -64,6 +65,8 @@ var table = $('#datatable-buttons').DataTable({
 });
 
 
+//## Approval process --
+//Approve Button
 $('#dtMember').on('click', 'a[title~=Approve]', function (e){
     e.preventDefault();
 
@@ -71,10 +74,7 @@ $('#dtMember').on('click', 'a[title~=Approve]', function (e){
     var d = $("body").data("R" + id);
     $('#member_id').val(d.id);
     $('#modal-approve').modal('show');
-
-    
 });
-
 
 $('#form-approve-member').on('submit', function(event){
 	event.preventDefault();
@@ -101,3 +101,47 @@ $('#form-approve-member').on('submit', function(event){
 	
 	return false;
 });
+
+//##END Disapproval process --
+
+
+
+//## Disapproval process --
+//Disapprove Button
+$('#dtMember').on('click', 'a[title~=Disapprove]', function (e){
+    e.preventDefault();
+
+    var id = $(this).attr('data-id');
+    var d = $("body").data("R" + id);
+    $('#disapproved_member_id').val(d.id);
+    $('#modal-disapprove').modal('show');
+
+    
+});
+
+$('#form-disapprove-member').on('submit', function(event){
+	event.preventDefault();
+	if($('#disapproved_member_id').val() != ''){
+		//--- disapprove Member
+	    $.post('member/disapprove', $("#form-disapprove-member").serialize(), function (obj) {
+	        if (obj.msg == 'success') {
+	            $('#form-disapprove-member')[0].reset();
+				$('#form-container').slideUp('slow');
+	            $('#dtMember .table').DataTable().ajax.reload();
+	            $('#modal-disapprove').modal('hide');
+	            alertify.success("Disapproval sukses");
+	        }else{
+	            alertifyError(obj.msg);
+
+	        }
+	    }, "json").fail(function () {
+	        alertifyError();
+	    });
+	}	
+	else{
+		alertify.error("You did not select any member");
+	}
+	
+	return false;
+});
+//##END Disapproval process --

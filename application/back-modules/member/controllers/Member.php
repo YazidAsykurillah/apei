@@ -60,7 +60,25 @@ class Member extends BackendController {
 			$this->jsonResponse['msg'] = $approve;
 		}
 		echo json_encode($this->jsonResponse);
+	}
 
+	public function disapprove(){
+
+		$this->load->library('form_validation');
+		$this->load->model('Member_m');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('disapproved_member_id', 'ID', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		$disapprove = $this->Member_m->disapprove($postData['disapproved_member_id']);
+		if($disapprove == TRUE){
+			$this->jsonResponse['msg'] = 'success';
+		}
+		else{
+			$this->jsonResponse['msg'] = $disapprove;
+		}
+		echo json_encode($this->jsonResponse);
 	}
 
 

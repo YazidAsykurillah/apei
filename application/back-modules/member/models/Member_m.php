@@ -23,6 +23,20 @@ class Member_m extends MY_Model{
 		}
 		return FALSE;
 	}
+
+	public function disapprove($id){
+
+		$disapprove = $this->db
+					->set('status', 'na')
+					->where('id', $id)
+					->update('members');
+		if($disapprove ){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
+
 	
 
 }
