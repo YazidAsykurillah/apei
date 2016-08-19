@@ -17,7 +17,7 @@
 		        <form name="form-company-functions" id="form-company-functions" action="company_profile/save_functions" method="post">
 		          <div class="form-group">
 		            <label for="functions">Fungsi dan Peranan</label>
-		            <textarea class="form-control" id="functions" name="functions" rows="15">
+		            <textarea class="form-control" id="functions" name="functions" rows="17">
 		            	<?php print_r($functions);?>
 		            </textarea>
 		          </div>

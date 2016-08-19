@@ -17,7 +17,7 @@
 		        <form name="form-company-vission_mission" id="form-company-vission_mission" action="company_profile/save_vission_mission" method="post">
 		          <div class="form-group">
 		            <label for="vission_mission">Visi &amp; Misi</label>
-		            <textarea class="form-control" id="vission_mission" name="vission_mission" rows="15">
+		            <textarea class="form-control" id="vission_mission" name="vission_mission" rows="17">
 		            	<?php print_r($vission_mission);?>
 		            </textarea>
 		          </div>

@@ -17,7 +17,7 @@
 		        <form name="form-company-background" id="form-company-background" action="company_profile/save_background" method="post">
 		          <div class="form-group">
 		            <label for="background">Latar Belakang</label>
-		            <textarea class="form-control" id="background" name="background" rows="5">
+		            <textarea class="form-control" id="background" name="background" rows="17">
 		            	<?php print_r($background);?>
 		            </textarea>
 		          </div>

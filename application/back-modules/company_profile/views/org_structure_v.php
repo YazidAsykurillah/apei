@@ -17,7 +17,7 @@
 		        <form name="form-company-org_structure" id="form-company-org_structure" action="company_profile/save_org_structure" method="post">
 		          <div class="form-group">
 		            <label for="org_structure">Struktur Organisasi</label>
-		            <textarea class="form-control" id="org_structure" name="org_structure" rows="15">
+		            <textarea class="form-control" id="org_structure" name="org_structure" rows="17">
 		            	<?php print_r($org_structure);?>
 		            </textarea>
 		          </div>

@@ -29,7 +29,7 @@
 				<li>
 					<?php echo anchor('home', '<i class="fa fa-home"></i> Dashboard'); ?>
 				</li>
-				<li><a><i class="fa fa-edit"></i> Master Data <span class="fa fa-chevron-down"></span></a>
+				<li><a><i class="fa fa-book"></i> Master Data <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('dokter', 'Dokter'); ?></li>
 						<li><?php echo anchor('pasien', 'Pasien'); ?></li>
@@ -47,7 +47,7 @@
 					</ul>
 				</li>
 				<li>
-					<a><i class="fa fa-edit"></i> Informasi <span class="fa fa-chevron-down"></span></a>
+					<a><i class="fa fa-bookmark"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('information/', 'Informasi'); ?></li>
 						<li><?php echo anchor('information/certification_procedure', 'Prosedur Sertifikasi'); ?></li>

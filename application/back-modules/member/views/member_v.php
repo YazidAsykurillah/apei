@@ -14,7 +14,7 @@
 
 			<div class="x_content">
         		<div id="dtMember">
-					<table id="datatable-buttons" class="table table-striped table-bordered">
+					<table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                      	<tr>
 		                        <th>#</th>
