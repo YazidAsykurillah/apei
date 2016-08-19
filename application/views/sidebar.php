@@ -37,8 +37,17 @@
 					</ul>
 				</li>
 				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
-				<li><?php echo anchor('company_profile', '<i class="fa fa-home"></i>Profil Perusahaan'); ?></li>
-				<li><a><i class="fa fa-edit"></i> Informasi <span class="fa fa-chevron-down"></span></a>
+				<li>
+					<a><i class="fa fa-home"></i> Profil Perusahaan <span class="fa fa-chevron-down"></span></a>
+					<ul class="nav child_menu" style="display: none">
+						<li><?php echo anchor('company_profile/background', 'Latar Belakang'); ?></li>
+						<li><?php echo anchor('company_profile/vission_mission', 'Visi dan Misi'); ?></li>
+						<li><?php echo anchor('company_profile/org_structure', 'Struktur Organisasi'); ?></li>
+						<li><?php echo anchor('company_profile/functions', 'Fungsi dan Peranan'); ?></li>
+					</ul>
+				</li>
+				<li>
+					<a><i class="fa fa-edit"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('information/', 'Informasi'); ?></li>
 						<li><?php echo anchor('information/certification_procedure', 'Prosedur Sertifikasi'); ?></li>
