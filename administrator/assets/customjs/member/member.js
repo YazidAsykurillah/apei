@@ -1,3 +1,4 @@
+
 var table = $('#datatable-buttons').DataTable({
 	serverSide: true,
     processing: true,
@@ -11,7 +12,10 @@ var table = $('#datatable-buttons').DataTable({
         {data: "#", orderable: false, searchable: false},
         {data: 'name'},
         {data: 'email'},
-        {data: 'foto_file'},
+        {data: 'foto_file', render:function(data, type, row, meta){
+        	var host = window.location.origin;
+        	return '<img src="'+host+'/apei/uploads/'+data+'" class="img-thumbnail" >';
+        }},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
         	return row.birth_place+','+' '+row.birth_date;
