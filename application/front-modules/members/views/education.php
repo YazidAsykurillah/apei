@@ -65,25 +65,15 @@
                                           </div>
                                           <div class="col-sm-6">
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tanggal Mulai</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Mulai Tahun</label>
                                                     <div class="col-sm-6">
-                                                         <div class='input-group date datepick'>
-                                                              <input type="text" class="form-control datepick" name="tgl_mulai">
-                                                              <span class="input-group-addon">
-                                                                   <span class="glyphicon glyphicon-calendar"></span>
-                                                              </span>
-                                                         </div>
+                                                         <input type="text" class="form-control" name="tgl_mulai">
                                                     </div>
                                                </div>
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tanggal Selesai</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Selesai Tahun</label>
                                                     <div class="col-sm-6">
-                                                         <div class='input-group date datepick'>
-                                                              <input type="text" class="form-control datepick" name="tgl_selesai">
-                                                              <span class="input-group-addon">
-                                                                   <span class="glyphicon glyphicon-calendar"></span>
-                                                              </span>
-                                                         </div>
+                                                         <input type="text" class="form-control" name="tgl_selesai">
                                                     </div>
                                                </div>
                                           </div>
@@ -107,8 +97,8 @@
                                 <thead>
                                      <tr>
                                           <th>Nama Sekolah</th>
-                                          <th>Tgl. Mulai</th>
-                                          <th>Tgl. Selesai</th>
+                                          <th>Mulai Tahun</th>
+                                          <th>Selesai Tahun</th>
                                           <th>Gelar</th>
                                           <th></th>
                                      </tr>
@@ -125,7 +115,7 @@
                                                  <td>
                                                       <div class="btn-group pull-right" role="group">
                                                            <button class="btn btn-sm btn-warning btn-edit-pend" data-id="<?php echo $pendidikan->id; ?>" data-url="<?php echo base_url('members/getPend'); ?>">Edit</button>
-                                                           <a href="http://localhost/apei/registrasi" class="btn btn-sm btn-danger">Hapus</a>
+                                                           <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                                       </div>
                                                  </td>
                                             </tr>

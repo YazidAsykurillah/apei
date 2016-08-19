@@ -43,7 +43,8 @@
             </div><!--/.col-sm-8-->
             <div class="col-sm-4">
                 <h4>Our Location</h4>
-                <iframe width="100%" height="215" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Dhaka,+Dhaka+Division,+Bangladesh&amp;aq=0&amp;oq=dhaka+ban&amp;sll=40.714353,-74.005973&amp;sspn=0.836898,1.815491&amp;ie=UTF8&amp;hq=&amp;hnear=Dhaka+Division,+Bangladesh&amp;t=m&amp;ll=24.542126,90.293884&amp;spn=0.124922,0.411301&amp;z=8&amp;output=embed"></iframe>
+                <iframe width="100%" height="215" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.co.id/maps/place/Jl.+Matraman+Raya+No.113,+Palmeriam,+Matraman,+Kota+Jakarta+Timur,+Daerah+Khusus+Ibukota+Jakarta+13140/@-6.2067773,106.8583713,19z/data=!3m1!4b1!4m5!3m4!1s0x2e69f47b587c19fb:0xddd8063555298d5d!8m2!3d-6.2067786!4d106.8589185?hl=id">
+                </iframe>
             </div><!--/.col-sm-4-->
         </div>
     </section>

@@ -11,8 +11,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Powerful and Responsive Web Design</h2>
-                                    <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                    <h2 class="animation animated-item-1"></h2>
+                                    <p class="animation animated-item-2"></p>
                                 </div>
                             </div>
                         </div>
@@ -22,12 +22,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content center centered">
-                                    <h2 class="boxed animation animated-item-1">Clean, Crisp, Powerful and Responsive Web Design</h2>
-                                    <p class="boxed animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                <!-- <div class="carousel-content center centered">
+                                    <h2 class="boxed animation animated-item-1"></h2>
+                                    <p class="boxed animation animated-item-2"></p>
                                     <br>
                                     <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -36,18 +36,18 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="carousel-content centered">
+                                <!-- <div class="carousel-content centered">
                                     <h2 class="animation animated-item-1">Powerful and Responsive Web Design Theme</h2>
                                     <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
                                     <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
-                                <div class="centered">
+                                <!-- <div class="centered">
                                     <div class="embed-container">
                                         <iframe src="//player.vimeo.com/video/69421653?title=0&amp;byline=0&amp;portrait=0&amp;color=a22c2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -86,28 +86,28 @@
                 <div class="blog">
                      <div class="blog-item" style="border:1px solid #ccc">
                           <div class="blog-content">
-                               <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
-                               <div class="entry-meta">
-                                    <span><i class="icon-user"></i> <a href="#">John</a></span>
-                                    <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
-                                    <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
-                                    <span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
-                               </div>
-                               <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                               <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                               <a href="blog-item.html"><h3></h3></a>
+                               <!-- <div class="entry-meta">
+                                    <span><i class="icon-user"></i> <a href="#"></a></span>
+                                    <span><i class="icon-folder-close"></i> <a href="#"></a></span>
+                                    <span><i class="icon-calendar"></i> </span>
+                                    <span><i class="icon-comment"></i> <a href="blog-item.html#comments"></a></span>
+                               </div> -->
+                               <p></p>
+                               <!-- <a class="btn btn-default" href="blog-item.html"><i class="icon-angle-right"></i></a> -->
                           </div>
                      </div><!--/.blog-item-->
                      <div class="blog-item" style="border:1px solid #ccc">
                           <div class="blog-content">
-                               <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
-                               <div class="entry-meta">
+                               <a href="blog-item.html"><h3></h3></a>
+                               <!-- <div class="entry-meta">
                                     <span><i class="icon-user"></i> <a href="#">John</a></span>
                                     <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
                                     <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
                                     <span><i class="icon-comment"></i> <a href="blog-item.html#comments">0 Comment</a></span>
                                </div>
                                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                               <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                               <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
                           </div>
                      </div>
                 </div>
@@ -128,9 +128,9 @@
                  <div class="col-md-6">
                       <div class="blog">
                            <div class="blog-item" style="border:1px solid #ccc">
-                                <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog1.jpg');?>" width="100%" alt="">
+                                <!-- <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog1.jpg');?>" width="100%" alt=""> -->
                                 <div class="blog-content">
-                                     <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
+                                     <!-- <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
                                      <div class="entry-meta">
                                           <span><i class="icon-user"></i> <a href="#">John</a></span>
                                           <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
@@ -138,13 +138,13 @@
                                           <span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
                                      </div>
                                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
                                 </div>
                            </div><!--/.blog-item-->
                            <div class="blog-item" style="border:1px solid #ccc">
-                                <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog2.jpg');?>" width="100%" alt="">
+                                <!-- <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog2.jpg');?>" width="100%" alt=""> -->
                                 <div class="blog-content">
-                                     <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
+                                     <!-- <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
                                      <div class="entry-meta">
                                           <span><i class="icon-user"></i> <a href="#">John</a></span>
                                           <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
@@ -152,7 +152,7 @@
                                           <span><i class="icon-comment"></i> <a href="blog-item.html#comments">0 Comment</a></span>
                                      </div>
                                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
                                 </div>
                            </div>
                       </div>
@@ -160,9 +160,9 @@
                  <div class="col-md-6">
                       <div class="blog">
                            <div class="blog-item" style="border:1px solid #ccc">
-                                <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog1.jpg');?>" width="100%" alt="">
+                                <!-- <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog1.jpg');?>" width="100%" alt=""> -->
                                 <div class="blog-content">
-                                     <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
+                                     <!-- <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
                                      <div class="entry-meta">
                                           <span><i class="icon-user"></i> <a href="#">John</a></span>
                                           <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
@@ -170,13 +170,13 @@
                                           <span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
                                      </div>
                                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
                                 </div>
                            </div><!--/.blog-item-->
                            <div class="blog-item" style="border:1px solid #ccc">
-                                <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog2.jpg');?>" width="100%" alt="">
+                                <!-- <img class="img-responsive img-blog" src="<?php echo get_front_images_path('blog/blog2.jpg');?>" width="100%" alt=""> -->
                                 <div class="blog-content">
-                                     <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
+                                     <!-- <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
                                      <div class="entry-meta">
                                           <span><i class="icon-user"></i> <a href="#">John</a></span>
                                           <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
@@ -184,7 +184,7 @@
                                           <span><i class="icon-comment"></i> <a href="blog-item.html#comments">0 Comment</a></span>
                                      </div>
                                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                                     <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
                                 </div>
                            </div>
                       </div>
@@ -205,35 +205,35 @@
             <div id="meet-the-team" class="row">
                <div class="col-md-3 col-xs-6">
                    <div class="center">
-                       <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
+                       <!-- <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
                        <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
                        <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a> -->
                    </div>
                </div>
 
                <div class="col-md-3 col-xs-6">
                    <div class="center">
-                       <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
+                       <!-- <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
                        <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
                        <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a> -->
                    </div>
                </div>
                <div class="col-md-3 col-xs-6">
                    <div class="center">
-                       <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
+                       <!-- <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
                        <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
                        <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a> -->
                    </div>
                </div>
                <div class="col-md-3 col-xs-6">
                    <div class="center">
-                       <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
+                       <!-- <p><img class="img-responsive img-thumbnail img-circle" src="<?php echo get_front_images_path('team-member.jpg');?>" alt="" ></p>
                        <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
                        <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                       <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a> -->
                    </div>
                </div>
            </div>

@@ -1,10 +1,10 @@
-<section id="bottom" class="wet-asphalt">
+<section id="bottom" class="wet-asphalt hidden-sm hidden-xs">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <h4>TENTANG PT. APEI</h4>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
-                    <p>Pellentesque habitant morbi tristique senectus.</p>
+                    <p></p>
+                    <p></p>
                 </div><!--/.col-md-3-->
 
                 <div class="col-md-3 col-sm-6">
@@ -21,54 +21,62 @@
 
                 <div class="col-md-3 col-sm-6">
                     <h4>GALERI FOTO</h4>
-                    <div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url(get_front_images_path('blog/thumb1.jpg'))?>" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 17 Aug 2013</small>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url(get_front_images_path('blog/thumb2.jpg'))?>" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 13 Sep 2013</small>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="pull-left">
-                                <img src="<?php echo base_url(get_front_images_path('blog/thumb3.jpg'))?>" alt="">
-                            </div>
-                            <div class="media-body">
-                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
-                                <small class="muted">Posted 11 Jul 2013</small>
-                            </div>
-                        </div>
+                    <div class="row">
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg1.jpg'))?>" rel="prettyPhoto">
+                                   <img src="<?php echo base_url(get_front_images_path('galeri/bg1.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4  col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg2.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg2.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4  col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg3.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg3.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg4.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg4.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg5.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg5.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg6.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg6.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg7.jpg'))?>" rel="prettyPhoto">
+                                   <div class="col-xs-4 col-md-4">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg7.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg8.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg8.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+                         <div class="col-xs-4 col-md-4">
+                              <a href="<?php echo base_url(get_front_images_path('galeri/bg9.jpg'))?>" rel="prettyPhoto">
+                              <img src="<?php echo base_url(get_front_images_path('galeri/bg9.jpg'))?>" alt="" style="width: 60px;height:60px;">
+                              </a>
+                         </div>
+
                     </div>
                 </div><!--/.col-md-3-->
 
                 <div class="col-md-3 col-sm-6">
                     <h4>GALERI VIDEO</h4>
-                    <address>
-                        <strong>Twitter, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                    </address>
-                    <h4>Newsletter</h4>
-                    <form role="form">
-                        <div class="input-group">
-                            <input type="text" class="form-control" autocomplete="off" placeholder="Enter your email">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button">Go!</button>
-                            </span>
-                        </div>
-                    </form>
+                    <div>
+                         <iframe style="width:100%" src="https://www.youtube.com/embed/S8RNgeNcQSU" frameborder="0" allowfullscreen=""></iframe>
+                         <small class="muted">Presiden Berharap AKLI & APEI Terlibat Proyek 35 Ribu MW</small>
+                    </div>
                 </div> <!--/.col-md-3-->
             </div>
         </div>
@@ -77,15 +85,15 @@
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebotstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12 text-center">
+                    &copy; 2013 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">PT. APEI</a>. All Rights Reserved.
+                <!-- </div> -->
+                <!-- <div class="col-sm-6"> -->
                     <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
+                        <!-- <li><a href="#">Home</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Contact Us</a></li> -->
                         <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
                     </ul>
                 </div>

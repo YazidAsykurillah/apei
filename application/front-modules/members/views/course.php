@@ -67,23 +67,13 @@
                                                <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-4 control-label">Mulai Tahun</label>
                                                     <div class="col-sm-6">
-                                                         <div class='input-group date datepick'>
-                                                              <input type="text" class="form-control datepick" name="tgl_mulai">
-                                                              <span class="input-group-addon">
-                                                                   <span class="glyphicon glyphicon-calendar"></span>
-                                                              </span>
-                                                         </div>
+                                                         <input type="text" class="form-control" name="tgl_mulai">
                                                     </div>
                                                </div>
                                                <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-4 control-label">Selesai Tahun</label>
                                                     <div class="col-sm-6">
-                                                         <div class='input-group date datepick'>
-                                                              <input type="text" class="form-control datepick" name="tgl_selesai">
-                                                              <span class="input-group-addon">
-                                                                   <span class="glyphicon glyphicon-calendar"></span>
-                                                              </span>
-                                                         </div>
+                                                         <input type="text" class="form-control" name="tgl_selesai">
                                                     </div>
                                                </div>
                                           </div>

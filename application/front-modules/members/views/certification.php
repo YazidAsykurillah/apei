@@ -48,27 +48,45 @@
                                      <div class="row" style="margin-top:20px">
                                           <div class="col-sm-6">
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Pelaksana</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">No. Registrasi</label>
                                                     <div class="col-sm-7">
                                                          <input type="text" class="form-control" name="pelaksana">
                                                     </div>
                                                </div>
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tempat</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">No. Sertifikat</label>
                                                     <div class="col-sm-7">
                                                          <input type="text" class="form-control" name="tempat">
                                                     </div>
                                                </div>
-                                          </div>
-                                          <div class="col-sm-6">
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tanggal Mulai</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Bidang</label>
                                                     <div class="col-sm-7">
                                                          <input type="text" class="form-control" name="position">
                                                     </div>
                                                </div>
                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-4 control-label">Tanggal Selesai</label>
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Sub Bidang</label>
+                                                    <div class="col-sm-7">
+                                                         <input type="text" class="form-control" name="position">
+                                                    </div>
+                                               </div>
+                                          </div>
+                                          <div class="col-sm-6">
+                                               <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Unit Kompetensi</label>
+                                                    <div class="col-sm-7">
+                                                         <input type="text" class="form-control" name="position">
+                                                    </div>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Level</label>
+                                                    <div class="col-sm-7">
+                                                         <input type="text" class="form-control" name="position">
+                                                    </div>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-4 control-label">Masa Berlaku</label>
                                                     <div class="col-sm-7">
                                                          <input type="text" class="form-control" name="position">
                                                     </div>
