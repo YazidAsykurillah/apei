@@ -9,24 +9,48 @@
 		<div class="x_panel">
 			<div class="x_title">
                 <h2><i class="fa fa-list"></i> <?php echo get_page_title(); ?></h2>
+                <div class="nav navbar-right">
+					<div class="btn-group">
+						<button id="btn-add" class="btn btn-sm btn-success" href="#"><i class="fa fa-plus"></i> Add</button>
+					</div>
+                </div>
 				<div class="clearfix"></div>
-            </div>
+      		</div>
 
 			<div class="x_content">
+				<div id="form-container" class="collapse">
+					<form name="form-news_event" class="form-horizontal" id="form-news_event" method="post" action="profile/save_user_certification">
+
+	                    <div class="form-group">
+						    <label for="registration_number" class="col-sm-2 control-label">Nomor Registrasi</label>
+						    <div class="col-sm-6">
+						    	<input type="text" class="form-control" id="registration_number" name="registration_number" placeholder="Registration number">
+						    </div>
+						</div>
+						<div class="form-group">
+	                    	<label for="" class="col-sm-2 control-label"></label>
+	                      	<div class="col-md-6">
+	                        	<button type="submit" class="btn btn-success">Submit</button>
+	                        	<button id="btnReset" type="reset" class="btn btn-primary">Cancel</button>
+	                      	</div>
+	                    </div>
+
+					</form>
+
+					<div class="clearfix"></div>
+				  	<hr>
+				</div>
         		<div id="dtNewsEvent">
-					<table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%;">
+					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
-	                      	<tr>
-		                        <th width="5%;">#</th>
-		                        <th>Title</th>
-		                        <th>Category</th>
-		                        <th>Posted By</th>
-		                        <th>Date Posted</th>
-								<th width="10%">Aksi</th>
-	                      	</tr>
+	                        <th width="5%;">#</th>
+	                        <th>Title</th>
+	                        <th>Category</th>
+	                        <th>Posted By</th>
+	                        <th>Date Posted</th>
+							<th width="10%">Aksi</th>
 	                    </thead>
-	                    <tbody>
-	                    </tbody>
+	                    <tbody></tbody>
 	                </table>
                 </div>
 			</div>

@@ -15,7 +15,7 @@
 					</div>
                 </div>
 				<div class="clearfix"></div>
-            </div>
+      </div>
 			<div class="x_content">
 				<div id="form-container" class="collapse">
 					<form class="form-horizontal form-label-left input_mask" id="form-dokter">

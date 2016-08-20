@@ -1,4 +1,4 @@
-var table = $('#datatable-buttons').DataTable({
+var table = $('#datatable').DataTable({
 	serverSide: true,
     processing: true,
     autoWidth: true,
@@ -26,7 +26,7 @@ var table = $('#datatable-buttons').DataTable({
         	return '<a title="Edit" href="#" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-edit"></i></a>'+
         		   '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
-        {data: 'id', visible: false, searchable: false, className: 'never'},
+/*        {data: 'id', visible: false, searchable: false, className: 'never'},*/
     ],
     order: [[1, 'asc']],
 	dom: 'Bfrtip',
@@ -53,7 +53,18 @@ var table = $('#datatable-buttons').DataTable({
 	}]
 });
 
+$('#btn-add').click(function(){
+    $('#form-container').slideDown("slow");
+    //$(this).addClass('collapse');
+});
 
+$('#btnReset').click(function(){
+    $('#form-container').slideUp("slow");
+    $('#form-news_event')[0].reset();
+    $('#btn-add').removeClass('collapse');
+    //remove value of input id
+    $('#news_event-id').val('');
+});
 
 //## Delete News Eventprocess --
 
@@ -63,8 +74,6 @@ $('#dtNewsEvent').on('click', 'a[title~=Delete]', function (e){
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#news_event_id').val(d.id);
-    $('#modal-delete-news_event').modal('show');    
+    $('#modal-delete-news_event').modal('show');
 });
 
-
-$('#form-delete_news_event')
