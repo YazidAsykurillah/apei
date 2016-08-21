@@ -30,6 +30,9 @@
 			echo link_tag(get_favicon());
 		}
 	?>
+	<script type="text/javascript">
+		var baseURL = '<?php echo base_url();?>';
+	</script>
 </head>
 <body class="nav-md">
 	<div class="container body">
