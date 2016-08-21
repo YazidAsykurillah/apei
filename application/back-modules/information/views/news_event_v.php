@@ -19,12 +19,28 @@
 
 			<div class="x_content">
 				<div id="form-container" class="collapse">
-					<form name="form-news_event" class="form-horizontal" id="form-news_event" method="post" action="profile/save_user_certification">
+					<form name="form-news_event" class="form-horizontal" id="form-news_event" method="post" action="news_event/save">
 
 	                    <div class="form-group">
-						    <label for="registration_number" class="col-sm-2 control-label">Nomor Registrasi</label>
+						    <label for="title" class="col-sm-2 control-label">Judul</label>
 						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="registration_number" name="registration_number" placeholder="Registration number">
+						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="content" class="col-sm-2 control-label">Isi</label>
+						    <div class="col-sm-6">
+						    	<textarea id="content" name="content" class="form-control" placeholder="Type the content" style="width:100%;"></textarea>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="category" class="col-sm-2 control-label">Kategori</label>
+						    <div class="col-sm-6">
+						    	<select id="category" name="category" class="form-control">
+						    		<option value="">--Pilih Kategory--</option>
+						    		<option value="news">News</option>
+						    		<option value="event">Event</option>
+						    	</select>
 						    </div>
 						</div>
 						<div class="form-group">
@@ -72,11 +88,12 @@
       	</div>
       
       	<div class="modal-body">
-       		<p>Klik delete untuk melakukan persetujuan</p>
-			<input type="text" name="news_event_id" id="news_event_id" value="">
+       		<p>Klik tombol Delete untuk menghapus berita atau event</p>
+       		<p>atau klik Cancel untuk membatalkan</p>
+			<input type="hidden" name="news_event_id" id="news_event_id" value="">
       	</div>
       	<div class="modal-footer">
-        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         	<button type="submit" class="btn btn-primary">Delete</button>
       	</div>
     </form>

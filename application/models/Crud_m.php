@@ -23,10 +23,10 @@ class Crud_m extends MY_Model {
 
     //--- Insert
     function insert( $data, $show_last_id = false ) {
-        $s = date( 'Y-m-d H:i:s', time() );
-        $data['created'] = $s;
+        //$s = date( 'Y-m-d H:i:s', time() );
+        //$data['created'] = $s;
         $auth = $this->session->userdata( 'auth' );
-        $data['createdby'] = $auth['id'];
+        //$data['createdby'] = $auth['id'];
         $result = $this->db->insert( $this->table, $data );
         if ( false == $result ) {
             $err = $this->db->error();

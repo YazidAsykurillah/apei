@@ -1,3 +1,7 @@
+tinyMCE.init({
+    selector: 'textarea',
+});
+
 var table = $('#datatable').DataTable({
 	serverSide: true,
     processing: true,
@@ -23,7 +27,7 @@ var table = $('#datatable').DataTable({
         {data: 'posted_date'},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
-        	return '<a title="Edit" href="#" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-edit"></i></a>'+
+        	return '<a title="Edit" href="news_event/edit/'+row.id+'" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-edit"></i></a>'+
         		   '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
 /*        {data: 'id', visible: false, searchable: false, className: 'never'},*/
@@ -75,5 +79,43 @@ $('#dtNewsEvent').on('click', 'a[title~=Delete]', function (e){
     var d = $("body").data("R" + id);
     $('#news_event_id').val(d.id);
     $('#modal-delete-news_event').modal('show');
+});
+
+
+$('#form-news_event').on('submit', function(event){
+    event.preventDefault();
+    tinyMCE.triggerSave();
+    //--- Insert
+    $.post('news_event/save', $("#form-news_event").serialize(), function (obj) {
+        if (obj.msg == 'success') {
+            alertify.success("Insert Data Success");
+            $('#form-news_event')[0].reset();
+            $('#form-container').slideUp('slow');
+            $('#dtNewsEvent .table').DataTable().ajax.reload();
+        } else {
+            alertifyError(obj.msg);
+        }
+    }, "json").fail(function () {
+        alertifyError();
+    });
+    
+    return false;
+});
+
+$('#form-delete-news_event').on('submit', function(event){
+    event.preventDefault();
+    $.post('news_event/delete', $("#form-delete-news_event").serialize(), function (obj) {
+        if (obj.msg == 'success') {
+            alertify.success("Sukses menghapus data");
+            $('#dtNewsEvent .table').DataTable().ajax.reload();
+            $('#modal-delete-news_event').modal('hide');
+        } else {
+            alertifyError(obj.msg);
+        }
+    }, "json").fail(function () {
+        alertifyError();
+    });
+    
+    return false;
 });
 
