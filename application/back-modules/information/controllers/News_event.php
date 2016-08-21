@@ -34,7 +34,7 @@ class News_event extends BackendController {
 	}
 
 	public function get_news_event(){
-		$this->Crud_m->table = 'news_event';
+		$this->Crud_m->table = 'news_event_v';
 		$cpData = $this->Crud_m->getDataTableV10();
         $this->Crud_m->outputToJson( $cpData );
 	}

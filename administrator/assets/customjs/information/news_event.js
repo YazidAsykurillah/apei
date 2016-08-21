@@ -23,7 +23,7 @@ var table = $('#datatable').DataTable({
         	}
         	return category_display;
         }},
-        {data: 'posted_by'},
+        {data: 'poster_username'},
         {data: 'posted_date'},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
