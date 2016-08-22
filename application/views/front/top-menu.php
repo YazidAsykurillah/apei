@@ -48,7 +48,7 @@
                <li class="<?php echo $this->uri->segment(1) == 'kontak' ? 'active':''; ?>"><?php echo anchor('kontak', 'Hubungi Kami', 'title="Hubungi Kami"'); ?></li>
                <?php
                     if($this->ion_auth->logged_in()){
-                         if($this->session->userdata['groups'] != 1){
+                         if(isset($this->session->userdata['groups']) && $this->session->userdata['groups']!= 1){
                ?>
                <li style="margin-left:10px;">
                     <div class="btn-group" role="group" aria-label="...">
