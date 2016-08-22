@@ -1038,8 +1038,8 @@ ul.pagination > li:hover > a {
   color: #fff;
 }
 textarea#message {
-  padding: 10px 15px;
-  height: 219px;
+  padding: 5px 10px;
+  height: inherit !important;
 }
 .widget {
   margin-bottom: 30px;

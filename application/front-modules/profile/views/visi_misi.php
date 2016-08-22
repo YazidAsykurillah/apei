@@ -14,3 +14,18 @@
        </div>
    </div>
 </section>
+<section id="about-us" class="container">
+    <div class="row">
+         <div class="blog">
+              <div class="blog-item" style="margin-bottom:0;">
+                   <div class="blog-content">
+                        <?php
+                              if(isset($visi_misi)){
+                                   echo $visi_misi->vission_mission;
+                              }
+                        ?>
+                   </div>
+              </div>
+         </div>
+    </div>
+</section>

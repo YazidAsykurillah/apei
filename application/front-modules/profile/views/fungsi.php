@@ -14,3 +14,18 @@
       </div>
    </div>
 </section>
+<section id="about-us" class="container">
+    <div class="row">
+         <div class="blog">
+              <div class="blog-item" style="margin-bottom:0;">
+                   <div class="blog-content">
+                        <?php
+                              if(isset($fungsi)){
+                                   echo $fungsi->functions;
+                              }
+                        ?>
+                   </div>
+              </div>
+         </div>
+    </div>
+</section>
