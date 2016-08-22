@@ -40,14 +40,17 @@ class Auth extends MY_Controller {
 
 			if($this->ion_auth->login($user, $pass)){
 				$user = $this->ion_auth->user()->row();
-				$this->load->model('mUser');
-				$dtUser = $this->mUser->getByID($user->id_members);
-				$newdata = array(
-			        'id_members'  => $user->id_members,
-			        'nama'     => $dtUser->name,
-			        'logged_in' => TRUE
-				);
-				$this->session->set_userdata($newdata);
+				if($user->id_members){
+					$this->load->model('mUser');
+					$dtUser = $this->mUser->getByID($user->id_members);
+					$newdata = array(
+				        'id_members'  => $user->id_members,
+					   'groups' => $this->ion_auth->get_users_groups($user->id)->row()->id,
+				        'nama'     => $dtUser->name,
+				        'logged_in' => TRUE
+					);
+					$this->session->set_userdata($newdata);
+				}
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('home', 'refresh');
 			}else{
@@ -73,13 +76,6 @@ class Auth extends MY_Controller {
 		}
 	}
 
-	// // log the user out
-	// function logout(){
-	// 	die("asdsad");
-	// 	$logout = $this->ion_auth->logout();
-	// 	$this->session->set_flashdata('message', $this->ion_auth->messages());
-	// 	// redirect('home', 'refresh');
-	// }
 
 	// change password
 	function change_password(){

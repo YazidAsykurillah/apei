@@ -15,5 +15,5 @@ class Home extends BackendController {
 		render_template('home');
 
 	}
-
+	
 }

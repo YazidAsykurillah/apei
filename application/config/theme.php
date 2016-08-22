@@ -48,6 +48,7 @@ $config['default_css_front'] = array(
 
 $config['default_js_front'] = array(
 	'assets/front/js/jquery.js',
+	'assets/front/js/jquery-validation-1.15.0/dist/jquery.validate.js',
 	'assets/front/js/bootstrap.min.js',
 	'assets/front/js/jquery.prettyPhoto.js'
 );

@@ -27,7 +27,34 @@ jQuery(function($) {
 			$('#form-container').slideDown('slow');
 			$('#btn-add').addClass('collapse');
 		}
+		$('#login-form').validate({
+			submitHandler: function(form) {
+				form.submit();
+			},
+			debug: true,
+			rules: {
+				username: {
+					required: true,
+					minlength: 2
+				},
+				password: {
+					required: true,
+					minlength: 5
+				}
+			},
+			messages: {
+				username: {
+					required: "Please enter a username",
+					minlength: "Your username must consist of at least 2 characters"
+				},
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				}
+			}
 
+		});
+		$('#form-signup').validate();
 		//Pretty Photo
 		$("a[rel^='prettyPhoto']").prettyPhoto({
 			social_tools: false,

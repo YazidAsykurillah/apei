@@ -20,7 +20,7 @@
               <div class="blog-item" style="margin-bottom:0;">
                    <div class="blog-content">
                         <?php
-                              $attributes = array('class' => 'form-horizontal');
+                              $attributes = array('class' => 'form-horizontal', 'id' => 'form-signup');
                               echo form_open_multipart('registrasi/save',$attributes);
                          ?>
                              <h3>Data Pribadi</h3>
@@ -28,7 +28,7 @@
                              <div class="form-group">
                                   <label for="inputEmail3" class="col-sm-3 control-label">Nama Lengkap</label>
                                   <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="name">
+                                       <input type="text" class="form-control" name="name" required>
                                   </div>
                              </div>
                              <div class="form-group">

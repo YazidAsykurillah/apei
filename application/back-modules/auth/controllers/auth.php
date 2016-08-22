@@ -6,9 +6,6 @@ class Auth extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
-		if($this->ion_auth->logged_in()){
-			redirect(site_url(), 'refresh');
-		}
 	}
 
 	// redirect if needed, otherwise display the user list
@@ -18,6 +15,7 @@ class Auth extends MY_Controller {
 		}elseif (!$this->ion_auth->is_admin()){
 			return show_error('You must be an administrator to view this page.');
 		}else{
+
 			redirect('home', 'refresh');
 		}
 	}
@@ -33,6 +31,13 @@ class Auth extends MY_Controller {
 			$pass = $this->input->post('password');
 
 			if($this->ion_auth->login($user, $pass)){
+				$newdata = array(
+			        'id_members'  => 0,
+				   'groups' => 1,
+			        'nama'     => '',
+			        'logged_in' => TRUE
+				);
+				$this->session->set_userdata($newdata);
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('home', 'refresh');
 			}else{

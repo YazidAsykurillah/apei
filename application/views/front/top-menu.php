@@ -48,6 +48,7 @@
                <li class="<?php echo $this->uri->segment(1) == 'kontak' ? 'active':''; ?>"><?php echo anchor('kontak', 'Hubungi Kami', 'title="Hubungi Kami"'); ?></li>
                <?php
                     if($this->ion_auth->logged_in()){
+                         if($this->session->userdata['groups'] != 1){
                ?>
                <li style="margin-left:10px;">
                     <div class="btn-group" role="group" aria-label="...">
@@ -59,9 +60,18 @@
                     </div>
                </li>
                <?php
+                         }else{
+               ?>
+               <li style="margin-left:10px;">
+                    <div class="btn-group" role="group" aria-label="...">
+                         <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#mdl-login" data-backdrop="static">Login</a>
+                         <?php echo anchor('registrasi', 'Register', array('title' => 'Register','class' => 'btn btn-sm btn-primary')); ?>
+                    </div>
+               </li>
+               <?php
+                         }
                     }else{
                ?>
-
                <li style="margin-left:10px;">
                     <div class="btn-group" role="group" aria-label="...">
                          <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#mdl-login" data-backdrop="static">Login</a>

@@ -100,10 +100,15 @@
             </div>
         </div>
     </footer><!--/#footer-->
+    <?php
+         if($this->ion_auth->logged_in()){
+              if($this->session->userdata['groups'] != 1){
+              }else{
+     ?>
     <div id="mdl-login" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myLargeModalLabel">
          <div class="modal-dialog" role="document">
               <div class="modal-content">
-                   <form class="form-horizontal" method="post" action="<?php echo base_url('auth/login')?>">
+                   <form id="login-form" class="form-horizontal" method="post" action="<?php echo base_url('auth/login')?>">
                         <div class="modal-header">
                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">×</span>
@@ -115,13 +120,13 @@
                              <div class="form-group">
                                   <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
                                   <div class="col-sm-8">
-                                       <input type="text" class="form-control" name="username">
+                                       <input type="text" class="form-control" name="username" required>
                                   </div>
                              </div>
                              <div class="form-group">
                                   <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
                                   <div class="col-sm-8">
-                                       <input type="password" class="form-control col-sm-9" name="password">
+                                       <input type="password" class="form-control col-sm-9" name="password" required>
                                   </div>
                              </div>
                         </div>
@@ -133,6 +138,46 @@
               </div>
          </div>
     </div>
+    <?php
+               }
+          }else{
+     ?>
+     <div id="mdl-login" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                    <form id="login-form" class="form-horizontal" method="post" action="<?php echo base_url('auth/login')?>">
+                         <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">×</span>
+                              </button>
+                              <h3 class="modal-title" id="myLargeModalLabel">Login Panel</h3>
+                              <hr>
+                         </div>
+                         <div class="modal-body">
+                              <div class="form-group">
+                                   <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                   <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="username" id="username" required>
+                                   </div>
+                              </div>
+                              <div class="form-group">
+                                   <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                                   <div class="col-sm-8">
+                                        <input type="password" class="form-control col-sm-9" name="password" id="password" required>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Login</button>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </div>
+     <?php
+          }
+     ?>
     <?php
          echo get_front_js();
     ?>

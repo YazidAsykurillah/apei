@@ -18,6 +18,10 @@ class BackendController extends MY_Controller
         parent::__construct();
 		if (!$this->ion_auth->logged_in()){
 			redirect('auth/login', 'refresh');
+		}else{
+			if($this->session->userdata['groups'] != 1){
+				redirect('auth/login', 'refresh');
+			}
 		}
     }
 }
