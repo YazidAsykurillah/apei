@@ -25,16 +25,6 @@ class Information extends BackendController {
 		render_template('information');
 	}
 
-	public function certification_procedure(){
-		set_page_title('Prosedur Sertifikasi');
-		$this->load->helper('data_table_helper');
-		set_css($this->cust_css);
-		set_js(get_datatables_js());
-		set_js(get_customjs_path('information/certification_procedure.js'));
-		render_template('certification_procedure');
-	}
-
-
 	public function schedule(){
 		set_page_title('Jadwal Uji Kompetensi');
 		$this->load->helper('data_table_helper');
