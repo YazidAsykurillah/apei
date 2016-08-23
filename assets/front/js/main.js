@@ -27,6 +27,11 @@ jQuery(function($) {
 			$('#form-container').slideDown('slow');
 			$('#btn-add').addClass('collapse');
 		}
+		$('#mdl-login').on('show.bs.modal', function(){
+			if($('.error').length > 0){
+				$('label.error').remove();
+			}
+		});
 		$('#login-form').validate({
 			submitHandler: function(form) {
 				form.submit();

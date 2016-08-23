@@ -1088,3 +1088,7 @@ ul.faq li > div h3 {
   margin-top: 150px;
   margin-bottom: 150px;
 }
+.error{
+     margin-top: 5px;
+     color: #d9534f;
+}
