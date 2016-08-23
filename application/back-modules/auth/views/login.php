@@ -56,21 +56,16 @@
               <input type="password" class="form-control" placeholder="Password" required="" name="password" />
             </div>
             <div>
-              <button class="btn btn-default submit" type="submit">Log in</button>
-              <a class="reset_pass" href="#">Lost your password?</a>
+              <button class="btn btn-default submit pull-right" type="submit">Log in</button>
             </div>
             <div class="clearfix"></div>
-            <div class="separator">
-
-              <p class="change_link">New to site?
-                <a href="#toregister" class="to_register"> Create Account </a>
-              </p>
+            <div class="separator" style="padding-top:0">
               <div class="clearfix"></div>
               <br />
               <div>
-                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
-
-                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                <h1></h1>
+                <?php echo img(array('src'=>'assets/images/logo.png','alt'=>'','class'=>'img-responsive','style'=>'width:80%;margin: 0 auto 30px'));?>
+                <p>Â© 2013 PT. APEI. All Rights Reserved.</p>
               </div>
             </div>
 			<?php echo form_close();?>
@@ -105,7 +100,7 @@
               <div>
                 <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
 
-                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                <p>ï¿½2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
               </div>
             </div>
           </form>

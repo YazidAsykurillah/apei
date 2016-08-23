@@ -1,7 +1,7 @@
 				<br />
 				<footer>
 					<div class="copyright-info">
-						<p class="pull-right">Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>		
+						<p class="pull-right">© 2013 PT. APEI. All Rights Reserved.</a>		
 						</p>
 					</div>
 					<div class="clearfix"></div>
@@ -20,7 +20,7 @@
 		<div class="clearfix"></div>
 		<div id="notif-group" class="tabbed_notifications"></div>
 	</div>
-	
+
 	<?php
 		echo get_js();
 	?>

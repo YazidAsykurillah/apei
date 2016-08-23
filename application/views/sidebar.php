@@ -1,15 +1,17 @@
 <div class="left_col scroll-view">
 
 	<div class="navbar nav_title" style="border: 0;">
-		<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Empty!</span></a>
+		<a href="index.html" class="site_title">
+			<?php echo img(array('src'=>'assets/images/logo.png','alt'=>'','class'=>'img-responsive','style'=>'width:80%;margin: 10px auto 0'));?>
+		</a>
 	</div>
 	<div class="clearfix"></div>
 
 	<!-- menu prile quick info -->
 	<div class="profile">
 		<div class="profile_pic">
-		<?php 
-			echo img(array('src'=>'assets/images/img.jpg','alt'=>'','class'=>'img-circle profile_img')); 
+		<?php
+			echo img(array('src'=>'assets/images/img.jpg','alt'=>'','class'=>'img-circle profile_img'));
 		?>
 		</div>
 		<div class="profile_info">
@@ -30,11 +32,11 @@
 					<?php echo anchor('home', '<i class="fa fa-home"></i> Dashboard'); ?>
 				</li>
 				<li><a><i class="fa fa-book"></i> Master Data <span class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu" style="display: none">
+					<!-- <ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('dokter', 'Dokter'); ?></li>
 						<li><?php echo anchor('pasien', 'Pasien'); ?></li>
 						<li><?php echo anchor('jenis', 'Jenis Pemeriksaan'); ?></li>
-					</ul>
+					</ul> -->
 				</li>
 				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
 				<li>
@@ -76,7 +78,7 @@
 						<li><?php echo anchor('profile/user_experience', 'Riwayat Pekerjaan'); ?></li>
 					</ul>
 				</li> -->
-				
+
 			</ul>
 		</div>
 	</div>
