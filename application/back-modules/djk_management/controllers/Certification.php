@@ -11,10 +11,12 @@ class Certification extends BackendController {
 		'assets/js/datatables/responsive.bootstrap.min.css',
 		'assets/js/datatables/scroller.bootstrap.min.css',
 		'assets/css/alertify/alertify.css',
+		'assets/css/select2/select2.css',
 	);
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
 		'assets/js/tiny_mce/tiny_mce.js',
+		'assets/js/select2/select2.full.js',
 		
 	);
 
@@ -28,12 +30,21 @@ class Certification extends BackendController {
 		set_css($this->cust_css);
 		set_js(get_datatables_js());
 		set_js($this->cust_js);
-		set_js(get_customjs_path('information/certification.js'));
-		render_template('certification_v');
+		set_js(get_customjs_path('djk_management/certification.js'));
+		$data['accessors'] = $this->getAccessors();
+		render_template('certification_v', $data);
 	}
 
+	protected function getAccessors() {
+        $this->db->select('id,first_name,last_name');
+        $result = $this->db->get('users');
+        return $result;
+    }
+
+
+
 	public function get_certification(){
-		$this->Crud_m->table = 'certifications';
+		$this->Crud_m->table = 'certification_v';
 		$cpData = $this->Crud_m->getDataTableV10();
         $this->Crud_m->outputToJson( $cpData );
 	}
@@ -42,6 +53,9 @@ class Certification extends BackendController {
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
+		$this->form_validation->set_rules('description', 'Rincian acara', 'required|min_length[3]');
+		$this->form_validation->set_rules('accessor_id', 'Asesor', 'required|integer');
+		$this->form_validation->set_rules('supervisor_id', 'Pengawas', 'required|integer');
 		$this->form_validation->set_rules('organizer', 'Penyelenggara', 'required');
 		$this->form_validation->set_rules('place', 'Tempat', 'required');
 		$this->form_validation->set_rules('start_date', 'Tanggal Mulai', 'required');
@@ -54,6 +68,9 @@ class Certification extends BackendController {
 			
 			$this->data = [
 				'title'=>$postData['title'],
+				'description'=>$postData['description'],
+				'accessor_id'=>$postData['accessor_id'],
+				'supervisor_id'=>$postData['supervisor_id'],
 				'organizer'=>$postData['organizer'],
 				'place'=>$postData['place'],
 				'start_date'=>date_format(date_create($postData['start_date']), "Y-m-d"),
@@ -75,6 +92,7 @@ class Certification extends BackendController {
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
+		$this->form_validation->set_rules('description', 'Rincian acara', 'required|min_length[3]');
 		$this->form_validation->set_rules('organizer', 'Penyelenggara', 'required');
 		$this->form_validation->set_rules('place', 'Tempat', 'required');
 		$this->form_validation->set_rules('start_date', 'Tanggal Mulai', 'required');
@@ -86,6 +104,7 @@ class Certification extends BackendController {
 		else{
 			$update = $this->db
 					  ->set('title', $postData['title'])
+					  ->set('description', $postData['description'])
 					  ->set('organizer', $postData['organizer'])
 					  ->set('place', $postData['place'])
 					  ->set('start_date', date_format(date_create($postData['start_date']), "Y-m-d"))

@@ -26,6 +26,7 @@ $config['default_js'] = array(
 	'assets/js/moment/moment.min.js',
 	'assets/js/datepicker/daterangepicker.js',
 	'assets/js/custom.js'
+
 );
 
 $config['page_title'] = "";

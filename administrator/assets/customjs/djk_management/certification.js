@@ -1,3 +1,6 @@
+tinyMCE.init({
+    selector: 'textarea',
+});
 $('#start_date').daterangepicker({
     "singleDatePicker": true,
     "showDropdowns": true
@@ -19,6 +22,9 @@ var table = $('#datatable').DataTable({
     columns: [
         {data: "#", orderable: false, searchable: false},
         {data: 'title'},
+        {data: 'description'},
+        {data: 'accessor_name'},
+        {data: 'supervisor_name'},
         {data: 'organizer'},
         {data: 'place'},
         {data: 'start_date'},
@@ -26,8 +32,7 @@ var table = $('#datatable').DataTable({
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
             return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+
-            '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
-
+                '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
 /*        {data: 'id', visible: false, searchable: false, className: 'never'},*/
     ],
@@ -71,10 +76,12 @@ $('#btnReset').click(function(){
 
 $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
+    tinyMCE.triggerSave();
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
+    tinyMCE.get('description').setContent(d.description);
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
@@ -85,9 +92,9 @@ $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
 
 
 
-
 $('#form-certification').on('submit', function(event){
     event.preventDefault();
+    tinyMCE.triggerSave();
     if($('#certification-id').val() != ''){
         //--- Edit Mode
         var id = $('#certification-id').val();
@@ -155,3 +162,5 @@ $('#form-delete-certification').on('submit', function(event){
     return false;
 });
 
+$('#accessor_id').select2();
+$('#supervisor_id').select2();

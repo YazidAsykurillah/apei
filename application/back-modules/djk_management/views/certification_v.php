@@ -1,3 +1,14 @@
+<?php
+	$accessor_options = '<option value="">-- Pilih User --</option>';
+	if(count($accessors) != 0){
+		foreach($accessors->result() as $accessor){
+			$accessor_options .='<option value="'.$accessor->id.'">'.$accessor->first_name.' '.$accessor->last_name.'</option>';
+		}
+	}
+	else{
+		$accessor_options = '<option value="">Tidak terdapat data asesor</option>';
+	}
+?>
 <div class="page-title">
 	<div class="title_left">
 	  <h3><?php echo get_page_title(); ?></h3>
@@ -25,6 +36,28 @@
 						    <label for="title" class="col-sm-2 control-label">Title</label>
 						    <div class="col-sm-6">
 						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="description" class="col-sm-2 control-label">Rincian Acara</label>
+						    <div class="col-sm-6">
+						    	<textarea id="description" name="description" class="form-control" placeholder="Description" style="width:100%;"></textarea>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="accessor_id" class="col-sm-2 control-label">Asesor</label>
+						    <div class="col-sm-6">
+						    	<select name="accessor_id" id="accessor_id" class="form-control select2" style="width:100%;">
+						    		<?php echo $accessor_options; ?>
+						    	</select>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="supervisor_id" class="col-sm-2 control-label">Pengawas</label>
+						    <div class="col-sm-6">
+						    	<select id="supervisor_id" name="supervisor_id" class="form-control select2" style="width:100%;">
+						    		<?php echo $accessor_options; ?>
+						    	</select>
 						    </div>
 						</div>
 	                    <div class="form-group">
@@ -69,6 +102,9 @@
 	                    <thead>
 	                        <th width="5%;">#</th>
 	                        <th>Title</th>
+	                        <th>Description</th>
+	                        <th>Asesor</th>
+	                        <th>Pengawas</th>
 	                        <th>Organizer</th>
 	                        <th>Place</th>
 	                        <th>Start Date</th>
