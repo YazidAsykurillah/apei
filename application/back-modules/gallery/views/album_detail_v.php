@@ -10,7 +10,7 @@
 		}
 	}
 	else{
-		$display_photo.='Kosong';
+		$display_photo.='<p class="alert alert-info">Tidak ada foto dalam album ini, silahkan tambahkan dengan klik tombol Upload Foto</p>';
 	}
 ?>
 <div class="page-title">
