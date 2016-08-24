@@ -176,6 +176,33 @@ class Album extends BackendController {
         }
 	}
 
+
+	//Delete photo from the album
+	public function delete_photo(){
+		$this->load->library('form_validation');
+		$this->load->helper('file');
+		$this->load->helper('path');
+		$postData = $this->input->post();
+
+		$this->form_validation->set_rules('photo_id', 'ID Foto', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		else{
+			$file_name = $this->db->select('file_name')->from('photos')->where('id', $postData['photo_id'])->get()->row()->file_name;
+			$delete = $this->db->delete('photos', array('id'=>$postData['photo_id']));
+			if($delete == TRUE){
+				$dir = set_realpath('../uploads');
+				$file_to_delete = $dir.$file_name;
+				unlink($file_to_delete);	
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+		}
+		echo json_encode($this->jsonResponse);
+	}
 	
 
 
