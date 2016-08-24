@@ -37,6 +37,59 @@ class Album extends BackendController {
 	}
 
 
+	public function save(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title','Nama Album', 'required');
+		$this->form_validation->set_rules('description','Deskripsi', 'required');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}else{
+			$this->Crud_m->setTableName('albums');
+			$data = [
+				'title' =>$postData['title'],
+				'description'=>$postData['description']
+			];
+			$insert = $this->Crud_m->insert($data);
+			if($insert === TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+
+		}
+		echo json_encode($this->jsonResponse);
+
+	}
+
+	public function update(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title','Nama Album', 'required');
+		$this->form_validation->set_rules('description','Deskripsi', 'required');
+		$this->form_validation->set_rules('id','Album ID', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}else{
+			$data = [
+				'title'=>$postData['title'],
+				'description'=>$postData['description']
+			];
+			$this->db->where('id', $postData['id']);
+			$update = $this->db->update('albums', $data);
+			if($update == TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $db_errors = $this->db->error();
+			}
+		}
+		echo json_encode($this->jsonResponse);
+
+	}
+
+
 	public function get_album(){
 		$this->Crud_m->table = 'albums';
 		$cpData = $this->Crud_m->getDataTableV10();

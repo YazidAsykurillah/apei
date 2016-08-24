@@ -44,7 +44,7 @@ class News_event extends BackendController {
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
-		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]|max_length[1000]');
+		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
 		$this->form_validation->set_rules('category', 'Kategori', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
@@ -101,7 +101,7 @@ class News_event extends BackendController {
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
-		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]|max_length[1000]');
+		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
 		$this->form_validation->set_rules('category', 'Kategori', 'required');
 		$this->form_validation->set_rules('id', 'ID News Event', 'required|integer');
 		if($this->form_validation->run() == FALSE){

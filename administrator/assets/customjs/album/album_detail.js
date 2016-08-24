@@ -1,17 +1,3 @@
-tinyMCE.init({
-    selector: 'textarea',
-});
-$('#start_date').daterangepicker({
-    "singleDatePicker": true,
-    "showDropdowns": true
-});
-$('#end_date').daterangepicker({
-    "singleDatePicker": true,
-    "showDropdowns": true
-});
-
-
-
 $('#btn-add').click(function(){
     $('#form-container').slideDown("slow");
     //$(this).addClass('collapse');

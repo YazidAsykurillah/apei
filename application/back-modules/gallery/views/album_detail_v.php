@@ -2,10 +2,13 @@
 	$display_photo = '';
 	if(count($photos_of_album)){
 		foreach($photos_of_album as $poa){
-			$display_photo .='<div class="col-xs-6 col-md-3">';
-			$display_photo .=	'<a href="#" class="thumbnail">';
+			$display_photo .='<div class="col-sm-6 col-md-3">';
+			$display_photo .=	'<div class="thumbnail">';
 			$display_photo .=		'<img src="http://localhost/apei/uploads/'.$poa['file_name'].'" alt="'.$poa['file_name'].'">';
-			$display_photo .=	'</a>';
+			$display_photo .=		'<div class="caption">';
+			$display_photo .=			'<p>asdasdasd</p>';
+			$display_photo .=		'</div>';
+			$display_photo .=	'</div>';
 			$display_photo .='</div>';
 		}
 	}
