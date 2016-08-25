@@ -85,26 +85,21 @@ $('#dtNewsEvent').on('click', 'a[title~=Delete]', function (e){
 $('#form-news_event').on('submit', function(event){
     event.preventDefault();
     tinyMCE.triggerSave();
-    event.preventDefault();
-    var data = new FormData($('#form-news_event')[0]);
-    $.ajax({
-        type    :"POST",
-        url     :baseURL+'information/news_event/save',
-        data    :data,
-        mimeType: "multipart/form-data",
-        contentType: false,
-        cache   : false,
-        processData: false,
-        success:function(response){
-            var obj = $.parseJSON(response);
-            if(obj.msg == 'success'){
-                window.location.reload();
-            }
-            else{
-                alertify.error(obj.msg);
-            }
-       }
+    //--- Insert
+    $.post('news_event/save', $("#form-news_event").serialize(), function (obj) {
+        if (obj.msg == 'success') {
+            alertify.success("Insert Data Success");
+            $('#form-news_event')[0].reset();
+            $('#form-container').slideUp('slow');
+            $('#dtNewsEvent .table').DataTable().ajax.reload();
+        } else {
+            alertifyError(obj.msg);
+        }
+    }, "json").fail(function () {
+        alertifyError();
     });
+    
+    return false;
 });
 
 $('#form-delete-news_event').on('submit', function(event){

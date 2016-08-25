@@ -18,6 +18,8 @@ class News_event extends BackendController {
 		
 	);
 
+	protected $uploaded_file_name=NULL;
+
 	public function __construct(){
 		parent::__construct();
 		set_page_title('Berita dan Kegiatan');
@@ -39,7 +41,7 @@ class News_event extends BackendController {
         $this->Crud_m->outputToJson( $cpData );
 	}
 
-
+	//Block save news event
 	public function save(){
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
@@ -50,14 +52,20 @@ class News_event extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
+			//if we have a feature image uploaded, call function to upload to server,
+			if(!empty($_FILES['fileToUpload']['name'])){
+				$do_upload = $this->do_upload();
+			}
+			//otherwise we should continue to insert
+			//news event table, it means without feature image
 			$this->Crud_m->table = 'news_event';
-			
 			$this->data = [
 				'title'=>$postData['title'],
 				'content'=>$postData['content'],
 				'category'=>$postData['category'],
 				'posted_by'=>$this->ion_auth->get_user_id(),
-				'posted_date'=>date('Y-m-d')
+				'posted_date'=>date('Y-m-d'),
+				'feature_image'=>$this->uploaded_file_name
 			];
 			$save = $this->Crud_m->insert($this->data);
 			if($save === TRUE){
@@ -67,12 +75,39 @@ class News_event extends BackendController {
 				$this->jsonResponse['msg'] = $save;
 			}
 
-
 		}
 
 		echo json_encode($this->jsonResponse);
 
 	}
+	//ENDBlock save news event
+
+	//Block to upload file
+	public function do_upload(){
+		$uploaded_time = time();
+		$config['upload_path']   = '../uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']      = 100;
+        $config['max_width']     = 1024;
+        $config['max_height']    = 768;
+        $config['file_name']    = 'feature_img'.$uploaded_time;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('fileToUpload'))
+        {
+                $error = $this->upload->display_errors();
+                $this->jsonResponse['msg'] = $error;
+                echo json_encode($this->jsonResponse);
+                exit();
+                //return FALSE;
+        }
+        else
+        {
+        	$data = array('upload_data' => $this->upload->data());
+        	$this->uploaded_file_name = $config['file_name'].$data['upload_data']['file_ext'];
+            return TRUE;
+        }
+	}
+	//ENDBlock to upload file
 
 
 	public function edit($id=NULL){

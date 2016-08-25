@@ -19,7 +19,7 @@
 
 			<div class="x_content">
 				<div id="form-container" class="collapse">
-					<form name="form-news_event" class="form-horizontal" id="form-news_event" method="post" action="news_event/save">
+					<form name="form-news_event" class="form-horizontal" id="form-news_event" method="post" action="news_event/save" enctype="multipart/form-data">
 
 	                    <div class="form-group">
 						    <label for="title" class="col-sm-2 control-label">Judul</label>
@@ -41,6 +41,12 @@
 						    		<option value="news">News</option>
 						    		<option value="event">Event</option>
 						    	</select>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="fileToUpload" class="col-sm-2 control-label">Feature Image</label>
+						    <div class="col-sm-6">
+						    	<input type="file" name="fileToUpload" id="fileToUpload">
 						    </div>
 						</div>
 						<div class="form-group">
