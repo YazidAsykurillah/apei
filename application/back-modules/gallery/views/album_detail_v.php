@@ -2,10 +2,18 @@
 	$display_photo = '';
 	if(count($photos_of_album)){
 		foreach($photos_of_album as $poa){
-			$display_photo .='<div class="col-xs-6 col-md-3">';
-			$display_photo .=	'<a href="#" class="thumbnail">';
-			$display_photo .=		'<img src="http://localhost/apei/uploads/'.$poa['file_name'].'" alt="'.$poa['file_name'].'">';
-			$display_photo .=	'</a>';
+			$display_photo .='<div class="col-sm-6 col-md-3">';
+			$display_photo .=	'<div class="thumbnail" style="height:265px;">';
+			$display_photo .=		'<img src="http://localhost/apei/uploads/'.$poa['file_name'].'" alt="'.$poa['file_name'].'" style="min-height:165.19px;">';
+			$display_photo .=		'<div class="caption">';
+			$display_photo .=			'<p>'.$poa['title'].'</p>';
+			$display_photo .=			'<p>';
+			$display_photo .=				'<a href="#" class="btn btn-danger btn-sm btn-delete-photo" data-id="'.$poa['id'].'">';
+			$display_photo .=					'<i class="fa fa-trash"></i>';
+			$display_photo .=				'</a>';
+			$display_photo .=			'</p>';
+			$display_photo .=		'</div>';
+			$display_photo .=	'</div>';
 			$display_photo .='</div>';
 		}
 	}
@@ -73,4 +81,26 @@
 	</div>
 </div>
 
-
+<!--Delete news event modal-->
+<div id="modal-delete-photo" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="form-delete-photo" name="form-delete-photo" class="form-horizontal" method="post" action="album/delete_photo">
+    	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        	<h4 class="modal-title">Konfirmasi</h4>
+      	</div>
+      
+      	<div class="modal-body">
+       		<p>Klik tombol Delete untuk menghapus foto pada album</p>
+			<input type="text" name="photo_id" id="photo_id" value="">
+      	</div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        	<button type="submit" class="btn btn-primary">Delete</button>
+      	</div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--END delete news and event modal-->

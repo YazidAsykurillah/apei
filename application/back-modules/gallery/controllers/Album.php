@@ -37,6 +37,59 @@ class Album extends BackendController {
 	}
 
 
+	public function save(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title','Nama Album', 'required');
+		$this->form_validation->set_rules('description','Deskripsi', 'required');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}else{
+			$this->Crud_m->setTableName('albums');
+			$data = [
+				'title' =>$postData['title'],
+				'description'=>$postData['description']
+			];
+			$insert = $this->Crud_m->insert($data);
+			if($insert === TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+
+		}
+		echo json_encode($this->jsonResponse);
+
+	}
+
+	public function update(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title','Nama Album', 'required');
+		$this->form_validation->set_rules('description','Deskripsi', 'required');
+		$this->form_validation->set_rules('id','Album ID', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}else{
+			$data = [
+				'title'=>$postData['title'],
+				'description'=>$postData['description']
+			];
+			$this->db->where('id', $postData['id']);
+			$update = $this->db->update('albums', $data);
+			if($update == TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $db_errors = $this->db->error();
+			}
+		}
+		echo json_encode($this->jsonResponse);
+
+	}
+
+
 	public function get_album(){
 		$this->Crud_m->table = 'albums';
 		$cpData = $this->Crud_m->getDataTableV10();
@@ -123,6 +176,33 @@ class Album extends BackendController {
         }
 	}
 
+
+	//Delete photo from the album
+	public function delete_photo(){
+		$this->load->library('form_validation');
+		$this->load->helper('file');
+		$this->load->helper('path');
+		$postData = $this->input->post();
+
+		$this->form_validation->set_rules('photo_id', 'ID Foto', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		else{
+			$file_name = $this->db->select('file_name')->from('photos')->where('id', $postData['photo_id'])->get()->row()->file_name;
+			$delete = $this->db->delete('photos', array('id'=>$postData['photo_id']));
+			if($delete == TRUE){
+				$dir = set_realpath('../uploads');
+				$file_to_delete = $dir.$file_name;
+				unlink($file_to_delete);	
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+		}
+		echo json_encode($this->jsonResponse);
+	}
 	
 
 

@@ -1,17 +1,3 @@
-tinyMCE.init({
-    selector: 'textarea',
-});
-$('#start_date').daterangepicker({
-    "singleDatePicker": true,
-    "showDropdowns": true
-});
-$('#end_date').daterangepicker({
-    "singleDatePicker": true,
-    "showDropdowns": true
-});
-
-
-
 $('#btn-add').click(function(){
     $('#form-container').slideDown("slow");
     //$(this).addClass('collapse');
@@ -45,5 +31,29 @@ $('#form-upload-photo').on('submit', function(event){
             }
        }
     });
+});
+
+
+$('.btn-delete-photo').on('click', function(event){
+    event.preventDefault();
+    var id = $(this).attr('data-id');
+    $('#photo_id').val(id);
+    $('#modal-delete-photo').modal('show');
+});
+
+$('#form-delete-photo').on('submit', function(event){
+    event.preventDefault();
+    $.post(baseURL+'gallery/album/delete_photo', $("#form-delete-photo").serialize(), function (obj) {
+        if (obj.msg == 'success') {
+            alertify.success("Sukses menghapus data");
+            $('#modal-delete-photo').modal('hide');
+            window.location.reload();
+        } else {
+            alertifyError(obj.msg);
+        }
+    }, "json").fail(function () {
+        alertifyError();
+    });
     
+    return false;
 });
