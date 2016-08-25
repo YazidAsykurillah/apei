@@ -16,8 +16,10 @@ class Informasi extends FrontendController {
 	}
 
      public function prosedur(){
+		$this->load->model('mInformasi');
+		$this->data['prosedur'] = $this->mInformasi->getProsedur();
           set_front_js($this->mainJs);
-		render_front_template('prosedur');
+		render_front_template('prosedur', $this->data);
      }
 
      public function acara(){
@@ -27,8 +29,9 @@ class Informasi extends FrontendController {
      }
 
      public function berita(){
-
+		$this->load->model('mInformasi');
+		$this->data['news_event'] = $this->mInformasi->getNewsEvent();
           set_front_js($this->mainJs);
-		render_front_template('berita');
+		render_front_template('berita', $this->data);
      }
 }
