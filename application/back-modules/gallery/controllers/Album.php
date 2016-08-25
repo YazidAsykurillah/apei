@@ -157,9 +157,9 @@ class Album extends BackendController {
 		$uploaded_time = time();
 		$config['upload_path']   = '../uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']      = 100;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
+        $config['max_size']      = 30000;
+        $config['max_width']     = 20000;
+        $config['max_height']    = 10000;
         $config['file_name']    = 'photo_'.$uploaded_time;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('fileToUpload'))
