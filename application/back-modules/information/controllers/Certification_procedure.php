@@ -15,7 +15,7 @@ class Certification_procedure extends BackendController {
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
 		'assets/js/tiny_mce/tiny_mce.js',
-		
+
 	);
 
 	public function __construct(){
@@ -58,6 +58,6 @@ class Certification_procedure extends BackendController {
 		echo json_encode($this->jsonResponse);
 	}
 
-	
+
 
 }
