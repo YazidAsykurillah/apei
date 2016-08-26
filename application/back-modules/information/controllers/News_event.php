@@ -19,6 +19,7 @@ class News_event extends BackendController {
 	);
 
 	protected $uploaded_file_name=NULL;
+	protected $old_feature_image_name = NULL;
 
 	public function __construct(){
 		parent::__construct();
@@ -87,9 +88,9 @@ class News_event extends BackendController {
 		$uploaded_time = time();
 		$config['upload_path']   = '../uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']      = 100;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
+        $config['max_size']      = 20480;
+        $config['max_width']     = 0;
+        $config['max_height']    = 0;
         $config['file_name']    = 'feature_img'.$uploaded_time;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('fileToUpload'))
@@ -143,12 +144,25 @@ class News_event extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
+
+			//get the feature image in case we'll delete that.
+			$this->old_feature_image_name = $this->db->select('feature_image')->from('news_event')
+			                               ->where('id', $postData['id'])->get()->row()->feature_image;
+			
 			$data = [
 				'title'=>$postData['title'],
 				'content'=>$postData['content'],
 				'category'=>$postData['category']
 			];
 			$this->db->where('id', $postData['id']);
+			//if we have a feature image uploaded, call function to upload to server,
+			if(!empty($_FILES['fileToUpload']['name'])){
+				$do_upload = $this->do_upload();
+				//it is now time to delete the old feature image
+				$this->delete_old_feature_image();
+				//add uploaded file name to data array.
+				$data['feature_image'] = $this->uploaded_file_name;
+			}
 			$update = $this->db->update('news_event', $data);
 			if($update == TRUE){
 				$this->jsonResponse['msg'] = 'success';
@@ -160,11 +174,49 @@ class News_event extends BackendController {
 		echo json_encode($this->jsonResponse);
 	}
 
+	protected function delete_old_feature_image(){
+		$this->load->helper('file');
+		$this->load->helper('path');
+		$dir = set_realpath('../uploads');
+		if($this->old_feature_image_name == NULL){
+			return TRUE;
+		}
+		else{
+			$file_to_delete = $dir.$this->old_feature_image_name;
+		
+			unlink($file_to_delete);	
+				
+			return TRUE;	
+		}
+		
+	}
+
+	public function remove_feature_image(){
+		$postData = $this->input->post();
+		$id = $postData['news_event_id'];
+		
+		//get the feature image in case we'll delete that.
+		$this->old_feature_image_name = $this->db->select('feature_image')->from('news_event')
+										->where('id', $id)->get()->row()->feature_image;
+		$this->db->where('id', $id);
+		$this->db->update('news_event', ['feature_image'=>NULL] );
+		//now delete the file from the server
+		$delete_file = $this->delete_old_feature_image();
+		$this->jsonResponse['msg'] = 'success';
+		echo json_encode($this->jsonResponse);
+
+	}
+
 	public function delete(){
 		$postData = $this->input->post();
 		$id = $postData['news_event_id'];
+		//get the feature image in case we'll delete that.
+		$this->old_feature_image_name = $this->db->select('feature_image')->from('news_event')
+										->where('id', $id)->get()->row()->feature_image;
+
 		$delete = $this->db->delete('news_event', array('id' => $id));
 		if($delete == TRUE){
+			$this->delete_old_feature_image();
 			$this->jsonResponse['msg'] = 'success';	
 		}
 		else{

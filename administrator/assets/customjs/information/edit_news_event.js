@@ -6,19 +6,46 @@ tinyMCE.init({
 $('#form-edit-news_event').on('submit', function(event){
     event.preventDefault();
     tinyMCE.triggerSave();
-    //--- Insert
-    $.post(baseURL+'information/news_event/update', $("#form-edit-news_event").serialize(), function (obj) {
-        if (obj.msg == 'success') {
-            //alertify.success("Update Data Success");
-            window.location.href = baseURL+'information/news_event';
-        } else {
-            alertifyError(obj.msg);
-        }
-    }, "json").fail(function () {
-        alertifyError();
+    event.preventDefault();
+    var data = new FormData($('#form-edit-news_event')[0]);
+    $.ajax({
+        type    :"POST",
+        url     :baseURL+'information/news_event/update',
+        data    :data,
+        mimeType: "multipart/form-data",
+        contentType: false,
+        cache   : false,
+        processData: false,
+        success:function(response){
+            var obj = $.parseJSON(response);
+            if(obj.msg == 'success'){
+                window.location.reload();
+            }
+            else{
+                alertify.error(obj.msg);
+            }
+       }
     });
-    
-    return false;
+});
+
+
+$('#btn-remove-feature-image').on('click', function(event){
+    event.preventDefault();
+    var news_event_id = $(this).attr('data-id');
+    $.ajax({
+        type    :"POST",
+        url     :baseURL+'information/news_event/remove_feature_image',
+        data    :'news_event_id='+news_event_id,
+        success:function(response){
+            var obj = $.parseJSON(response);
+            if(obj.msg == 'success'){
+                window.location.reload();
+            }
+            else{
+                alertify.error(obj.msg);
+            }
+       }
+    });
 });
 
 

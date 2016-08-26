@@ -16,9 +16,16 @@
 	$feature_image_display = '';
 	$feature_image = $news_event['feature_image'];
 	if(!is_null($feature_image)){
-		$feature_image_display .= '<a href="#" class="thumbnail">';
-		$feature_image_display .= 	'<img src="http://localhost/apei/uploads/'.$feature_image.'" alt="...">';
-		$feature_image_display .= '</a>';
+		$feature_image_display .= '<div href="#" class="thumbnail" style="">';
+		$feature_image_display .= 	'<img src="http://localhost/apei/uploads/'.$feature_image.'" class="img-responsive" alt="...">';
+		$feature_image_display .=	'<div class="caption">';
+		$feature_image_display .=		'<p>';
+		$feature_image_display .=			'<a id="btn-remove-feature-image" class="btn btn-xs btn-danger" href="#" data-id="'.$news_event['id'].'" title="">';
+		$feature_image_display .=				'<i class="fa fa-trash"></i>';
+		$feature_image_display .=			'</a>';
+		$feature_image_display .=		'</p';
+		$feature_image_display .=	'</div>';
+		$feature_image_display .= '</div>';
 	}
 ?>
 <div class="page-title">
@@ -36,58 +43,53 @@
       		</div>
 
 			<div class="x_content">
-				
-				<form id="form-edit-news_event" name="form-edit-news_event" class="form-horizontal" method="post" action="<?php echo base_url();?>information/news_event/update">
 				<div class="row">
-					<div class="col-md-8">
-						<div class="form-group">
-						    <label for="title" class="col-sm-2 control-label">Judul</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?php echo $news_event['title'];?>">
-						    </div>
+					<form id="form-edit-news_event" name="form-edit-news_event" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>information/news_event/update" enctype="multipart/form-data">
+						<div class="col-md-8">
+							<div class="form-group">
+							    <label for="title" class="col-sm-2 control-label">Judul</label>
+							    <div class="col-sm-6">
+							    	<input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?php echo $news_event['title'];?>">
+							    </div>
+							</div>
+							<div class="form-group">
+							    <label for="content" class="col-sm-2 control-label">Isi</label>
+							    <div class="col-sm-8">
+							    	<textarea id="content" name="content" class="form-control" placeholder="Type the content" rows="15" style="width:100%;">
+							    		<?php echo $news_event['content'];?>
+							    	</textarea>
+							    </div>
+							</div>
+							<div class="form-group">
+							    <label for="category" class="col-sm-2 control-label">Kategori</label>
+							    <div class="col-sm-6">
+							    	<select id="category" name="category" class="form-control">
+							    		<?php echo $category_options; ?>
+							    	</select>
+							    </div>
+							</div>
+							<div class="form-group">
+		                    	<label for="" class="col-sm-2 control-label"></label>
+		                      	<div class="col-md-6">
+		                      		<input id="id" name="id" type="hidden" value="<?php echo $news_event['id'];?>" />
+		                        	<button type="submit" class="btn btn-success">Update</button>
+		                        	<a id="btnReset" href="<?php echo base_url();?>information/news_event" class="btn btn-primary">Cancel</a>
+		                      	</div>
+		                    </div>
 						</div>
-						<div class="form-group">
-						    <label for="content" class="col-sm-2 control-label">Isi</label>
-						    <div class="col-sm-6">
-						    	<textarea id="content" name="content" class="form-control" placeholder="Type the content" style="width:100%;">
-						    		<?php echo $news_event['content'];?>
-						    	</textarea>
-						    </div>
+						<div class="col-md-4">
+		                    <div class="form-group">
+							    <label for="fileToUpload" class="col-sm-4 control-label">Feature image</label>
+							    <div class="col-sm-8">
+							    	<?php echo $feature_image_display; ?>
+							    </div>
+							    <input type="file" name="fileToUpload" id="fileToUpload">
+							</div>
 						</div>
-						<div class="form-group">
-						    <label for="category" class="col-sm-2 control-label">Kategori</label>
-						    <div class="col-sm-6">
-						    	<select id="category" name="category" class="form-control">
-						    		<?php echo $category_options; ?>
-						    		
-						    	</select>
-						    </div>
-						</div>
-						<div class="form-group">
-	                    	<label for="" class="col-sm-2 control-label"></label>
-	                      	<div class="col-md-6">
-	                      		<input id="id" name="id" type="hidden" value="<?php echo $news_event['id'];?>" />
-	                        	<button type="submit" class="btn btn-success">Update</button>
-	                        	<a id="btnReset" href="<?php echo base_url();?>information/news_event" class="btn btn-primary">Cancel</a>
-	                      	</div>
-	                    </div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-						    <label for="category" class="col-sm-2 control-label">Feature image</label>
-						    <div class="col-sm-6">
-						    	<?php echo $feature_image_display;?>
-						    	<input type="file" name="fileToUpload" id="fileToUpload" class="">
-						    </div>
-						</div>
-					</div>
+					</form>
 				</div>
-				</form>
-
 				<div class="clearfix"></div>
 			  	<hr>
-				
-        		
 			</div>
 
 			<div class="clearfix"></div>
