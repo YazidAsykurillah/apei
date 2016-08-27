@@ -76,12 +76,15 @@ $('#btnReset').click(function(){
 
 $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
-    tinyMCE.triggerSave();
+    //tinyMCE.triggerSave();
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
-    tinyMCE.get('description').setContent(d.description);
+    if(d.description != null){
+     tinyMCE.get('description').setContent(d.description);   
+    }
+    //tinyMCE.get('description').setContent(d.description);
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);

@@ -51,7 +51,7 @@
 				<li>
 					<a><i class="fa fa-bookmark"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
-						<li><?php echo anchor('information/', 'Informasi'); ?></li>
+						<!-- <li><?php echo anchor('information/', 'Informasi'); ?></li> -->
 						<li><?php echo anchor('information/certification_procedure', 'Prosedur Sertifikasi'); ?></li>
 						<li><?php echo anchor('information/news_event', 'Berita dan Kegiatan'); ?></li>
 					</ul>
@@ -64,10 +64,10 @@
 					</ul>
 				</li>
 				<li>
-					<a><i class="fa fa-cog"></i> Galeri <span class="fa fa-chevron-down"></span></a>
+					<a><i class="fa fa-desktop"></i> Galeri <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<!-- <li><?php echo anchor('gallery/', 'Galeri'); ?></li> -->
-						<li><?php echo anchor('gallery/album', 'Album'); ?></li>
+						<li><?php echo anchor('gallery/album', 'Album Foto'); ?></li>
 					</ul>
 				</li>
 				<!-- <li><a><i class="fa fa-user"></i> Profile <span class="fa fa-chevron-down"></span></a>
