@@ -88,25 +88,12 @@ $('#btnReset').click(function(){
 
 $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
-<<<<<<< HEAD
-    // tinyMCE.triggerSave();
     $('#description').summernote('reset');
-=======
-    //tinyMCE.triggerSave();
->>>>>>> c7767bd029029328e71040ab2b89dd72a7639d3f
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
-<<<<<<< HEAD
-    // tinyMCE.get('description').setContent(d.description);
     $('#description').summernote('code', d.description);
-=======
-    if(d.description != null){
-     tinyMCE.get('description').setContent(d.description);   
-    }
-    //tinyMCE.get('description').setContent(d.description);
->>>>>>> c7767bd029029328e71040ab2b89dd72a7639d3f
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);

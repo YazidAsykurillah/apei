@@ -36,9 +36,9 @@
           ?>
                     <div class="blog-item" style="border:1px solid #ccc">
                          <?php
-                              if(isset($ne->thumb)){
+                              if(isset($ne->feature_image)){
                          ?>
-                         <img class="img-responsive img-blog" src="<?php echo $ne->thumb;?>" width="100%" alt="">
+                         <img class="img-responsive img-blog" src="<?php echo base_url('uploads/'.$ne->feature_image);?>" width="100%" alt="">
                          <?php
                               }else{
                          ?>
@@ -47,7 +47,7 @@
                               }
                          ?>
                          <div class="blog-content">
-                              <a href="#">
+                              <a href="<?php echo base_url('berita-kegiatan/'.$ne->neId);?>">
                                    <h3><?php echo $ne->title; ?></h3>
                               </a>
                               <div class="entry-meta">
@@ -59,7 +59,7 @@
                                   <span><i class="icon-calendar"></i> <?php echo $ne->posted_date; ?></span>
                               </div>
                               <?php echo $ne->content; ?>
-                              <a class="btn btn-default" href="#">Read More <i class="icon-angle-right"></i></a>
+                              <a class="btn btn-default" href="<?php echo base_url('berita-kegiatan/'.$ne->neId);?>">Read More <i class="icon-angle-right"></i></a>
                          </div>
                     </div>
           <?php

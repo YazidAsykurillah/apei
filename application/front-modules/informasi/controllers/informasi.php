@@ -23,9 +23,10 @@ class Informasi extends FrontendController {
      }
 
      public function acara(){
-
+		$this->load->model('mInformasi');
+		$this->data['acara'] = $this->mInformasi->getAcara();
           set_front_js($this->mainJs);
-		render_front_template('acara');
+		render_front_template('acara',$this->data);
      }
 
      public function berita(){
@@ -34,4 +35,18 @@ class Informasi extends FrontendController {
           set_front_js($this->mainJs);
 		render_front_template('berita', $this->data);
      }
+
+	public function single_berita($id){
+		$this->load->model('mInformasi');
+		$this->data['single'] = $this->mInformasi->getSingleNewsEvent($id);
+		set_front_js($this->mainJs);
+		render_front_template('single-berita', $this->data);
+	}
+
+	public function single_acara($id){
+		$this->load->model('mInformasi');
+		$this->data['single'] = $this->mInformasi->getSingleAcara($id);
+		set_front_js($this->mainJs);
+		render_front_template('single-acara', $this->data);
+	}
 }

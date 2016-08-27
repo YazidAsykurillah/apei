@@ -23,4 +23,19 @@ class MHome extends MY_Model {
          $query = $this->db->get();
          return $query->result();
     }
+
+    public function getAcara($limit=4,$offset=null){
+         $this->db->select('*');
+         $this->db->from('certification_v');
+         if($limit){
+              if($offset){
+                   $this->db->limit($limit,$offset);
+              }else{
+                    $this->db->limit($limit);
+              }
+         }
+         $this->db->order_by('start_date','DESC');
+         $query = $this->db->get();
+         return $query->result();
+    }
 }
