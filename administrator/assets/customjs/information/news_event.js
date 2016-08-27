@@ -1,7 +1,16 @@
-tinyMCE.init({
-    selector: 'textarea',
-});
+// tinyMCE.init({
+//     selector: 'textarea',
+// });
+$('#content').summernote({
+     toolbar: [
+          ['paragraph', ['style','ol','ul','paragraph','height']],
+          ['fontStyle', ['fontname', 'fontsize', 'color','bold','italic','underline','strikethrough','superscript','subscript','clear']],
+          ['Insert', ['picture','link','video','table','hr']],
+          ['misc',['fullscreen','codeview','undo','redo']]
+     ],
+     height: 300,
 
+});
 var table = $('#datatable').DataTable({
 	serverSide: true,
     processing: true,
@@ -84,8 +93,8 @@ $('#dtNewsEvent').on('click', 'a[title~=Delete]', function (e){
 
 $('#form-news_event').on('submit', function(event){
     event.preventDefault();
-    tinyMCE.triggerSave();
-    event.preventDefault();
+    // tinyMCE.triggerSave();
+    // event.preventDefault();
     var data = new FormData($('#form-news_event')[0]);
     $.ajax({
         type    :"POST",
@@ -120,7 +129,6 @@ $('#form-delete-news_event').on('submit', function(event){
     }, "json").fail(function () {
         alertifyError();
     });
-    
+
     return false;
 });
-

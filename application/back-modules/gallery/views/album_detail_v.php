@@ -73,7 +73,7 @@
 					 	<?php echo $display_photo; ?>
 					</div>
 				</div>
-				
+
 			</div>
 
 			<div class="clearfix"></div>
@@ -90,7 +90,7 @@
         	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         	<h4 class="modal-title">Konfirmasi</h4>
       	</div>
-      
+
       	<div class="modal-body">
        		<p>Klik tombol Delete untuk menghapus foto pada album</p>
 			<input type="text" name="photo_id" id="photo_id" value="">

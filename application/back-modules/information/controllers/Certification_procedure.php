@@ -10,10 +10,12 @@ class Certification_procedure extends BackendController {
 		'assets/js/datatables/fixedHeader.bootstrap.min.css',
 		'assets/js/datatables/responsive.bootstrap.min.css',
 		'assets/js/datatables/scroller.bootstrap.min.css',
+		'assets/js/summernote/summernote.css',
 		'assets/css/alertify/alertify.css',
 	);
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
+		'assets/js/summernote/summernote.min.js',
 		'assets/js/tiny_mce/tiny_mce.js',
 
 	);

@@ -1,5 +1,14 @@
-tinyMCE.init({
-    selector: 'textarea',
+// tinyMCE.init({
+//     selector: 'textarea',
+// });
+$('#description').summernote({
+     toolbar: [
+          ['paragraph', ['style','ol','ul','paragraph','height']],
+          ['fontStyle', ['fontname', 'fontsize', 'color','bold','italic','underline','strikethrough','superscript','subscript','clear']],
+          ['Insert', ['link','table','hr']],
+          ['misc',['fullscreen','codeview','undo','redo']]
+     ],
+     height: 300,
 });
 $('#start_date').daterangepicker({
     "singleDatePicker": true,
@@ -62,12 +71,15 @@ var table = $('#datatable').DataTable({
 });
 
 $('#btn-add').click(function(){
+     $('#description').summernote('reset');
+     $('#form-certification')[0].reset();
     $('#form-container').slideDown("slow");
     //$(this).addClass('collapse');
 });
 
 $('#btnReset').click(function(){
     $('#form-container').slideUp("slow");
+    $('#description').summernote('reset');
     $('#form-certification')[0].reset();
     $('#btn-add').removeClass('collapse');
     //remove value of input id
@@ -76,25 +88,27 @@ $('#btnReset').click(function(){
 
 $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
-    tinyMCE.triggerSave();
+    // tinyMCE.triggerSave();
+    $('#description').summernote('reset');
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
-    tinyMCE.get('description').setContent(d.description);
+    // tinyMCE.get('description').setContent(d.description);
+    $('#description').summernote('code', d.description);
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
     $('#end_date').val(d.end_date);
     $('#form-container').slideDown('slow');
-    
+
 });
 
 
 
 $('#form-certification').on('submit', function(event){
     event.preventDefault();
-    tinyMCE.triggerSave();
+    // tinyMCE.triggerSave();
     if($('#certification-id').val() != ''){
         //--- Edit Mode
         var id = $('#certification-id').val();
@@ -129,8 +143,8 @@ $('#form-certification').on('submit', function(event){
             alertifyError();
         });
     }
-    
-    
+
+
     return false;
 });
 
@@ -158,7 +172,7 @@ $('#form-delete-certification').on('submit', function(event){
     }, "json").fail(function () {
         alertifyError();
     });
-    
+
     return false;
 });
 

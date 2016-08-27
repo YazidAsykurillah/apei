@@ -12,7 +12,7 @@
 ?>
 <?php
 	//Block to display feature image
-	
+
 	$feature_image_display = '';
 	$feature_image = $news_event['feature_image'];
 	if(!is_null($feature_image)){
@@ -96,3 +96,4 @@
 		</div>
 	</div>
 </div>
+<div class="clearfix"></div>
