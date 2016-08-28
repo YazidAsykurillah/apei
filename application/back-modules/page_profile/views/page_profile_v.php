@@ -55,6 +55,12 @@
 						    </div>
 						</div>
 						<div class="form-group">
+						    <label for="page_order" class="col-sm-2 control-label">Page Order</label>
+						    <div class="col-sm-9">
+						    	<input type="text" class="form-control" id="page_order" name="page_order" placeholder="Page Order">
+						    </div>
+						</div>
+						<div class="form-group">
 	                    	<label for="" class="col-sm-2 control-label"></label>
 	                      	<div class="col-md-6">
 	                        	<button type="submit" class="btn btn-success">Submit</button>
@@ -71,6 +77,7 @@
 					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                        <th width="5%;">#</th>
+	                        <th width="5%;">Page Order</th>
 	                        <th>Title</th>
 	                        <th>Slug</th>
 	                        <th>Type</th>

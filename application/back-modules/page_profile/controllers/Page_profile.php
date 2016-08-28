@@ -6,6 +6,8 @@ class Page_profile extends BackendController {
 	protected $data = array();
 	protected $uploaded_file_name=NULL;
 	protected $file_to_be_deleted = NULL;
+	protected $wanted_page_order = NULL;
+	protected $highest_page_order = '';
 	protected $cust_css = array(
 		'assets/js/datatables/jquery.dataTables.min.css',
 		'assets/js/datatables/buttons.bootstrap.min.css',
@@ -88,6 +90,24 @@ class Page_profile extends BackendController {
 				'type'=>'files',
 				'file_name'=>$this->uploaded_file_name,
 			];
+			//get the highest page order
+			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+			//block if there is user defined the page order.
+			if($postData['page_order'] !=''){
+				$this->wanted_page_order = $postData['page_order'];
+				//check if this is bigger than highest page order
+				if($this->wanted_page_order > $this->highest_page_order){
+					$data['page_order'] = $this->wanted_page_order;
+				}else{
+					$data['page_order'] = $this->wanted_page_order;
+					$this->repopulate_page_order();
+				}
+
+			}
+			else{
+				//if theres no wanted page order, then automatically place it under the highest page order.
+				$data['page_order'] = $this->highest_page_order+1;	
+			}
 			$this->Crud_m->table ='page_profiles';
 			$saveData = $this->Crud_m->insert($data);
 			if($saveData === TRUE){
@@ -112,6 +132,7 @@ class Page_profile extends BackendController {
 		$this->form_validation->set_rules('slug', 'Slug', 'required');
 		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
 		$this->form_validation->set_rules('type', 'Type Halaman', 'required');
+		$this->form_validation->set_rules('page_order', 'Page Order', 'integer');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
 		}
@@ -123,6 +144,24 @@ class Page_profile extends BackendController {
 				'content'=>$postData['content'],
 				'type'=>'texts',
 			];
+			//get the highest page order
+			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+			//block if there is user defined the page order.
+			if($postData['page_order'] !=''){
+				$this->wanted_page_order = $postData['page_order'];
+				//check if this is bigger than highest page order
+				if($this->wanted_page_order > $this->highest_page_order){
+					$data['page_order'] = $this->wanted_page_order;
+				}else{
+					$data['page_order'] = $this->wanted_page_order;
+					$this->repopulate_page_order();
+				}
+
+			}
+			else{
+				//if theres no wanted page order, then automatically place it under the highest page order.
+				$data['page_order'] = $this->highest_page_order+1;	
+			}
 			$saveData = $this->Crud_m->insert($data);
 			if($saveData === TRUE){
 				$this->jsonResponse['msg'] = 'success';
@@ -134,6 +173,16 @@ class Page_profile extends BackendController {
 		echo json_encode($this->jsonResponse);
 	}
 
+	protected function repopulate_page_order(){
+		$ids_to_repopulate = $this->db->select('id, page_order')->from('page_profiles')
+							->where('page_order >',$this->wanted_page_order)->or_where('page_order =', $this->wanted_page_order)
+							->get()->result();
+		foreach($ids_to_repopulate as $ids){
+			$new_page_order = $ids->page_order+1;
+			$plus_1 = $this->db->set('page_order',$new_page_order)->where('id',$ids->id)->update('page_profiles');
+		}
+		
+	}
 	protected function check_page_type ($id){
 		$page_type = $this->db->select('type')->from('page_profiles')->where('id', $id)->get()->row()->type;
 		if($page_type == 'texts'){
@@ -236,7 +285,24 @@ class Page_profile extends BackendController {
 				//add uploaded file name to data array.
 				$data['file_name'] = $this->uploaded_file_name;
 			}
-			
+			//get the highest page order
+			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+			//block if there is user defined the page order.
+			if($postData['page_order'] !=''){
+				$this->wanted_page_order = $postData['page_order'];
+				//check if this is bigger than highest page order
+				if($this->wanted_page_order > $this->highest_page_order){
+					$data['page_order'] = $this->wanted_page_order;
+				}else{
+					$data['page_order'] = $this->wanted_page_order;
+					$this->repopulate_page_order();
+				}
+
+			}
+			else{
+				//if theres no wanted page order, then automatically place it under the highest page order.
+				$data['page_order'] = $this->highest_page_order+1;	
+			}
 			$this->db->where('id', $postData['id']);
 			$update = $this->db->update('page_profiles',$data);
 			if($update == TRUE){
@@ -267,6 +333,24 @@ class Page_profile extends BackendController {
 				'slug'=>$postData['slug'],
 				'content'=>$postData['content']
 			];
+			//get the highest page order
+			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+			//block if there is user defined the page order.
+			if($postData['page_order'] !=''){
+				$this->wanted_page_order = $postData['page_order'];
+				//check if this is bigger than highest page order
+				if($this->wanted_page_order > $this->highest_page_order){
+					$data['page_order'] = $this->wanted_page_order;
+				}else{
+					$data['page_order'] = $this->wanted_page_order;
+					$this->repopulate_page_order();
+				}
+
+			}
+			else{
+				//if theres no wanted page order, then automatically place it under the highest page order.
+				$data['page_order'] = $this->highest_page_order+1;	
+			}
 			$this->db->where('id', $postData['id']);
 			$update = $this->db->update('page_profiles',$data);
 			if($update == TRUE){
@@ -280,8 +364,16 @@ class Page_profile extends BackendController {
 	}
 
 	public function delete_page_profile_files_type(){
-
-		$this->jsonResponse['msg'] = 'Deleting page profile files type';
+		$postData = $this->input->post();
+		$id = $postData['page_profile_id'];
+		$delete = $this->db->delete('page_profiles', ['id'=>$id]);
+		if($delete == TRUE){
+			$this->jsonResponse['msg'] = 'success';
+		}
+		else{
+			$this->jsonResponse['msg'] = $this->db->error();
+		}
+		
 		echo json_encode($this->jsonResponse);
 	}
 

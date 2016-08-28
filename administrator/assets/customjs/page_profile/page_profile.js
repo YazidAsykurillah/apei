@@ -22,6 +22,7 @@ var table = $('#datatable').DataTable({
     },
     columns: [
         {data: "#", orderable: false, searchable: false},
+        {data: 'page_order'},
         {data: 'title'},
         {data: 'slug'},
         {data: 'type'},
