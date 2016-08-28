@@ -78,6 +78,12 @@
 						<li><?php echo anchor('profile/user_experience', 'Riwayat Pekerjaan'); ?></li>
 					</ul>
 				</li> -->
+				<li>
+					<a><i class="fa fa-cogs"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
+					<ul class="nav child_menu" style="display: none">
+						<li><?php echo anchor('slider', 'Slider'); ?></li>
+					</ul>
+				</li>
 
 			</ul>
 		</div>
