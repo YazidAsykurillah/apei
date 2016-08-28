@@ -16,7 +16,7 @@ class MInformasi extends MY_Model {
          return $query->row();
     }
 
-    public function getNewsEvent($limit=null,$offset=null){
+    public function getNewsEvent($limit,$start){
          $this->db->select('
                news_event.id AS neId,
                news_event.category,
@@ -28,17 +28,24 @@ class MInformasi extends MY_Model {
                users.last_name
           ');
          $this->db->from('news_event');
-         if($limit){
-              if($offset){
-                   $this->db->limit($limit,$offset);
-              }else{
-                    $this->db->limit($limit);
-              }
-         }
          $this->db->join('users','users.id = news_event.posted_by');
          $this->db->order_by('posted_date','DESC');
+     //     if($limit){
+     //          if($offset){
+                   $this->db->limit($limit,$start);
+     //          }else{
+     //                $this->db->limit($limit);
+     //          }
+     //     }
          $query = $this->db->get();
          return $query->result();
+    }
+
+    public function newsEventCount(){
+         $this->db->select('*');
+         $this->db->from('news_event');
+         $query = $this->db->get();
+         return $query->num_rows();
     }
 
     public function getAcara($limit=null,$offset=null){

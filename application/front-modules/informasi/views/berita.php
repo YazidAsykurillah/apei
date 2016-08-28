@@ -14,7 +14,7 @@
             </div>
         </div>
     </section>
-    <section id="services" style="background-color:#ffffff">
+    <section id="blog"">
         <div class="container">
            <div class="row">
                 <div class="col-md-6">
@@ -38,11 +38,8 @@
                          <?php
                               if(isset($ne->feature_image)){
                          ?>
-                         <img class="img-responsive img-blog" src="<?php echo base_url('uploads/'.$ne->feature_image);?>" width="100%" alt="">
-                         <?php
-                              }else{
-                         ?>
-                         <img class="img-responsive img-blog" src="<?php echo base_url(get_front_images_path('blog/blog1.jpg'));?>" width="100%" alt="">
+                         <div style="height:230px;background: url(<?php echo base_url('uploads/'.$ne->feature_image);?>) 50% / cover;"></div>
+                         <!-- <img class="img-responsive img-blog" src="<?php echo base_url('uploads/'.$ne->feature_image);?>" width="100%" alt=""> -->
                          <?php
                               }
                          ?>
@@ -58,7 +55,26 @@
                                   <span><i class="icon-folder-close"></i> <a href="#"><?php echo ucfirst($ne->category);?></a></span>
                                   <span><i class="icon-calendar"></i> <?php echo $ne->posted_date; ?></span>
                               </div>
-                              <?php echo $ne->content; ?>
+                              <?php
+                                   $ctn = strip_tags($ne->content);
+                                   $ctn = explode(" ",trim($ctn));
+                                   $i = 0;
+                                   if(count($ctn) <= 40){
+                                        $content = implode(" ",$ctn);
+                                   }else{
+                                        $cont = array();
+                                        foreach($ctn as $ct){
+                                             if($i <= 40){
+                                                  $cont[$i] = $ct;
+                                             }else{
+                                                  break;
+                                             }
+                                             $i++;
+                                        }
+                                        $content = implode(" ",$cont);
+                                   }
+                                   echo "<p style='min-height:110px'>".$content."...</p>";
+                              ?>
                               <a class="btn btn-default" href="<?php echo base_url('berita-kegiatan/'.$ne->neId);?>">Read More <i class="icon-angle-right"></i></a>
                          </div>
                     </div>
@@ -69,5 +85,6 @@
                      </div>
                </div>
            </div>
+           <?php echo $page;?>
       </div>
  </section>

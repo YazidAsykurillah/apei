@@ -9,7 +9,16 @@ class MHome extends MY_Model {
     }
 
     public function getNewsEvent($limit=4,$offset=null){
-         $this->db->select('*');
+         $this->db->select('
+               news_event.id AS neId,
+               news_event.category,
+               news_event.title,
+               news_event.content,
+               news_event.posted_date,
+               news_event.feature_image,
+               users.first_name,
+               users.last_name
+          ');
          $this->db->from('news_event');
          if($limit){
               if($offset){

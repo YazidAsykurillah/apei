@@ -26,11 +26,8 @@
                               <?php
                                    if(isset($single->feature_image)){
                               ?>
-                              <img class="img-responsive img-blog" src="<?php echo base_url('uploads/'.$single->feature_image);?>" width="100%" alt="">
-                              <?php
-                                   }else{
-                              ?>
-                              <img class="img-responsive img-blog" src="<?php echo base_url(get_front_images_path('blog/blog1.jpg'));?>" width="100%" alt="">
+                              <div style="height:350px;background: url(<?php echo base_url('uploads/'.$single->feature_image);?>) 50% / cover;"></div>
+
                               <?php
                                    }
                               ?>
