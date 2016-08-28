@@ -32,14 +32,12 @@
 					<?php echo anchor('home', '<i class="fa fa-home"></i> Dashboard'); ?>
 				</li>
 				<li><a><i class="fa fa-book"></i> Master Data <span class="fa fa-chevron-down"></span></a>
-					<!-- <ul class="nav child_menu" style="display: none">
-						<li><?php echo anchor('dokter', 'Dokter'); ?></li>
-						<li><?php echo anchor('pasien', 'Pasien'); ?></li>
-						<li><?php echo anchor('jenis', 'Jenis Pemeriksaan'); ?></li>
-					</ul> -->
+					<ul class="nav child_menu" style="display: none">
+						<li><?php echo anchor('page_profile', 'Halaman Profile'); ?></li>
+					</ul>
 				</li>
 				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
-				<li>
+				<!-- <li>
 					<a><i class="fa fa-home"></i> Profil Perusahaan <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('company_profile/background', 'Latar Belakang'); ?></li>
@@ -47,7 +45,7 @@
 						<li><?php echo anchor('company_profile/org_structure', 'Struktur Organisasi'); ?></li>
 						<li><?php echo anchor('company_profile/functions', 'Fungsi dan Peranan'); ?></li>
 					</ul>
-				</li>
+				</li> -->
 				<li>
 					<a><i class="fa fa-bookmark"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
