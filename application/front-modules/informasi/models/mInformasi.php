@@ -30,13 +30,7 @@ class MInformasi extends MY_Model {
          $this->db->from('news_event');
          $this->db->join('users','users.id = news_event.posted_by');
          $this->db->order_by('posted_date','DESC');
-     //     if($limit){
-     //          if($offset){
-                   $this->db->limit($limit,$start);
-     //          }else{
-     //                $this->db->limit($limit);
-     //          }
-     //     }
+         $this->db->limit($limit,$start);
          $query = $this->db->get();
          return $query->result();
     }
@@ -48,19 +42,19 @@ class MInformasi extends MY_Model {
          return $query->num_rows();
     }
 
-    public function getAcara($limit=null,$offset=null){
+    public function getAcara($limit,$offset){
          $this->db->select('*');
          $this->db->from('certification_v');
-         if($limit){
-              if($offset){
-                   $this->db->limit($limit,$offset);
-              }else{
-                    $this->db->limit($limit);
-              }
-         }
          $this->db->order_by('start_date','DESC');
+         $this->db->limit($limit,$offset);
          $query = $this->db->get();
          return $query->result();
+    }
+    public function acaraCount(){
+         $this->db->select('*');
+         $this->db->from('certification_v');
+         $query = $this->db->get();
+         return $query->num_rows();
     }
 
     public function getSingleNewsEvent($id){
