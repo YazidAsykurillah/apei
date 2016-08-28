@@ -23,8 +23,34 @@ class Informasi extends FrontendController {
      }
 
      public function acara(){
+		$this->load->library('pagination');
 		$this->load->model('mInformasi');
-		$this->data['acara'] = $this->mInformasi->getAcara();
+
+		$config['base_url'] = base_url().'informasi/acara';
+		$config['total_rows'] = $this->mInformasi->acaraCount();
+		$config['per_page'] = '10';
+		$config['full_tag_open'] = '<ul class="pagination pagination-lg">';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config["uri_segment"] = 3;
+
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+		$this->data['acara'] = $this->mInformasi->getAcara($config['per_page'],$page);
+		$this->data['page'] = $this->pagination->create_links();
+
           set_front_js($this->mainJs);
 		render_front_template('acara',$this->data);
      }

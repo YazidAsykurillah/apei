@@ -64,13 +64,13 @@
 						<div class="col-md-8">
 							<div class="form-group">
 							    <label for="title" class="col-sm-2 control-label">Judul</label>
-							    <div class="col-sm-6">
+							    <div class="col-sm-10">
 							    		<input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?php echo $news_event['title'];?>">
 							    </div>
 							</div>
 							<div class="form-group">
 							    <label for="content" class="col-sm-2 control-label">Isi</label>
-							    <div class="col-sm-8">
+							    <div class="col-sm-10">
 							    	<textarea id="content" name="content" class="form-control" placeholder="Type the content" rows="15" style="width:100%;">
 							    		<?php echo $news_event['content'];?>
 							    	</textarea>
@@ -78,7 +78,7 @@
 							</div>
 							<div class="form-group">
 							    <label for="category" class="col-sm-2 control-label">Kategori</label>
-							    <div class="col-sm-6">
+							    <div class="col-sm-10">
 							    	<select id="category" name="category" class="form-control">
 							    		<?php echo $category_options; ?>
 							    	</select>

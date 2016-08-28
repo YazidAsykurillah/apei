@@ -14,7 +14,7 @@
        </div>
    </div>
 </section>
-<section id="services" style="background-color:#ffffff">
+<section id="blog">
     <div class="container">
        <div class="row">
             <div class="col-md-6">
@@ -58,5 +58,6 @@
                  </div>
            </div>
        </div>
+       <?php echo $page;?>
  </div>
 </section>
