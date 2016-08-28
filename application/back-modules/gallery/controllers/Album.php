@@ -10,14 +10,16 @@ class Album extends BackendController {
 		'assets/js/datatables/fixedHeader.bootstrap.min.css',
 		'assets/js/datatables/responsive.bootstrap.min.css',
 		'assets/js/datatables/scroller.bootstrap.min.css',
+		'assets/js/summernote/summernote.css',
 		'assets/css/alertify/alertify.css',
 		'assets/css/select2/select2.css',
 	);
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
+		'assets/js/summernote/summernote.min.js',
 		'assets/js/tiny_mce/tiny_mce.js',
 		'assets/js/select2/select2.full.js',
-		
+
 	);
 
 	protected $uploaded_file_name = '';
@@ -114,7 +116,7 @@ class Album extends BackendController {
 				redirect('/');
 			}
 		}
-		
+
 	}
 
 	protected function get_album_detail($id){
@@ -194,7 +196,7 @@ class Album extends BackendController {
 			if($delete == TRUE){
 				$dir = set_realpath('../uploads');
 				$file_to_delete = $dir.$file_name;
-				unlink($file_to_delete);	
+				unlink($file_to_delete);
 				$this->jsonResponse['msg'] = 'success';
 			}
 			else{
@@ -203,7 +205,7 @@ class Album extends BackendController {
 		}
 		echo json_encode($this->jsonResponse);
 	}
-	
+
 
 
 }

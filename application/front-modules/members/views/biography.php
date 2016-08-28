@@ -43,7 +43,144 @@
                                 </div>
                            </div>
                            <div class="panel-body">
-                             Panel content
+                                <div class="form-horizontal">
+                                     <div class="row">
+                                          <div class="col-sm-12">
+                                               <h3>Data Pribadi</h3><hr>
+                                          </div>
+                                          <div class="col-sm-8">
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Nama Lengkap :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->name; ?></label>
+                                               </div>
+                                               <!-- <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Identitas :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->identitas."(".$members->identitas_no.")"; ?></label>
+                                               </div> -->
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Identitas :</label>
+                                                    <div class="col-sm-6">
+                                                         <div class="portfolio-item">
+                                                         <div class="item-inner" style="margin:0">
+                                                              <img src="<?php echo base_url('uploads/'.$members->identitas_file);?>" alt="<?php echo $members->identitas_no; ?>">
+                                                              <h5><?php echo ucfirst($members->identitas)." (". $members->identitas_no.")"; ?></h5>
+                                                              <div class="overlay">
+                                                                   <a class="preview btn btn-danger" href="<?php echo base_url('uploads/'.$members->identitas_file);?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                              </div>
+                                                         </div>
+                                                    </div>
+                                                    </div>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Tempat Lahir :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->birth_place; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Tanggal Lahir :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->birth_date; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">No. HP :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo ($members->phone_1 ? $members->phone_1 : '-')."".($members->phone_2 ? "/".$members->phone_2 : ''); ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Email :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->email; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Website :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->website ? $members->website : '-'; ?></label>
+                                               </div>
+                                          </div>
+                                          <div class="col-sm-4">
+
+                                               <div class="form-group">
+                                                    <label class="col-sm-12 control-label" style="text-align:left;margin-bottom:5px;">Foto</label>
+                                                    <div class="col-sm-12">
+                                                         <div class="portfolio-item">
+                                                         <div class="item-inner">
+                                                              <img src="<?php echo base_url('uploads/'.$members->foto_file);?>" alt="<?php echo $members->identitas_no; ?>">
+                                                              <h5>No : <?php echo $members->identitas_no; ?></h5>
+                                                              <div class="overlay">
+                                                                   <a class="preview btn btn-danger" href="<?php echo base_url('uploads/'.$members->foto_file);?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                              </div>
+                                                         </div>
+                                                    </div>
+                                                    </div>
+                                               </div>
+                                          </div>
+                                     </div>
+                                     <div class="row" style="margin-top:10px">
+                                          <div class="col-sm-12">
+                                               <h3>Data Tempat Tinggal</h3><hr>
+                                          </div>
+                                          <div class="col-sm-8">
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Alamat :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_address; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">RT / RW :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo ($members->home_rt ? $members->home_rt : '-')."".($members->home_rw ? '/'.$members->home_rw : '-'); ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kelurahan :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_kelurahan; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kecamatan :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_kecamatan; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kabupaten :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_kabupaten; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Propinsi :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_propinsi; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Negara :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->home_negara; ?></label>
+                                               </div>
+                                          </div>
+                                     </div>
+                                     <div class="row" style="margin-top:10px">
+                                          <div class="col-sm-12">
+                                               <h3>Data Kantor</h3><hr>
+                                          </div>
+                                          <div class="col-sm-8">
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Alamat :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_address; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">RT / RW :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo ($members->office_rt ? $members->office_rt : '-')."".($members->office_rw ? '/'.$members->office_rw : '-'); ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kelurahan :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_kelurahan; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kecamatan :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_kecamatan; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Kabupaten :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_kabupaten; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Propinsi :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_propinsi; ?></label>
+                                               </div>
+                                               <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Negara :</label>
+                                                    <label class="col-sm-8 control-label" style="text-align:left"><?php echo $members->office_negara; ?></label>
+                                               </div>
+                                          </div>
+                                     </div>
+                                </div>
                            </div>
                          </div>
                    </div>

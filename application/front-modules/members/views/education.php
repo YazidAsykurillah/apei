@@ -115,7 +115,7 @@
                                                  <td>
                                                       <div class="btn-group pull-right" role="group">
                                                            <button class="btn btn-sm btn-warning btn-edit-pend" data-id="<?php echo $pendidikan->id; ?>" data-url="<?php echo base_url('members/getPend'); ?>">Edit</button>
-                                                           <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                                           <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#mdl-pend-confirm" data-backdrop="static" data-idmembers="<?php echo $pendidikan->id_members; ?>" data-id="<?php echo $pendidikan->id; ?>" data-url="<?php echo base_url('members/delPendidikan'); ?>">Hapus</a>
                                                       </div>
                                                  </td>
                                             </tr>
@@ -134,3 +134,23 @@
               </div>
         </div>
 </section>
+<div id="mdl-pend-confirm" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myLargeModalLabel">
+     <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                    <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                         </button>
+                         <h3 class="modal-title" id="myLargeModalLabel">Konfirmasi</h3>
+                         <hr>
+                    </div>
+                    <div class="modal-body">
+                         <p>Anda yakin akan menghapus data ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" class="btn btn-danger btn-del-pend">Ya</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
+                    </div>
+          </div>
+     </div>
+</div>

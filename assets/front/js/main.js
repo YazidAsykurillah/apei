@@ -121,7 +121,72 @@ jQuery(function($) {
 				$('#btn-add').addClass('collapse');
   			});
 		});
-
+		$('#mdl-pend-confirm').on('shown.bs.modal',function(event){
+			var button = $(event.relatedTarget);
+			var id = button.data('id');
+			var url = button.data('url');
+			var id_members = button.data('idmembers');
+			console.log(id,url)
+			$('.btn-del-pend').on('click',function(){
+				console.log(id,url)
+				$.ajax({
+	  				method: "POST",
+	  				url: url,
+	  				data: { id: id, id_members:id_members }
+				}).done(function( data ) {
+					if(data > 0){
+						$('#mdl-pend-confirm').modal('hide');
+						$(location).attr('href',window.location.href);
+					}
+				});
+			});
+		});
+		// FORM sertifikasi
+		$('.btn-edit-sert').on('click',function(){
+			var id = $(this).data('id');
+			var url = $(this).data('url');
+			$('button[type="submit"]').text('Simpan Perubahan');
+			$.ajax({
+  				method: "POST",
+  				url: url,
+  				data: { id: id }
+			}).done(function( data ) {
+				console.log(data);
+				var obj = jQuery.parseJSON(data);
+				$('input[name="act"]').val("edit");
+				$('input[name="no_reg"]').val(obj.registration_number);
+				$('input[name="no_sert"]').val(obj.certificate_number);
+				$('input[name="bidang"]').val(obj.division_id);
+				$('input[name="sub_bidang"]').val(obj.subdivision_id);
+				$('input[name="unit_kompetensi"]').val(obj.competence_unit);
+				$('input[name="level"]').val(obj.level);
+				$('input[name="masa_berlaku"]').val(obj.validity_period);
+				$('input[name="id_members"]').val(obj.id_members);
+				$('input[name="id_sertifikat"]').val(id);
+				$('#form-container').slideDown('slow');
+				$('#btn-add').addClass('collapse');
+  			});
+		});
+		$('#mdl-pel-confirm').on('shown.bs.modal',function(event){
+			var button = $(event.relatedTarget);
+			var id = button.data('id');
+			var url = button.data('url');
+			var id_members = button.data('idmembers');
+			console.log(id,url)
+			$('.btn-del-pel').on('click',function(){
+				console.log(id,url)
+				$.ajax({
+	  				method: "POST",
+	  				url: url,
+	  				data: { id: id, id_members:id_members }
+				}).done(function( data ) {
+					if(data > 0){
+						$('#mdl-pel-confirm').modal('hide');
+						$(location).attr('href',window.location.href);
+					}
+				});
+			});
+		});
 		// FORM pelatihan
 		$('.btn-edit-pel').on('click',function(){
 			var id = $(this).data('id');
@@ -143,6 +208,69 @@ jQuery(function($) {
 				$('#form-container').slideDown('slow');
 				$('#btn-add').addClass('collapse');
   			});
+		});
+		$('#mdl-pel-confirm').on('shown.bs.modal',function(event){
+			var button = $(event.relatedTarget);
+			var id = button.data('id');
+			var url = button.data('url');
+			var id_members = button.data('idmembers');
+			console.log(id,url)
+			$('.btn-del-pel').on('click',function(){
+				console.log(id,url)
+				$.ajax({
+	  				method: "POST",
+	  				url: url,
+	  				data: { id: id, id_members:id_members }
+				}).done(function( data ) {
+					if(data > 0){
+						$('#mdl-pel-confirm').modal('hide');
+						$(location).attr('href',window.location.href);
+					}
+				});
+			});
+		});
+		// FORM pekerjaan
+		$('.btn-edit-exp').on('click',function(){
+			var id = $(this).data('id');
+			var url = $(this).data('url');
+			$('button[type="submit"]').text('Simpan Perubahan');
+			$.ajax({
+  				method: "POST",
+  				url: url,
+  				data: { id: id }
+			}).done(function( data ) {
+				var obj = jQuery.parseJSON(data);
+				$('input[name="act"]').val("edit");
+				$('input[name="company_name"]').val(obj.company_name);
+				$('input[name="specialis"]').val(obj.speciality);
+				$('input[name="position"]').val(obj.position);
+				$('input[name="tgl_mulai"]').val(obj.start_date);
+				$('input[name="tgl_selesai"]').val(obj.end_date);
+				$('input[name="id_members"]').val(obj.id_members);
+				$('input[name="id_pengalaman"]').val(id);
+				$('#form-container').slideDown('slow');
+				$('#btn-add').addClass('collapse');
+  			});
+		});
+		$('#mdl-pel-confirm').on('shown.bs.modal',function(event){
+			var button = $(event.relatedTarget);
+			var id = button.data('id');
+			var url = button.data('url');
+			var id_members = button.data('idmembers');
+			console.log(id,url)
+			$('.btn-del-pel').on('click',function(){
+				console.log(id,url)
+				$.ajax({
+	  				method: "POST",
+	  				url: url,
+	  				data: { id: id, id_members:id_members }
+				}).done(function( data ) {
+					if(data > 0){
+						$('#mdl-pel-confirm').modal('hide');
+						$(location).attr('href',window.location.href);
+					}
+				});
+			});
 		});
 	});
 

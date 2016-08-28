@@ -1,5 +1,15 @@
-tinyMCE.init({
-    selector: 'textarea',
+// tinyMCE.init({
+//     selector: 'textarea',
+// });
+$('#description').summernote({
+     toolbar: [
+          ['paragraph', ['style','ol','ul','paragraph','height']],
+          ['fontStyle', ['fontname', 'fontsize', 'color','bold','italic','underline','strikethrough','superscript','subscript','clear']],
+          ['Insert', ['link','table','hr']],
+          ['misc',['fullscreen','codeview','undo','redo']]
+     ],
+     height: 300,
+
 });
 $('#start_date').daterangepicker({
     "singleDatePicker": true,
@@ -59,6 +69,8 @@ var table = $('#datatable').DataTable({
 });
 
 $('#btn-add').click(function(){
+     $('#form-album')[0].reset();
+     $('#description').summernote('reset');
     $('#form-container').slideDown("slow");
     //$(this).addClass('collapse');
 });
@@ -67,27 +79,29 @@ $('#btnReset').click(function(){
     $('#form-container').slideUp("slow");
     $('#form-album')[0].reset();
     $('#btn-add').removeClass('collapse');
+    $('#description').summernote('reset');
     //remove value of input id
     $('#album-id').val('');
 });
 
 $('#dtAlbum').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
-    
+    $('#description').summernote('reset');
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#album-id').val(d.id);
     $('#title').val(d.title);
-    tinyMCE.get('description').setContent(d.description);
+    $('#description').summernote('code',d.description);
+    // tinyMCE.get('description').setContent(d.description);
     $('#form-container').slideDown('slow');
-    
+
 });
 
 
 
 $('#form-album').on('submit', function(event){
     event.preventDefault();
-    tinyMCE.triggerSave();
+    // tinyMCE.triggerSave();
     if($('#album-id').val() != ''){
         //--- Edit Mode
         var id = $('#album-id').val();
@@ -122,8 +136,8 @@ $('#form-album').on('submit', function(event){
             alertifyError();
         });
     }
-    
-    
+
+
     return false;
 });
 
@@ -151,7 +165,7 @@ $('#form-delete-album').on('submit', function(event){
     }, "json").fail(function () {
         alertifyError();
     });
-    
+
     return false;
 });
 

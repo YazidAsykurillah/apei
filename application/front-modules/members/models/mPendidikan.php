@@ -34,4 +34,10 @@ class MPendidikan extends MY_Model {
          $this->db->update('user_education', $data);
          return $this->db->affected_rows();
     }
+
+    public function deleteByID($id){
+         $this->db->where('id',$id);
+         $this->db->delete('user_education');
+         return $this->db->affected_rows();
+    }
 }

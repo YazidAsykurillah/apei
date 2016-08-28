@@ -181,6 +181,7 @@
     <?php
          echo get_front_js();
     ?>
+    
     <!-- <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
