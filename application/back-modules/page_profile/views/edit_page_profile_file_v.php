@@ -35,6 +35,12 @@
 							    </div>
 							</div>
 							<div class="form-group">
+							    <label for="page_order" class="col-sm-2 control-label">Page Order</label>
+							    <div class="col-sm-9">
+							    	<input type="text" class="form-control" id="page_order" name="page_order" placeholder="Page Order" value="<?php echo $page_profiles['page_order'];?>">
+							    </div>
+							</div>
+							<div class="form-group">
 		                    		<label for="" class="col-sm-2 control-label"></label>
 		                      		<div class="col-md-6">
 		                      			<input id="id" name="id" type="hidden" value="<?php echo $page_profiles['id'];?>" />
