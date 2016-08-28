@@ -53,6 +53,7 @@ $route['default_controller'] = 'begin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['profile/([a-zA-Z0-9_-]+)(.*)'] = 'profile/index/$1';
 $route['berita-kegiatan/(:num)'] = 'informasi/single_berita/$1';
 $route['acara/(:num)'] = 'informasi/single_acara/$1';
 /*
