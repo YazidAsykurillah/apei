@@ -95,29 +95,17 @@ $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
-<<<<<<< HEAD
-    if(d.description != null){
-        tinyMCE.get('description').setContent(d.description);   
-    }
-    else{
-        tinyMCE.get('description').setContent('');
-    }
-    $('')
-    //tinyMCE.get('description').setContent(d.description);
-=======
+
     $('#description').summernote('code', d.description);
->>>>>>> c23412d22bd7b7153dedf064b019b20597a83b4e
+
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
     $('#end_date').val(d.end_date);
     $('#form-container').slideDown('slow');
-<<<<<<< HEAD
-    $('#accessor_id').select2('data', {id: 100, title: 'Lorem Ipsum'});
-    
-=======
 
->>>>>>> c23412d22bd7b7153dedf064b019b20597a83b4e
+
+
 });
 
 

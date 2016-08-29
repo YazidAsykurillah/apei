@@ -34,6 +34,7 @@
 				<li><a><i class="fa fa-book"></i> Master Data <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('page_profile', 'Profile'); ?></li>
+						<li><?php echo anchor('scope', 'Ruang Lingkup'); ?></li>
 					</ul>
 				</li>
 				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
