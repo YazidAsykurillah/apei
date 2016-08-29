@@ -92,7 +92,7 @@
 
       	<div class="modal-body">
        		<p>Klik tombol Delete untuk menghapus foto pada album</p>
-			<input type="text" name="photo_id" id="photo_id" value="">
+			<input type="hidden" name="photo_id" id="photo_id" value="">
       	</div>
       	<div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

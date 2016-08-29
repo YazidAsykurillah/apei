@@ -24,6 +24,8 @@ class Album extends BackendController {
 
 	protected $uploaded_file_name = '';
 
+	protected $file_names = [];
+
 	public function __construct(){
 		parent::__construct();
 		set_page_title('Album');
@@ -116,6 +118,60 @@ class Album extends BackendController {
 				redirect('/');
 			}
 		}
+
+	}
+
+	protected function delete_photos_of_the_albums(){
+		$this->load->helper('file');
+		$this->load->helper('path');
+		$dir = set_realpath('../uploads');
+		if(count($this->file_names) == 0 ){
+			return TRUE;
+		}
+		else{
+			foreach($this->file_names as $file){
+				$file_to_delete = $dir.$file;
+				unlink($file_to_delete);
+				return TRUE;	
+			}
+			
+		}
+
+	}
+	public function delete(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$id = $postData['album_id'];
+		$this->form_validation->set_rules('album_id','ID', 'required|integer');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		else{
+			//get all of the photos where album id is going to be deleted
+			$photos = $this->db->select('id, file_name')->from('photos')->where('album_id',$id)->get()->result();
+			if(count($photos) > 0){
+				foreach($photos as $photo){
+					$this->file_names[] = $photo->file_name;
+				}
+				$delete_photos_table = $this->db->delete('photos',['album_id'=>$id]);
+				if($delete_photos_table == TRUE){
+					//delete file from the server.
+					$delete_photos_of_the_albums = $this->delete_photos_of_the_albums();
+				}
+				
+			}
+			
+			//now delete the album it self;
+			$delete_album = $this->db->delete('albums', ['id'=>$id]);
+			if($delete_album == TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+
+		}
+		echo json_encode($this->jsonResponse);
 
 	}
 

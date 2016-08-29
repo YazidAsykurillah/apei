@@ -145,7 +145,6 @@ $('#form-album').on('submit', function(event){
 //## Delete album --
 $('#dtAlbum').on('click', 'a[title~=Delete]', function (e){
     e.preventDefault();
-
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#album_id').val(d.id);
