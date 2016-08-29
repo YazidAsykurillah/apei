@@ -11,8 +11,11 @@ class Profile extends FrontendController {
 		set_page_title('');
 	}
 
-	public function index(){
-		$this->latar_belakang();
+	public function index($slug){
+		$this->load->model('mProfile');
+		$this->data['profile'] = $this->mProfile->getDataBySlug($slug);
+		set_front_js($this->mainJs);
+		render_front_template('profile', $this->data);
 	}
 
      public function latar_belakang(){

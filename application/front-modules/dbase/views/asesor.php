@@ -6,7 +6,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="<?php echo base_url();?>">Home</a></li>
                         <li>Database</li>
                         <li class="active">Data Asesor</li>
                     </ul>

@@ -8,6 +8,22 @@ class MProfile extends MY_Model {
         parent::__construct();
     }
 
+    public function getDataBySlug($slug){
+         $this->db->select('*');
+         $this->db->from('page_profiles');
+         $this->db->where('slug', $slug);
+         $this->db->or_where('id', $slug);
+         $query = $this->db->get();
+         return $query->row();
+    }
+
+    public function getAllData(){
+         $this->db->select('*');
+         $this->db->from('page_profiles');
+         $query = $this->db->get();
+         return $query->result();
+    }
+
     public function getLatar(){
          $this->db->select('background');
          $this->db->from('company_profile');
