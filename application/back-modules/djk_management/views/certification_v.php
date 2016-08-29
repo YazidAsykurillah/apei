@@ -47,7 +47,7 @@
 						<div class="form-group">
 						    <label for="accessor_id" class="col-sm-2 control-label">Asesor</label>
 						    <div class="col-sm-6">
-						    	<select name="accessor_id" id="accessor_id" class="form-control select2" style="width:100%;">
+						    	<select name="accessor_id" id="accessor_id" class="form-control" style="width:100%;">
 						    		<?php echo $accessor_options; ?>
 						    	</select>
 						    </div>
@@ -55,7 +55,7 @@
 						<div class="form-group">
 						    <label for="supervisor_id" class="col-sm-2 control-label">Pengawas</label>
 						    <div class="col-sm-6">
-						    	<select id="supervisor_id" name="supervisor_id" class="form-control select2" style="width:100%;">
+						    	<select id="supervisor_id" name="supervisor_id" class="form-control" style="width:100%;">
 						    		<?php echo $accessor_options; ?>
 						    	</select>
 						    </div>

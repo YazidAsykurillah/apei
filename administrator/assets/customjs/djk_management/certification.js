@@ -34,7 +34,9 @@ var table = $('#datatable').DataTable({
             return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+
                 '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
-/*        {data: 'id', visible: false, searchable: false, className: 'never'},*/
+        {data: 'accessor_id', visible: false, searchable: false, className: 'never'},
+        {data: 'supervisor_id', visible: false, searchable: false, className: 'never'},
+/*      {data: 'id', visible: false, searchable: false, className: 'never'},*/
     ],
     order: [[1, 'asc']],
 	dom: 'Bfrtip',
@@ -82,14 +84,19 @@ $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
     if(d.description != null){
-     tinyMCE.get('description').setContent(d.description);   
+        tinyMCE.get('description').setContent(d.description);   
     }
+    else{
+        tinyMCE.get('description').setContent('');
+    }
+    $('')
     //tinyMCE.get('description').setContent(d.description);
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
     $('#end_date').val(d.end_date);
     $('#form-container').slideDown('slow');
+    $('#accessor_id').select2('data', {id: 100, title: 'Lorem Ipsum'});
     
 });
 
