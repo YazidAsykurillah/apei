@@ -25,7 +25,6 @@ class Members extends FrontendController {
 	}
 
 	public function biografi($id){
-
 		$this->getMembers($id);
 		set_front_js($this->mainJs);
 		render_front_template('biography', $this->data);
@@ -81,6 +80,13 @@ class Members extends FrontendController {
 		// return $this->mPendidikan->getByID($id);
 	}
 
+	public function delPelatihan(){
+		$this->load->model('mPelatihan');
+		$id = $this->input->post('id');
+		$id_members = $this->input->post('id_members');
+		echo json_encode($this->mPelatihan->deleteByID($id));
+	}
+
 	public function savePelatihan(){
 		$this->load->model('mPelatihan');
 
@@ -99,7 +105,7 @@ class Members extends FrontendController {
 				redirect('members/pelatihan/'.$id_members, 'refresh');
 			}
 		}else{
-			if($this->mPelatihan->update($dt_pend, $this->input->post('id_pelatihan')) > 0){
+			if($this->mPelatihan->update($dt_pend, $this->input->post('id_pelatihan')) >= 0){
 				redirect('members/pelatihan/'.$id_members, 'refresh');
 			}
 		}
@@ -118,7 +124,12 @@ class Members extends FrontendController {
 		// }
 		// return $this->mPendidikan->getByID($id);
 	}
-
+	public function delPendidikan(){
+		$this->load->model('mPendidikan');
+		$id = $this->input->post('id');
+		$id_members = $this->input->post('id_members');
+		echo json_encode($this->mPendidikan->deleteByID($id));
+	}
 	public function savePendidikan(){
 		$this->load->model('mPendidikan');
 
@@ -137,7 +148,7 @@ class Members extends FrontendController {
 				redirect('members/pendidikan/'.$id_members, 'refresh');
 			}
 		}else{
-			if($this->mPendidikan->update($dt_pend, $this->input->post('id_pendidikan')) > 0){
+			if($this->mPendidikan->update($dt_pend, $this->input->post('id_pendidikan')) >= 0){
 				redirect('members/pendidikan/'.$id_members, 'refresh');
 			}
 		}
@@ -148,6 +159,17 @@ class Members extends FrontendController {
 		return $this->mPengalaman->getAllByID($id);
 	}
 
+	public function getExp(){
+		$this->load->model('mPengalaman');
+		$id = $this->input->post('id');
+		echo json_encode($this->mPengalaman->getByID($id));
+	}
+	public function delPengalaman(){
+		$this->load->model('mPengalaman');
+		$id = $this->input->post('id');
+		$id_members = $this->input->post('id_members');
+		echo json_encode($this->mPengalaman->deleteByID($id));
+	}
 	public function savePengalaman(){
 		$this->load->model('mPengalaman');
 
@@ -167,7 +189,7 @@ class Members extends FrontendController {
 				redirect('members/pengalaman/'.$id_members, 'refresh');
 			}
 		}else{
-			if($this->mPengalaman->update($dt_pend, $this->input->post('id_pengalaman')) > 0){
+			if($this->mPengalaman->update($dt_pend, $this->input->post('id_pengalaman')) >= 0){
 				redirect('members/pengalaman/'.$id_members, 'refresh');
 			}
 		}
@@ -176,5 +198,43 @@ class Members extends FrontendController {
 	private function getSertifikat($id){
 		$this->load->model('mSertifikat');
 		return $this->mSertifikat->getAllByID($id);
+	}
+
+	public function getSert(){
+		$this->load->model('mSertifikat');
+		$id = $this->input->post('id');
+		echo json_encode($this->mSertifikat->getByID($id));
+	}
+	public function delSertifikat(){
+		$this->load->model('mSertifikat');
+		$id = $this->input->post('id');
+		$id_members = $this->input->post('id_members');
+		echo json_encode($this->mSertifikat->deleteByID($id));
+	}
+	public function saveSertifikat(){
+		$this->load->model('mSertifikat');
+
+		$act = $this->input->post('act');
+		$id_members = $this->input->post('id_members');
+		$dt_pend = array(
+			'registration_number' => $this->input->post('no_reg'),
+			'certificate_number' => $this->input->post('no_sert'),
+			'division_id' => $this->input->post('bidang'),
+			'subdivision_id' => $this->input->post('sub_bidang'),
+			'competence_unit' => $this->input->post('unit_kompetensi'),
+			'level' => $this->input->post('level'),
+			'validity_period' => $this->input->post('masa_berlaku'),
+			'id_members' => $id_members
+		);
+
+		if($act == 'add'){
+			if($this->mSertifikat->save($dt_pend) > 0){
+				redirect('members/sertifikat/'.$id_members, 'refresh');
+			}
+		}else{
+			if($this->mSertifikat->update($dt_pend, $this->input->post('id_sertifikat')) >= 0){
+				redirect('members/sertifikat/'.$id_members, 'refresh');
+			}
+		}
 	}
 }

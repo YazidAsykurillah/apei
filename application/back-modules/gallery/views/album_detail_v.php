@@ -2,18 +2,22 @@
 	$display_photo = '';
 	if(count($photos_of_album)){
 		foreach($photos_of_album as $poa){
-			$display_photo .='<div class="col-sm-6 col-md-3">';
-			$display_photo .=	'<div class="thumbnail" style="height:265px;">';
-			$display_photo .=		'<img src="http://localhost/apei/uploads/'.$poa['file_name'].'" alt="'.$poa['file_name'].'" style="min-height:165.19px;">';
-			$display_photo .=		'<div class="caption">';
-			$display_photo .=			'<p>'.$poa['title'].'</p>';
-			$display_photo .=			'<p>';
-			$display_photo .=				'<a href="#" class="btn btn-danger btn-sm btn-delete-photo" data-id="'.$poa['id'].'">';
-			$display_photo .=					'<i class="fa fa-trash"></i>';
-			$display_photo .=				'</a>';
-			$display_photo .=			'</p>';
-			$display_photo .=		'</div>';
-			$display_photo .=	'</div>';
+			$display_photo .='<div class="col-md-55">';
+			$display_photo .='	<div class="thumbnail">';
+			$display_photo .='		<div class="image view view-first">';
+			$display_photo .='			<img style="width: 100%; display: block;" src="'.base_url('../uploads/'.$poa['file_name']).'" alt="'.$poa['title'].'">';
+			$display_photo .='			<div class="mask no-caption">';
+			$display_photo .='				<div class="tools tools-bottom">';
+			$display_photo .='					<a href="#"><i class="fa fa-pencil"></i></a>';
+			$display_photo .='					<a href="#" class="btn-delete-photo" data-id="'.$poa['id'].'"><i class="fa fa-times"></i></a>';
+			$display_photo .='				</div>';
+			$display_photo .='			</div>';
+			$display_photo .='		</div>';
+			$display_photo .='		<div class="caption">';
+			$display_photo .='			<p><strong>'.$poa['title'].'</strong></p>';
+			$display_photo .='			<p>'.$poa['title'].'</p>';
+			$display_photo .='		</div>';
+			$display_photo .='	</div>';
 			$display_photo .='</div>';
 		}
 	}
@@ -31,7 +35,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-                <h2><i class="fa fa-list"></i> <?php echo get_page_title(); ?></h2>
+                <h2><i class="fa fa-list"></i> <?php echo $album_detail->title; ?></h2>
                 <div class="nav navbar-right">
 					<div class="btn-group">
 						<button id="btn-add" class="btn btn-sm btn-success" href="#" title="Klik untuk upload foto pada album ini"><i class="fa fa-plus"></i> Upload Foto</button>
@@ -65,17 +69,12 @@
 	                    </div>
 					</form>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-					    <h3 class="panel-title"><?php echo $album_detail->title; ?></h3>
-					</div>
-					<div class="panel-body">
-					 	<?php echo $display_photo; ?>
-					</div>
-				</div>
-				
 			</div>
-
+			<div class="x-content">
+				<div class="row">
+					<?php echo $display_photo; ?>
+				</div>
+			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -90,10 +89,10 @@
         	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         	<h4 class="modal-title">Konfirmasi</h4>
       	</div>
-      
+
       	<div class="modal-body">
        		<p>Klik tombol Delete untuk menghapus foto pada album</p>
-			<input type="text" name="photo_id" id="photo_id" value="">
+			<input type="hidden" name="photo_id" id="photo_id" value="">
       	</div>
       	<div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

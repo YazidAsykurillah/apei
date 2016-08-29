@@ -3,8 +3,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <h4>TENTANG PT. APEI</h4>
-                    <p></p>
-                    <p></p>
+                    <img src="<?php echo base_url('assets/front/images/logo.png');?>">
                 </div><!--/.col-md-3-->
 
                 <div class="col-md-3 col-sm-6">
@@ -86,7 +85,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    &copy; 2013 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">PT. APEI</a>. All Rights Reserved.
+                    &copy; 2016 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">PT. APEI</a>. All Rights Reserved.
                 <!-- </div> -->
                 <!-- <div class="col-sm-6"> -->
                     <ul class="pull-right">
@@ -175,12 +174,14 @@
                </div>
           </div>
      </div>
+
      <?php
           }
      ?>
     <?php
          echo get_front_js();
     ?>
+
     <!-- <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>

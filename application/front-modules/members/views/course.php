@@ -6,7 +6,7 @@
            </div>
            <div class="col-sm-6">
                <ul class="breadcrumb pull-right">
-                   <li><a href="index.html">Home</a></li>
+                   <li><a href="<?php echo base_url();?>">Home</a></li>
                    <li class="active"><?php echo $members->name; ?></li>
                </ul>
            </div>
@@ -116,7 +116,7 @@
                                              <td>
                                                   <div class="btn-group pull-right" role="group">
                                                        <a href="#" class="btn btn-sm btn-warning btn-edit-form btn-edit-pel" data-id="<?php echo $pelatihan->id; ?>" data-url="<?php echo base_url('members/getPel'); ?>">Edit</a>
-                                                       <a href="http://localhost/apei/registrasi" class="btn btn-sm btn-danger">Hapus</a>
+                                                       <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#mdl-pel-confirm" data-backdrop="static" data-idmembers="<?php echo $pelatihan->id_members; ?>" data-id="<?php echo $pelatihan->id; ?>" data-url="<?php echo base_url('members/delPelatihan'); ?>">Hapus</a>
                                                   </div>
                                              </td>
                                         </tr>
@@ -135,3 +135,23 @@
               </div>
         </div>
 </section>
+<div id="mdl-pel-confirm" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myLargeModalLabel">
+     <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                    <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                         </button>
+                         <h3 class="modal-title" id="myLargeModalLabel">Konfirmasi</h3>
+                         <hr>
+                    </div>
+                    <div class="modal-body">
+                         <p>Anda yakin akan menghapus data ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" class="btn btn-danger btn-del-pel">Ya</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
+                    </div>
+          </div>
+     </div>
+</div>

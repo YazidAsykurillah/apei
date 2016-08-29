@@ -10,12 +10,14 @@ class News_event extends BackendController {
 		'assets/js/datatables/fixedHeader.bootstrap.min.css',
 		'assets/js/datatables/responsive.bootstrap.min.css',
 		'assets/js/datatables/scroller.bootstrap.min.css',
+		'assets/js/summernote/summernote.css',
 		'assets/css/alertify/alertify.css',
 	);
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
+		'assets/js/summernote/summernote.min.js',
 		'assets/js/tiny_mce/tiny_mce.js',
-		
+
 	);
 
 	protected $uploaded_file_name=NULL;
@@ -148,7 +150,7 @@ class News_event extends BackendController {
 			//get the feature image in case we'll delete that.
 			$this->old_feature_image_name = $this->db->select('feature_image')->from('news_event')
 			                               ->where('id', $postData['id'])->get()->row()->feature_image;
-			
+
 			$data = [
 				'title'=>$postData['title'],
 				'content'=>$postData['content'],
@@ -183,18 +185,18 @@ class News_event extends BackendController {
 		}
 		else{
 			$file_to_delete = $dir.$this->old_feature_image_name;
-		
-			unlink($file_to_delete);	
-				
-			return TRUE;	
+
+			unlink($file_to_delete);
+
+			return TRUE;
 		}
-		
+
 	}
 
 	public function remove_feature_image(){
 		$postData = $this->input->post();
 		$id = $postData['news_event_id'];
-		
+
 		//get the feature image in case we'll delete that.
 		$this->old_feature_image_name = $this->db->select('feature_image')->from('news_event')
 										->where('id', $id)->get()->row()->feature_image;
@@ -217,7 +219,7 @@ class News_event extends BackendController {
 		$delete = $this->db->delete('news_event', array('id' => $id));
 		if($delete == TRUE){
 			$this->delete_old_feature_image();
-			$this->jsonResponse['msg'] = 'success';	
+			$this->jsonResponse['msg'] = 'success';
 		}
 		else{
 			$this->jsonResponse['msg'] = $delete;

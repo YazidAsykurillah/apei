@@ -1,119 +1,118 @@
 <section id="main-slider" class="no-margin">
-        <div class="carousel slide wet-asphalt">
-            <ol class="carousel-indicators">
-                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active" style="background-image: url(<?php echo get_front_images_path('slider/bg1.jpg');?>)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1"></h2>
-                                    <p class="animation animated-item-2"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.item-->
-                <div class="item" style="background-image: url(<?php echo get_front_images_path('slider/bg2.jpg');?>)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <!-- <div class="carousel-content center centered">
-                                    <h2 class="boxed animation animated-item-1"></h2>
-                                    <p class="boxed animation animated-item-2"></p>
-                                    <br>
-                                    <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.item-->
-                <div class="item" style="background-image: url(<?php echo get_front_images_path('slider/bg3.jpg');?>)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <!-- <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Powerful and Responsive Web Design Theme</h2>
-                                    <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
-                                    <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
-                                </div> -->
-                            </div>
-                            <div class="col-sm-6 hidden-xs animation animated-item-4">
-                                <!-- <div class="centered">
-                                    <div class="embed-container">
-                                        <iframe src="//player.vimeo.com/video/69421653?title=0&amp;byline=0&amp;portrait=0&amp;color=a22c2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.item-->
-            </div><!--/.carousel-inner-->
-        </div><!--/.carousel-->
-        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
-            <i class="icon-angle-left"></i>
-        </a>
-        <a class="next hidden-xs" href="#main-slider" data-slide="next">
-            <i class="icon-angle-right"></i>
-        </a>
-    </section><!--/#main-slider-->
-
-    <section id="about-us" class="container">
-        <div class="row">
-            <div class="col-sm-5">
-                 <div class="center gap">
-                    <h2>PESERTA UJI KOMPETENSI</h2>
-                 </div>
-                 <div class="list-group">
-                      <a href="#" class="list-group-item">I KADEK SUWECA WIJAYA</a>
-                      <a href="#" class="list-group-item">WAHYU PUSPA PERDANA</a>
-                      <a href="#" class="list-group-item">NURCAHYO ANDI FIRMANTO</a>
-                      <a href="#" class="list-group-item">SUWITO WALUYO</a>
-                      <a href="#" class="list-group-item">KADEK JONIHARTAWAN</a>
-                      <a href="#" class="list-group-item">I GUSTI AGUNG MADE AGUNG</a>
-                      <a href="#" class="list-group-item">MADE FANDY DARMADI</a>
-                      <a href="#" class="list-group-item">NURCAHYO ANDI FIRMANTO</a>
-                 </div>
-           </div><!--/.col-sm-6-->
-            <div class="col-sm-7">
-                <div class="center gap">
-                   <h2>ACARA SERTIFIKASI</h2>
-                </div>
-                <div class="blog">
-                     <div class="blog-item" style="border:1px solid #ccc">
-                          <div class="blog-content">
-                               <a href="blog-item.html"><h3></h3></a>
-                               <!-- <div class="entry-meta">
-                                    <span><i class="icon-user"></i> <a href="#"></a></span>
-                                    <span><i class="icon-folder-close"></i> <a href="#"></a></span>
-                                    <span><i class="icon-calendar"></i> </span>
-                                    <span><i class="icon-comment"></i> <a href="blog-item.html#comments"></a></span>
-                               </div> -->
-                               <p></p>
-                               <!-- <a class="btn btn-default" href="blog-item.html"><i class="icon-angle-right"></i></a> -->
-                          </div>
-                     </div><!--/.blog-item-->
-                     <div class="blog-item" style="border:1px solid #ccc">
-                          <div class="blog-content">
-                               <a href="blog-item.html"><h3></h3></a>
-                               <!-- <div class="entry-meta">
-                                    <span><i class="icon-user"></i> <a href="#">John</a></span>
-                                    <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
-                                    <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
-                                    <span><i class="icon-comment"></i> <a href="blog-item.html#comments">0 Comment</a></span>
+   <div class="carousel slide wet-asphalt">
+       <ol class="carousel-indicators">
+           <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+           <li data-target="#main-slider" data-slide-to="1"></li>
+           <li data-target="#main-slider" data-slide-to="2"></li>
+       </ol>
+       <div class="carousel-inner">
+           <div class="item active" style="background-image: url(<?php echo get_front_images_path('slider/bg1.jpg');?>)">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-sm-12">
+                           <div class="carousel-content centered">
+                               <h2 class="animation animated-item-1"></h2>
+                               <p class="animation animated-item-2"></p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div><!--/.item-->
+           <div class="item" style="background-image: url(<?php echo get_front_images_path('slider/bg2.jpg');?>)">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-sm-12">
+                           <!-- <div class="carousel-content center centered">
+                               <h2 class="boxed animation animated-item-1"></h2>
+                               <p class="boxed animation animated-item-2"></p>
+                               <br>
+                               <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
+                           </div> -->
+                       </div>
+                   </div>
+               </div>
+           </div><!--/.item-->
+           <div class="item" style="background-image: url(<?php echo get_front_images_path('slider/bg3.jpg');?>)">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-sm-6">
+                           <!-- <div class="carousel-content centered">
+                               <h2 class="animation animated-item-1">Powerful and Responsive Web Design Theme</h2>
+                               <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                               <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
+                           </div> -->
+                       </div>
+                       <div class="col-sm-6 hidden-xs animation animated-item-4">
+                           <!-- <div class="centered">
+                               <div class="embed-container">
+                                   <iframe src="//player.vimeo.com/video/69421653?title=0&amp;byline=0&amp;portrait=0&amp;color=a22c2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                </div>
-                               <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                               <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a> -->
-                          </div>
-                     </div>
-                </div>
-            </div><!--/.col-sm-6-->
-        </div><!--/.row-->
-    </section><!--/#about-us-->
+                           </div> -->
+                       </div>
+                   </div>
+               </div>
+           </div><!--/.item-->
+       </div><!--/.carousel-inner-->
+   </div><!--/.carousel-->
+   <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+       <i class="icon-angle-left"></i>
+   </a>
+   <a class="next hidden-xs" href="#main-slider" data-slide="next">
+       <i class="icon-angle-right"></i>
+   </a>
+</section><!--/#main-slider-->
+
+<section id="about-us" class="container">
+   <div class="row">
+       <div class="col-sm-5">
+            <div class="center gap">
+               <h2>PESERTA UJI KOMPETENSI</h2>
+            </div>
+            <div class="list-group">
+                 <a href="#" class="list-group-item">I KADEK SUWECA WIJAYA</a>
+                 <a href="#" class="list-group-item">WAHYU PUSPA PERDANA</a>
+                 <a href="#" class="list-group-item">NURCAHYO ANDI FIRMANTO</a>
+                 <a href="#" class="list-group-item">SUWITO WALUYO</a>
+                 <a href="#" class="list-group-item">KADEK JONIHARTAWAN</a>
+                 <a href="#" class="list-group-item">I GUSTI AGUNG MADE AGUNG</a>
+                 <a href="#" class="list-group-item">MADE FANDY DARMADI</a>
+                 <a href="#" class="list-group-item">NURCAHYO ANDI FIRMANTO</a>
+            </div>
+      </div><!--/.col-sm-6-->
+       <div class="col-sm-7">
+           <div class="center gap">
+              <h2>ACARA SERTIFIKASI</h2>
+           </div>
+           <?php
+               if($acara){
+                    foreach ($acara as $ac) {
+          ?>
+          <div class="blog">
+              <div class="blog-item" style="border:1px solid #ccc">
+                   <div class="blog-content">
+                        <a href="<?php echo base_url('acara/'.$ac->id);?>">
+                             <h3><?php echo $ac->title; ?></h3>
+                        </a>
+                        <div class="entry-meta">
+                            <span>
+                                 <i class="icon-user"></i>
+                                 <a href="#"><?php echo $ac->organizer?></a>
+                            </span>
+                            <span><i class="icon-calendar"></i> <?php echo $ac->start_date; ?></span>
+                        </div>
+                        <?php echo $ac->description; ?>
+                        <a class="btn btn-default" href="<?php echo base_url('acara/'.$ac->id);?>">Read More <i class="icon-angle-right"></i></a>
+                   </div>
+              </div>
+         </div>
+          <?php
+                    }
+               }
+           ?>
+
+       </div><!--/.col-sm-6-->
+   </div><!--/.row-->
+</section><!--/#about-us-->
 
     <section id="services" style="background-color:#ffffff">
         <div class="container">
@@ -144,18 +143,15 @@
           ?>
                     <div class="blog-item" style="border:1px solid #ccc">
                          <?php
-                              if(isset($ne->thumb)){
+                              if(isset($ne->feature_image)){
                          ?>
-                         <img class="img-responsive img-blog" src="<?php echo $ne->thumb;?>" width="100%" alt="">
-                         <?php
-                              }else{
-                         ?>
-                         <img class="img-responsive img-blog" src="<?php echo base_url(get_front_images_path('blog/blog1.jpg'));?>" width="100%" alt="">
+                         <div style="height:230px;background: url(<?php echo base_url('uploads/'.$ne->feature_image);?>) 50% / cover;"></div>
+
                          <?php
                               }
                          ?>
                          <div class="blog-content">
-                              <a href="#">
+                              <a href="<?php echo base_url('berita-kegiatan/'.$ne->neId);?>">
                                    <h3><?php echo $ne->title; ?></h3>
                               </a>
                               <div class="entry-meta">
@@ -166,8 +162,27 @@
                                   <span><i class="icon-folder-close"></i> <a href="#"><?php echo ucfirst($ne->category);?></a></span>
                                   <span><i class="icon-calendar"></i> <?php echo $ne->posted_date; ?></span>
                               </div>
-                              <?php echo $ne->content; ?>
-                              <a class="btn btn-default" href="#">Read More <i class="icon-angle-right"></i></a>
+                              <?php
+                                   $ctn = strip_tags($ne->content);
+                                   $ctn = explode(" ",trim($ctn));
+                                   $i = 0;
+                                   if(count($ctn) <= 40){
+                                        $content = implode(" ",$ctn);
+                                   }else{
+                                        $cont = array();
+                                        foreach($ctn as $ct){
+                                             if($i <= 40){
+                                                  $cont[$i] = $ct;
+                                             }else{
+                                                  break;
+                                             }
+                                             $i++;
+                                        }
+                                        $content = implode(" ",$cont);
+                                   }
+                                   echo "<p style='min-height:110px'>".$content."...</p>";
+                              ?>
+                              <a class="btn btn-default" href="<?php echo base_url('berita-kegiatan/'.$ne->neId);?>">Read More <i class="icon-angle-right"></i></a>
                          </div>
                     </div>
           <?php

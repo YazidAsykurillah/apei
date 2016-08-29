@@ -13,13 +13,28 @@
            <ul class="nav navbar-nav navbar-right">
                <li class="<?php echo $this->uri->segment(1) == 'home' ? 'active':''; ?>"><?php echo anchor('home', 'Home', 'title="Home"'); ?></li>
                <li class="dropdown <?php echo $this->uri->segment(1) == 'profile' ? 'active':''; ?>">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <i class="icon-angle-down"></i></a>
-                   <ul class="dropdown-menu">
-                       <li><?php echo anchor('profile/latar_belakang', 'Latar Belakang', 'title="Latar Belakang"'); ?></li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <i class="icon-angle-down"></i></a>
+                    <?php
+                         if($this->dynamicmenu->profile_menu()):
+                    ?>
+                    <ul class="dropdown-menu">
+                    <?php
+                              foreach ($this->dynamicmenu->profile_menu() as $mnProfile):
+                    ?>
+                         <li><?php echo anchor('profile/'.($mnProfile->slug ? $mnProfile->slug : $mnProfile->id), $mnProfile->title); ?></li>
+                    <?php
+                              endforeach;
+                    ?>
+                    </ul>
+                    <?php
+                         endif;
+                    ?>
+
+                       <!-- <li><?php echo anchor('profile/latar_belakang', 'Latar Belakang', 'title="Latar Belakang"'); ?></li>
                        <li><?php echo anchor('profile/visi_misi', 'Visi & Misi', 'title="Visi & Misi"'); ?></li>
                        <li><?php echo anchor('profile/struktur', 'Struktur Organisasi', 'title="Struktur Organisasi"'); ?></li>
-                       <li><?php echo anchor('profile/fungsi', 'Fungsi & Peranan', 'title="Fungsi & Peranan"'); ?></li>
-                   </ul>
+                       <li><?php echo anchor('profile/fungsi', 'Fungsi & Peranan', 'title="Fungsi & Peranan"'); ?></li> -->
+
                </li>
                <li class="dropdown <?php echo $this->uri->segment(1) == 'informasi' ? 'active':''; ?>">
                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informasi <i class="icon-angle-down"></i></a>

@@ -1,5 +1,14 @@
-tinyMCE.init({
-    selector: 'textarea',
+// tinyMCE.init({
+//     selector: 'textarea',
+// });
+$('#description').summernote({
+     toolbar: [
+          ['paragraph', ['style','ol','ul','paragraph','height']],
+          ['fontStyle', ['fontname', 'fontsize', 'color','bold','italic','underline','strikethrough','superscript','subscript','clear']],
+          ['Insert', ['link','table','hr']],
+          ['misc',['fullscreen','codeview','undo','redo']]
+     ],
+     height: 300,
 });
 $('#start_date').daterangepicker({
     "singleDatePicker": true,
@@ -64,12 +73,15 @@ var table = $('#datatable').DataTable({
 });
 
 $('#btn-add').click(function(){
+     $('#description').summernote('reset');
+     $('#form-certification')[0].reset();
     $('#form-container').slideDown("slow");
     //$(this).addClass('collapse');
 });
 
 $('#btnReset').click(function(){
     $('#form-container').slideUp("slow");
+    $('#description').summernote('reset');
     $('#form-certification')[0].reset();
     $('#btn-add').removeClass('collapse');
     //remove value of input id
@@ -78,11 +90,12 @@ $('#btnReset').click(function(){
 
 $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     e.preventDefault();
-    //tinyMCE.triggerSave();
+    $('#description').summernote('reset');
     var id = $(this).attr('data-id');
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
+<<<<<<< HEAD
     if(d.description != null){
         tinyMCE.get('description').setContent(d.description);   
     }
@@ -91,20 +104,27 @@ $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     }
     $('')
     //tinyMCE.get('description').setContent(d.description);
+=======
+    $('#description').summernote('code', d.description);
+>>>>>>> c23412d22bd7b7153dedf064b019b20597a83b4e
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
     $('#end_date').val(d.end_date);
     $('#form-container').slideDown('slow');
+<<<<<<< HEAD
     $('#accessor_id').select2('data', {id: 100, title: 'Lorem Ipsum'});
     
+=======
+
+>>>>>>> c23412d22bd7b7153dedf064b019b20597a83b4e
 });
 
 
 
 $('#form-certification').on('submit', function(event){
     event.preventDefault();
-    tinyMCE.triggerSave();
+    // tinyMCE.triggerSave();
     if($('#certification-id').val() != ''){
         //--- Edit Mode
         var id = $('#certification-id').val();
@@ -139,8 +159,8 @@ $('#form-certification').on('submit', function(event){
             alertifyError();
         });
     }
-    
-    
+
+
     return false;
 });
 
@@ -168,7 +188,7 @@ $('#form-delete-certification').on('submit', function(event){
     }, "json").fail(function () {
         alertifyError();
     });
-    
+
     return false;
 });
 

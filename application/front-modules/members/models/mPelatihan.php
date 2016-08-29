@@ -34,4 +34,10 @@ class MPelatihan extends MY_Model {
          $this->db->update('user_course', $data);
          return $this->db->affected_rows();
     }
+
+    public function deleteByID($id){
+         $this->db->where('id',$id);
+         $this->db->delete('user_course');
+         return $this->db->affected_rows();
+    }
 }

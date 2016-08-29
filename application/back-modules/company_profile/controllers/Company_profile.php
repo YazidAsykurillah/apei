@@ -11,10 +11,11 @@ class Company_Profile extends BackendController {
 		'assets/js/datatables/responsive.bootstrap.min.css',
 		'assets/js/datatables/scroller.bootstrap.min.css',
 		'assets/css/alertify/alertify.css',
-
+		'assets/js/summernote/summernote.css',
 	);
 	protected $cust_js = array(
 		'assets/js/alertify/alertify.js',
+		'assets/js/summernote/summernote.min.js',
 		'assets/js/tiny_mce/tiny_mce.js',
 	);
 
@@ -47,7 +48,7 @@ class Company_Profile extends BackendController {
 	public function save_background(){
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
-	
+
 		$this->form_validation->set_rules('background','Latar Belakang', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
@@ -64,7 +65,7 @@ class Company_Profile extends BackendController {
 				$this->jsonResponse['msg'] = $save_background;
 			}
 		}
-		
+
 		echo json_encode($this->jsonResponse);
 
 	}
@@ -84,7 +85,7 @@ class Company_Profile extends BackendController {
 	public function save_vission_mission(){
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
-	
+
 		$this->form_validation->set_rules('vission_mission','Visi dan Misi', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
@@ -101,7 +102,7 @@ class Company_Profile extends BackendController {
 				$this->jsonResponse['msg'] = $save_vission_mission;
 			}
 		}
-		
+
 		echo json_encode($this->jsonResponse);
 
 	}
@@ -121,7 +122,7 @@ class Company_Profile extends BackendController {
 	public function save_org_structure(){
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
-	
+
 		$this->form_validation->set_rules('org_structure','Struktur Organisasin', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
@@ -138,7 +139,7 @@ class Company_Profile extends BackendController {
 				$this->jsonResponse['msg'] = $save_org_structure;
 			}
 		}
-		
+
 		echo json_encode($this->jsonResponse);
 
 	}
@@ -158,7 +159,7 @@ class Company_Profile extends BackendController {
 	public function save_functions(){
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
-	
+
 		$this->form_validation->set_rules('functions','Fungsi dan Peranan', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
@@ -175,7 +176,7 @@ class Company_Profile extends BackendController {
 				$this->jsonResponse['msg'] = $save_functions;
 			}
 		}
-		
+
 		echo json_encode($this->jsonResponse);
 
 	}

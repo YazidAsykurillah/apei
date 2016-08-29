@@ -23,19 +23,19 @@
 
 	                    <div class="form-group">
 						    <label for="title" class="col-sm-2 control-label">Judul</label>
-						    <div class="col-sm-6">
+						    <div class="col-sm-9">
 						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label for="content" class="col-sm-2 control-label">Isi</label>
-						    <div class="col-sm-6">
+						    <div class="col-sm-9">
 						    	<textarea id="content" name="content" class="form-control" placeholder="Type the content" style="width:100%;"></textarea>
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label for="category" class="col-sm-2 control-label">Kategori</label>
-						    <div class="col-sm-6">
+						    <div class="col-sm-9">
 						    	<select id="category" name="category" class="form-control">
 						    		<option value="">--Pilih Kategory--</option>
 						    		<option value="news">News</option>
@@ -45,8 +45,8 @@
 						</div>
 						<div class="form-group">
 						    <label for="fileToUpload" class="col-sm-2 control-label">Feature Image</label>
-						    <div class="col-sm-6">
-						    	<input type="file" name="fileToUpload" id="fileToUpload">
+						    <div class="col-sm-9">
+						    	<input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
 						    </div>
 						</div>
 						<div class="form-group">
@@ -92,7 +92,7 @@
         	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         	<h4 class="modal-title">Konfirmasi</h4>
       	</div>
-      
+
       	<div class="modal-body">
        		<p>Klik tombol Delete untuk menghapus berita atau event</p>
        		<p>atau klik Cancel untuk membatalkan</p>

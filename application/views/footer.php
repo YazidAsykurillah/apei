@@ -1,7 +1,7 @@
 				<br />
 				<footer>
 					<div class="copyright-info">
-						<p class="pull-right">© 2013 PT. APEI. All Rights Reserved.</a>		
+						<p class="pull-right">© 2016 PT. APEI. All Rights Reserved.</a>		
 						</p>
 					</div>
 					<div class="clearfix"></div>

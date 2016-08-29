@@ -63,3 +63,27 @@
 </div>
 
 
+<!--Delete album modal-->
+<div id="modal-delete-album" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="form-delete-album" name="form-delete-album" class="form-horizontal" method="post" action="album/delete_album">
+    	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        	<h4 class="modal-title">Konfirmasi</h4>
+      	</div>
+
+      	<div class="modal-body">
+       		<p>Klik tombol Delete untuk menghapus foto pada album</p>
+			<input type="hidden" name="album_id" id="album_id" value="">
+      	</div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        	<button type="submit" class="btn btn-primary">Delete</button>
+      	</div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--END delete album modal-->
+

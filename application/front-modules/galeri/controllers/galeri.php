@@ -26,9 +26,10 @@ class Galeri extends FrontendController {
      }
 
      public function foto(){
-
+		$this->load->model('mGaleri');
+		$this->data['photo'] = $this->mGaleri->getPhoto();
           set_front_js($this->mainJs);
-		render_front_template('foto');
+		render_front_template('foto', $this->data);
      }
 
      public function video(){
