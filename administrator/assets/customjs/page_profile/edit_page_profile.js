@@ -28,8 +28,8 @@ $('#form-edit-page_profile').on('submit', function(event){
         success:function(response){
             var obj = $.parseJSON(response);
             if(obj.msg == 'success'){
-                alertify.success('Sukses merubah data');
-                //window.location.reload();
+                //alertify.success('Sukses merubah data');
+                window.location.href=baseURL+'page_profile';
             }
             else{
                 alertify.error(obj.msg);

@@ -63,7 +63,11 @@ class Page_profile extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
+			//build the slug to be inserted to the table
+			$this->build_slug();
+
 			$do_upload = $this->do_upload();
+
 			//Block build page order
 			if($postData['page_order'] != ''){
 				//build the page order to be inserted to the table
@@ -78,7 +82,7 @@ class Page_profile extends BackendController {
 
 			$data = [
 				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
+				'slug'=>preg_replace('/\s+/', '-', $this->slug_to_be_inserted),
 				'content'=>$postData['content'],
 				'type'=>'files',
 				'file_name'=>$this->uploaded_file_name,
@@ -114,6 +118,9 @@ class Page_profile extends BackendController {
 		}
 		else{
 
+			//build the slug to be inserted to the table
+			$this->build_slug();
+
 			//Block build page order
 			if($postData['page_order'] != ''){
 				//build the page order to be inserted to the table
@@ -129,7 +136,7 @@ class Page_profile extends BackendController {
 			$this->Crud_m->table = 'page_profiles';
 			$data = [
 				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
+				'slug'=>preg_replace('/\s+/', '-', $this->slug_to_be_inserted),
 				'content'=>$postData['content'],
 				'type'=>'texts',
 				'page_order'=>$this->page_order_to_be_inserted
@@ -158,6 +165,9 @@ class Page_profile extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
+			//build the slug to be inserted to the table
+			$this->build_slug();
+
 			//Block build page order
 			if($postData['page_order'] != ''){
 				//build the page order to be inserted to the table
@@ -171,7 +181,7 @@ class Page_profile extends BackendController {
 			//ENDblock build page order
 			$data = [
 				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
+				'slug'=>preg_replace('/\s+/', '-', $this->slug_to_be_inserted),
 				'content'=>$postData['content'],
 				'type'=>'texts',
 				'page_order'=>$this->page_order_to_be_inserted
@@ -204,15 +214,18 @@ class Page_profile extends BackendController {
 			$this->file_to_be_deleted = $this->db->select('file_name')->from('page_profiles')
 			                               ->where('id', $postData['id'])->get()->row()->file_name;
 			
-			if(!empty($_FILES['fileToUpload']['name'])){
+			if(!empty($_FILES['fileToUpload']['name'])){ //theres an uploaded file
 				$do_upload = $this->do_upload();
 				//now delete the old file
 				$this->delete_the_old_file();
 			}
-			else{
+			else{									//there's no file uploaded, so keep the file name
 				//keep the original file name
 				$this->uploaded_file_name = $this->file_to_be_deleted;
 			}
+
+			//build the slug
+			$this->build_slug();
 			//Block build page order
 			if($postData['page_order'] != ''){
 				//build the page order to be inserted to the table
@@ -226,7 +239,7 @@ class Page_profile extends BackendController {
 			//ENDblock build page order
 			$data = [
 				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
+				'slug'=>preg_replace('/\s+/', '-', $this->slug_to_be_inserted),
 				'type'=>'files',
 				'file_name'=>$this->uploaded_file_name,
 				'page_order'=>$this->page_order_to_be_inserted
@@ -247,6 +260,22 @@ class Page_profile extends BackendController {
 	}
 	//ENDFunction update page profile FILE TYPE
 
+	//Function to build slug
+	protected function build_slug(){
+		$posted_slug = preg_replace('/\s+/', '-', $this->input->post('slug'));
+		$slug_is_exist = $this->db->select('id')->from('page_profiles')
+						->where('slug',$posted_slug)->where('id !=', $this->input->post('id'))->get()->row();
+		if(count($slug_is_exist) > 0){
+			$this->jsonResponse['msg']='Slug sudah ada, silahkan ganti';
+			echo json_encode($this->jsonResponse);
+			exit();
+		}
+		else{
+			$this->slug_to_be_inserted = trim($posted_slug);
+			return TRUE;
+		}
+	}
+	//ENDFunction to build slug
 
 	//Function to build page order
 	protected function build_page_order(){

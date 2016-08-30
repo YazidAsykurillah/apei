@@ -75,11 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-<<<<<<< HEAD
-	 'hostname' => '192.168.1.22',
-=======
 	'hostname' => '192.168.1.22',
->>>>>>> 8c8879b10c71c8ce557069dd81acb134ed142593
 	//'hostname' => 'localhost',
 	   'username' => 'webdeveloper',
 	//'username' => 'apei',
