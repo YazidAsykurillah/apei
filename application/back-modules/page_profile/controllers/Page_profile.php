@@ -8,6 +8,11 @@ class Page_profile extends BackendController {
 	protected $file_to_be_deleted = NULL;
 	protected $wanted_page_order = NULL;
 	protected $highest_page_order = '';
+
+	protected $slug_to_be_inserted = '';
+	
+	protected $page_order_to_be_inserted = '';
+
 	protected $cust_css = array(
 		'assets/js/datatables/jquery.dataTables.min.css',
 		'assets/js/datatables/buttons.bootstrap.min.css',
@@ -47,32 +52,7 @@ class Page_profile extends BackendController {
         $this->Crud_m->outputToJson( $cpData );
 	}
 
-	//Block to upload file
-	public function do_upload(){
-		$uploaded_time = time();
-		$config['upload_path']   = '../uploads/';
-        $config['allowed_types'] = 'gif|jpg|png|pdf';
-        $config['max_size']      = 20480;
-        $config['max_width']     = 0;
-        $config['max_height']    = 0;
-        $config['file_name']    = 'page_type_files_'.$uploaded_time;
-        $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload('fileToUpload'))
-        {
-                $error = $this->upload->display_errors();
-                $this->jsonResponse['msg'] = $error;
-                echo json_encode($this->jsonResponse);
-                exit();
-                //return FALSE;
-        }
-        else
-        {
-        	$data = array('upload_data' => $this->upload->data());
-        	$this->uploaded_file_name = $config['file_name'].$data['upload_data']['file_ext'];
-            return TRUE;
-        }
-	}
-	//ENDBlock to upload file
+	
 
 	public function save_page_as_file(){
 		$this->load->library('form_validation');
@@ -84,30 +64,26 @@ class Page_profile extends BackendController {
 		}
 		else{
 			$do_upload = $this->do_upload();
+			//Block build page order
+			if($postData['page_order'] != ''){
+				//build the page order to be inserted to the table
+				$this->build_page_order();	
+			}
+			else{
+				//automatically set the page order to be inserted to highest value plus 1.
+				$highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+				$this->page_order_to_be_inserted = $highest_page_order+1;
+			}
+			//ENDblock build page order
+
 			$data = [
 				'title'=>$postData['title'],
 				'slug'=>$postData['slug'],
+				'content'=>$postData['content'],
 				'type'=>'files',
 				'file_name'=>$this->uploaded_file_name,
+				'page_order'=>$this->page_order_to_be_inserted
 			];
-			//get the highest page order
-			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
-			//block if there is user defined the page order.
-			if($postData['page_order'] !=''){
-				$this->wanted_page_order = $postData['page_order'];
-				//check if this is bigger than highest page order
-				if($this->wanted_page_order > $this->highest_page_order){
-					$data['page_order'] = $this->wanted_page_order;
-				}else{
-					$data['page_order'] = $this->wanted_page_order;
-					$this->repopulate_page_order();
-				}
-
-			}
-			else{
-				//if theres no wanted page order, then automatically place it under the highest page order.
-				$data['page_order'] = $this->highest_page_order+1;	
-			}
 			$this->Crud_m->table ='page_profiles';
 			$saveData = $this->Crud_m->insert($data);
 			if($saveData === TRUE){
@@ -137,31 +113,28 @@ class Page_profile extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
+
+			//Block build page order
+			if($postData['page_order'] != ''){
+				//build the page order to be inserted to the table
+				$this->build_page_order();	
+			}
+			else{
+				//automatically set the page order to be inserted to highest value plus 1.
+				$highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+				$this->page_order_to_be_inserted = $highest_page_order+1;
+			}
+			//ENDblock build page order
+
 			$this->Crud_m->table = 'page_profiles';
 			$data = [
 				'title'=>$postData['title'],
 				'slug'=>$postData['slug'],
 				'content'=>$postData['content'],
 				'type'=>'texts',
+				'page_order'=>$this->page_order_to_be_inserted
 			];
-			//get the highest page order
-			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
-			//block if there is user defined the page order.
-			if($postData['page_order'] !=''){
-				$this->wanted_page_order = $postData['page_order'];
-				//check if this is bigger than highest page order
-				if($this->wanted_page_order > $this->highest_page_order){
-					$data['page_order'] = $this->wanted_page_order;
-				}else{
-					$data['page_order'] = $this->wanted_page_order;
-					$this->repopulate_page_order();
-				}
-
-			}
-			else{
-				//if theres no wanted page order, then automatically place it under the highest page order.
-				$data['page_order'] = $this->highest_page_order+1;	
-			}
+			
 			$saveData = $this->Crud_m->insert($data);
 			if($saveData === TRUE){
 				$this->jsonResponse['msg'] = 'success';
@@ -172,6 +145,137 @@ class Page_profile extends BackendController {
 		}
 		echo json_encode($this->jsonResponse);
 	}
+
+
+	//Function update page profile
+	public function update(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title', 'Judul', 'required');
+		$this->form_validation->set_rules('slug', 'Slug', 'required');
+		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		else{
+			//Block build page order
+			if($postData['page_order'] != ''){
+				//build the page order to be inserted to the table
+				$this->build_page_order();	
+			}
+			else{
+				//automatically set the page order to be inserted to highest value plus 1.
+				$highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+				$this->page_order_to_be_inserted = $highest_page_order+1;
+			}
+			//ENDblock build page order
+			$data = [
+				'title'=>$postData['title'],
+				'slug'=>$postData['slug'],
+				'content'=>$postData['content'],
+				'type'=>'texts',
+				'page_order'=>$this->page_order_to_be_inserted
+			];
+			$this->db->where('id', $postData['id']);
+			$update = $this->db->update('page_profiles',$data);
+			if($update == TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+		}
+		echo json_encode($this->jsonResponse);
+	}
+	//ENDFunction update page profile
+
+
+	//Function update page profile FILE TYPE
+	public function update_page_file_type(){
+		$this->load->library('form_validation');
+		$postData = $this->input->post();
+		$this->form_validation->set_rules('title', 'Judul', 'required');
+		$this->form_validation->set_rules('slug', 'Slug', 'required');
+		if($this->form_validation->run() == FALSE){
+			$this->jsonResponse['msg'] = validation_errors();
+		}
+		else{
+			//get the old file_name in case we'll delete that.
+			$this->file_to_be_deleted = $this->db->select('file_name')->from('page_profiles')
+			                               ->where('id', $postData['id'])->get()->row()->file_name;
+			
+			if(!empty($_FILES['fileToUpload']['name'])){
+				$do_upload = $this->do_upload();
+				//now delete the old file
+				$this->delete_the_old_file();
+			}
+			else{
+				//keep the original file name
+				$this->uploaded_file_name = $this->file_to_be_deleted;
+			}
+			//Block build page order
+			if($postData['page_order'] != ''){
+				//build the page order to be inserted to the table
+				$this->build_page_order();	
+			}
+			else{
+				//automatically set the page order to be inserted to highest value plus 1.
+				$highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
+				$this->page_order_to_be_inserted = $highest_page_order+1;
+			}
+			//ENDblock build page order
+			$data = [
+				'title'=>$postData['title'],
+				'slug'=>$postData['slug'],
+				'type'=>'files',
+				'file_name'=>$this->uploaded_file_name,
+				'page_order'=>$this->page_order_to_be_inserted
+			];
+			
+			$this->db->where('id', $postData['id']);
+			$update = $this->db->update('page_profiles',$data);
+			if($update == TRUE){
+				
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+
+		}
+		echo json_encode($this->jsonResponse);
+	}
+	//ENDFunction update page profile FILE TYPE
+
+
+	//Function to build page order
+	protected function build_page_order(){
+		$posted_page_oder = $this->input->post('page_order');
+		//check page order existance in the table
+		$check = $this->db->select('id')->from('page_profiles')->where('page_order', $posted_page_oder)->get()->row();
+		if(count($check) < 1){ //if the posted page order is not ordered yet, set the page_order_to_be isnserted to the posted value.
+			$this->page_order_to_be_inserted = $posted_page_oder;
+		}
+		else{ //page order is already ordered, now lets re-create the page order of the page_profiles table
+			$page_profiles_to_reordered = [];
+			//select all page_profiles id that has the bigger than and the same as the posted page order
+			$page_profiles = $this->db->select('id')->from('page_profiles')->where('page_order =', $posted_page_oder)
+					->or_where('page_order >', $posted_page_oder)->get()->result();
+			foreach($page_profiles as $scope){
+				$page_profiles_to_reordered[] = $scope->id;
+			}
+			//it's time to re-create the scope order
+			$starting = $posted_page_oder;
+			foreach($page_profiles_to_reordered as $sto){
+				$new_page_order = $starting++;
+				$this->db->set('page_order', $new_page_order+1)->where('id', $sto)->update('page_profiles');
+			}
+			$this->page_order_to_be_inserted = $posted_page_oder;
+		}
+
+	}
+	//ENDFunctions to build page order
+
 
 	protected function repopulate_page_order(){
 		$ids_to_repopulate = $this->db->select('id, page_order')->from('page_profiles')
@@ -263,105 +367,9 @@ class Page_profile extends BackendController {
 		}
 	}
 
-	public function update_page_file_type(){
-		$this->load->library('form_validation');
-		$postData = $this->input->post();
-		$this->form_validation->set_rules('title', 'Judul', 'required');
-		$this->form_validation->set_rules('slug', 'Slug', 'required');
-		if($this->form_validation->run() == FALSE){
-			$this->jsonResponse['msg'] = validation_errors();
-		}
-		else{
-			//get the old file_name in case we'll delete that.
-			$this->file_to_be_deleted = $this->db->select('file_name')->from('page_profiles')
-			                               ->where('id', $postData['id'])->get()->row()->file_name;
-			$data = [
-				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
-				'type'=>'files'
-			];
-			if(!empty($_FILES['fileToUpload']['name'])){
-				$do_upload = $this->do_upload();
-				//add uploaded file name to data array.
-				$data['file_name'] = $this->uploaded_file_name;
-			}
-			//get the highest page order
-			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
-			//block if there is user defined the page order.
-			if($postData['page_order'] !=''){
-				$this->wanted_page_order = $postData['page_order'];
-				//check if this is bigger than highest page order
-				if($this->wanted_page_order > $this->highest_page_order){
-					$data['page_order'] = $this->wanted_page_order;
-				}else{
-					$data['page_order'] = $this->wanted_page_order;
-					$this->repopulate_page_order();
-				}
+	
 
-			}
-			else{
-				//if theres no wanted page order, then automatically place it under the highest page order.
-				$data['page_order'] = $this->highest_page_order+1;	
-			}
-			$this->db->where('id', $postData['id']);
-			$update = $this->db->update('page_profiles',$data);
-			if($update == TRUE){
-				//now delete the old file
-				$this->delete_the_old_file();
-				$this->jsonResponse['msg'] = 'success';
-			}
-			else{
-				$this->jsonResponse['msg'] = $this->db->error();
-			}
-
-		}
-		echo json_encode($this->jsonResponse);
-	}
-
-	public function update(){
-		$this->load->library('form_validation');
-		$postData = $this->input->post();
-		$this->form_validation->set_rules('title', 'Judul', 'required');
-		$this->form_validation->set_rules('slug', 'Slug', 'required');
-		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
-		if($this->form_validation->run() == FALSE){
-			$this->jsonResponse['msg'] = validation_errors();
-		}
-		else{
-			$data = [
-				'title'=>$postData['title'],
-				'slug'=>$postData['slug'],
-				'content'=>$postData['content']
-			];
-			//get the highest page order
-			$this->highest_page_order = $this->db->select_max('page_order')->get('page_profiles')->row()->page_order;
-			//block if there is user defined the page order.
-			if($postData['page_order'] !=''){
-				$this->wanted_page_order = $postData['page_order'];
-				//check if this is bigger than highest page order
-				if($this->wanted_page_order > $this->highest_page_order){
-					$data['page_order'] = $this->wanted_page_order;
-				}else{
-					$data['page_order'] = $this->wanted_page_order;
-					$this->repopulate_page_order();
-				}
-
-			}
-			else{
-				//if theres no wanted page order, then automatically place it under the highest page order.
-				$data['page_order'] = $this->highest_page_order+1;	
-			}
-			$this->db->where('id', $postData['id']);
-			$update = $this->db->update('page_profiles',$data);
-			if($update == TRUE){
-				$this->jsonResponse['msg'] = 'success';
-			}
-			else{
-				$this->jsonResponse['msg'] = $this->db->error();
-			}
-		}
-		echo json_encode($this->jsonResponse);
-	}
+	
 
 	public function delete_page_profile_files_type(){
 		$postData = $this->input->post();
@@ -396,5 +404,36 @@ class Page_profile extends BackendController {
 		}
 		echo json_encode($this->jsonResponse);
 	}
+
+
+	
+
+
+	//Block to upload file
+	public function do_upload(){
+		$uploaded_time = time();
+		$config['upload_path']   = '../uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|pdf';
+        $config['max_size']      = 20480;
+        $config['max_width']     = 0;
+        $config['max_height']    = 0;
+        $config['file_name']    = 'page_type_files_'.$uploaded_time;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('fileToUpload'))
+        {
+                $error = $this->upload->display_errors();
+                $this->jsonResponse['msg'] = $error;
+                echo json_encode($this->jsonResponse);
+                exit();
+                //return FALSE;
+        }
+        else
+        {
+        	$data = array('upload_data' => $this->upload->data());
+        	$this->uploaded_file_name = $config['file_name'].$data['upload_data']['file_ext'];
+            return TRUE;
+        }
+	}
+	//ENDBlock to upload file
 
 }

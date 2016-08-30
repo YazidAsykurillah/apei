@@ -43,7 +43,9 @@ var table = $('#datatable').DataTable({
             return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+
                 '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
-/*        {data: 'id', visible: false, searchable: false, className: 'never'},*/
+        {data: 'accessor_id', visible: false, searchable: false, className: 'never'},
+        {data: 'supervisor_id', visible: false, searchable: false, className: 'never'},
+/*      {data: 'id', visible: false, searchable: false, className: 'never'},*/
     ],
     order: [[1, 'asc']],
 	dom: 'Bfrtip',
@@ -93,12 +95,16 @@ $('#dtCertification').on('click', 'a[title~=Edit]', function (e){
     var d = $("body").data("R" + id);
     $('#certification-id').val(d.id);
     $('#title').val(d.title);
+
     $('#description').summernote('code', d.description);
+
     $('#organizer').val(d.organizer);
     $('#place').val(d.place);
     $('#start_date').val(d.start_date);
     $('#end_date').val(d.end_date);
     $('#form-container').slideDown('slow');
+
+
 
 });
 
