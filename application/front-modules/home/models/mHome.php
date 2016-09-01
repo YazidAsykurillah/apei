@@ -8,6 +8,14 @@ class MHome extends MY_Model {
         parent::__construct();
     }
 
+    public function getSlider(){
+         $this->db->select('*');
+         $this->db->from('sliders');
+         $this->db->where('display_status','active');
+         $query = $this->db->get();
+         return $query->result();
+    }
+
     public function getNewsEvent($limit=4,$offset=null){
          $this->db->select('
                news_event.id AS neId,

@@ -10,10 +10,16 @@
                     <h4>RUANG LINGKUP</h4>
                     <div>
                         <ul class="arrow">
-                            <li><a href="#">Pembangkitan Tenaga Listrik</a></li>
-                            <li><a href="#">Transmisi Tenaga Listrik</a></li>
-                            <li><a href="#">Distribusi Tenaga Listrik</a></li>
-                            <li><a href="#">Instalasi Pemanfaatan Tenaga Listrik</a></li>
+                             <?php
+                                   $rls = $this->dynamicmenu->ruang_lingkup();
+                                   if($rls):
+                                        foreach ($rls as $rl) :
+                              ?>
+                                   <li><a href="<?php echo base_url('ruang-lingkup/'.$rl->slug);?>"><?php echo $rl->title; ?></a></li>
+                              <?php
+                                        endforeach;
+                                   endif;
+                             ?>
                         </ul>
                     </div>
                 </div><!--/.col-md-3-->

@@ -33,7 +33,10 @@
                          </div>
                          <?php
                                    }else{
-
+                         ?>
+                         <h3><?php echo $profile->title; ?></h3><hr>
+                         <a class="btn btn-default" href="<?php echo base_url('uploads/'.$profile->file_name)?>"><span class="fa fa-home"></span> <?php echo $profile->title.".pdf"?></a>
+                         <?php
                                    }
                               }
                         ?>

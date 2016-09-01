@@ -14,7 +14,7 @@ class Home extends FrontendController {
 	public function index(){
 		$this->load->model('mHome');
 		$this->data['news_event'] = $this->mHome->getNewsEvent();
-
+		$this->data['slider'] = $this->mHome->getSlider();
 		$this->data['acara'] = $this->mHome->getAcara();
 		// var_dump($this->session->userdata);
 		set_front_js($this->mainJs);

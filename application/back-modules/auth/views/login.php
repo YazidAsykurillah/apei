@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Gentallela Alela! | </title>
+  <title>PT.APEI</title>
 
   <!-- Bootstrap core CSS -->
 
@@ -24,7 +24,14 @@
 
 
   <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
-
+  <style>
+     html{
+          height: 100%;
+     }
+     body{
+          height:100%;
+     }
+  </style>
   <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
         <![endif]-->
@@ -37,79 +44,42 @@
 
 </head>
 
-<body style="background:#F7F7F7;">
-
-  <div class="">
-    <a class="hiddenanchor" id="toregister"></a>
-    <a class="hiddenanchor" id="tologin"></a>
-
-    <div id="wrapper">
-      <div id="login" class="animate form">
-        <section class="login_content">
-		<div id="infoMessage"><?php echo $message;?></div>
-			<?php echo form_open("auth/login");?>
-            <h1>Login Form</h1>
-            <div>
-              <input type="text" class="form-control" placeholder="Username" name="username" required="" />
-            </div>
-            <div>
-              <input type="password" class="form-control" placeholder="Password" required="" name="password" />
-            </div>
-            <div>
-              <button class="btn btn-default submit pull-right" type="submit">Log in</button>
-            </div>
-            <div class="clearfix"></div>
-            <div class="separator" style="padding-top:0">
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1></h1>
-                <?php echo img(array('src'=>'assets/images/logo.png','alt'=>'','class'=>'img-responsive','style'=>'width:80%;margin: 0 auto 30px'));?>
-                <p>© 2013 PT. APEI. All Rights Reserved.</p>
-              </div>
-            </div>
-			<?php echo form_close();?>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
-      <div id="register" class="animate form">
-        <section class="login_content">
-          <form>
-            <h1>Create Account</h1>
-            <div>
-              <input type="text" class="form-control" placeholder="Username" required="" />
-            </div>
-            <div>
-              <input type="email" class="form-control" placeholder="Email" required="" />
-            </div>
-            <div>
-              <input type="password" class="form-control" placeholder="Password" required="" />
-            </div>
-            <div>
-              <a class="btn btn-default submit" href="index.html">Submit</a>
-            </div>
-            <div class="clearfix"></div>
-            <div class="separator">
-
-              <p class="change_link">Already a member ?
-                <a href="#tologin" class="to_register"> Log in </a>
-              </p>
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
-
-                <p>�2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-              </div>
-            </div>
-          </form>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
-    </div>
-  </div>
+<body style="background: url(<?php echo base_url('assets/images/loginbg.jpg')?>) no-repeat center center;background-size: 50% / cover;">
+     <div style="display:table;height:100%;width:100%">
+          <div style="display:table-row">
+               <div style="display:table-cell;vertical-align:middle;">
+                    <div style="background: rgba(0, 0, 0, 0.7);width:500px;margin:0 auto;padding:30px;">
+                         <?php echo form_open("auth/login");?>
+                         <h2 style="font-size:30px;font-weight:bold;color:#ffffff;text-align:center;margin:0">Login Panel</h2>
+                         <hr>
+                         <?php echo $message ? '<div class="alert alert-danger" role="alert">'.$message.'</div>' : '';?>
+                         <div class="row">
+                              <div class="col-md-4">
+                                   <img src="<?php echo base_url('assets/images/logo.png')?>" class="img-responsive">
+                              </div>
+                              <div class="col-md-8">
+                                   <div class="form-group" style="margin-bottom:20px">
+                                        <div class="input-group">
+                                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                             <input type="text" class="form-control" placeholder="Username" name="username" required="" />
+                                        </div>
+                                   </div>
+                                   <div class="form-group" style="margin-bottom:20px">
+                                        <div class="input-group">
+                                             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span> </div>
+                                             <input type="password" class="form-control" placeholder="Password" required="" name="password" />
+                                        </div>
+                                   </div>
+                                   <div class="form-group">
+                                        <button class="btn btn-primary submit" type="submit"><i class="glyphicon glyphicon-log-in"></i>  Log in</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <?php echo form_close();?>
+                    </div>
+               </div>
+          </div>
+     </div>
 
 </body>
 

@@ -47,7 +47,26 @@
                               </span>
                               <span><i class="icon-calendar"></i> <?php echo $ac->start_date; ?></span>
                           </div>
-                          <?php echo $ac->description; ?>
+                          <?php
+                               $ctn = strip_tags($ac->description);
+                               $ctn = explode(" ",trim($ctn));
+                               $i = 0;
+                               if(count($ctn) <= 30){
+                                    $content = implode(" ",$ctn);
+                               }else{
+                                    $cont = array();
+                                    foreach($ctn as $ct){
+                                         if($i <= 30){
+                                              $cont[$i] = $ct;
+                                         }else{
+                                              break;
+                                         }
+                                         $i++;
+                                    }
+                                    $content = implode(" ",$cont);
+                               }
+                               echo "<p style='min-height:70px'>".$content."...</p>";
+                          ?>
                           <a class="btn btn-default" href="<?php echo base_url('acara/'.$ac->id);?>">Read More <i class="icon-angle-right"></i></a>
                      </div>
                 </div>
