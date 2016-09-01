@@ -109,4 +109,26 @@ class Competency extends BackendController {
 		echo json_encode($this->jsonResponse);
 	}
 
+	public function detail(){
+		$id = $this->input->get('id');
+
+		if($id == NULL){
+			redirect($this->index);
+		}
+		else{
+			$competency = $this->db->select('id, name, description')->from('competencies')->where('id', $id)->get()->result();
+			if(count($competency) > 0){
+				set_page_title('Detail Uji Kompetensi');
+				$data['competency'] = $competency;
+				render_template('detail_v', $data);
+			}
+			else{
+
+				redirect($this->index);
+			}
+
+		}
+
+	}
+
 }

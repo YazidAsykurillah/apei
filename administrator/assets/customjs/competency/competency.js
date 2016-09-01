@@ -22,8 +22,13 @@ var table = $('#datatable').DataTable({
     },
     columns: [
         {data: "#", orderable: false, searchable: false},
-        {data: 'name'},
-        {data: 'description'},
+        {data: 'name', render:function(data, type, row, meta){
+            $("body").data("R" + row.id, row);
+            return '<a title="Click to view the detail" href="'+baseURL+'competency/detail/?id='+row.id+'" class="btn btn-sm btn-link" data-id="' + row.id + '"><i class="fa fa-link"></i>&nbsp;'+data+'</a>';
+        }},
+        {data: 'description', render:function(data){
+            return data.substring(0,150)+'&nbsp;...';
+        }},
         {data: 'id', render:function(data, type, row, meta){
             $("body").data("R" + row.id, row);
             return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+

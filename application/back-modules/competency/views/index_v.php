@@ -51,7 +51,7 @@
 					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                        <th width="5%;">#</th>
-	                        <th>Nama Kompetensi</th>
+	                        <th width="25%;">Nama Kompetensi</th>
 	                        <th>Deskripsi</th>
 							<th width="10%">Aksi</th>
 	                    </thead>
