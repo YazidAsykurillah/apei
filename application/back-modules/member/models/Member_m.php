@@ -5,6 +5,7 @@ defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 class Member_m extends MY_Model{
 
 	protected $table = 'members';
+	protected $groups_id = 2; //default group is 'members'
 
 	public function __construct(){
 
@@ -14,10 +15,12 @@ class Member_m extends MY_Model{
 
 	public function approve($id){
 
+		
 		$approve = $this->db
 					->set('status', 'ak')
 					->where('id', $id)
 					->update('members');
+
 		if($approve ){
 			return TRUE;
 		}

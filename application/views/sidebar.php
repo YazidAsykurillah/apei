@@ -68,6 +68,7 @@
 					<ul class="nav child_menu" style="display: none">
 						<!-- <li><?php echo anchor('gallery/', 'Galeri'); ?></li> -->
 						<li><?php echo anchor('gallery/album', 'Album Foto'); ?></li>
+						<li><?php echo anchor('gallery/video', 'Video'); ?></li>
 					</ul>
 				</li>
 				<!-- <li><a><i class="fa fa-user"></i> Profile <span class="fa fa-chevron-down"></span></a>
