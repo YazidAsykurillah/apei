@@ -35,6 +35,7 @@
 					<ul class="nav child_menu" style="display: none">
 						<li><?php echo anchor('page_profile', 'Profile'); ?></li>
 						<li><?php echo anchor('scope', 'Ruang Lingkup'); ?></li>
+						<li><?php echo anchor('competency', 'Data Kompetensi'); ?></li>
 					</ul>
 				</li>
 				<li><?php echo anchor('member', '<i class="fa fa-users"></i>Member'); ?></li>
