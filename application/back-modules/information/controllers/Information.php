@@ -40,29 +40,25 @@ class Information extends BackendController {
 		render_template('information_v');
 	}
 
-	public function get_information(){
-		$postData = $this->input->post();
-		$get = $this->db->get('informations');
-		$result = $get->result_array();
-		$start = $postData['start']; // Penomeran
-        $start++;
-        foreach ( $result as $key => $val ) {
-            $result[$key]['#'] = (string) $start;
-            $start++;
-        }
-		$json_data = array(
-                "draw"            => intval( $_REQUEST['draw'] ),
-                "data"            => $result
-            );
-		echo json_encode($json_data);
-	}
+	
 
-	/*public function get_information(){
-		$this->Crud_m->table = 'informations';
+	public function get_information(){
+		$this->Crud_m->table = 'informations_v';
 		$cpData = $this->Crud_m->getDataTableV10();
         $this->Crud_m->outputToJson( $cpData );
-	}*/
+	}
 
+	public function detail(){
+		$id = $this->input->get('id');
+		if($id == NULL){
+			redirect($this->index());
+		}
+		else{
+			$this->Crud_m->table = 'informations_v';
+			$information = $this->Crud_m->getById($id);
+			echo count($information);
+		}
+	}
 	public function save(){
 
 		$this->load->library('form_validation');

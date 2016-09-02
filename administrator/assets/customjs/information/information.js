@@ -19,8 +19,10 @@ var table = $('#datatable').DataTable({
     },
     columns: [
         {data: "#", orderable: false, searchable: false},
-        {data: 'title'},
-        {data: 'content'},
+        {data: 'title', render:function(data, type, row, meta){
+            $("body").data("R" + row.id, row);
+            return '<a href="'+baseURL+'information/detail/?id='+row.id+'" class="btn btn-link" title="Klik untuk melihat detail"><i class="fa fa-link"></i>&nbsp;'+data+'</a>';
+        }},
         {data: 'display_status', render:function(data){
             if(data == 'displayed'){
                 return 'Displayed';
@@ -29,7 +31,7 @@ var table = $('#datatable').DataTable({
                 return 'Hidden';
             }
         }},
-        {data: 'posted_by'},
+        {data: 'poster_name'},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
         	return '<a title="Edit" href="information/edit/?id='+row.id+'" class="btn btn-sm btn-success" data-id="' + row.id + '"><i class="fa fa-edit"></i></a>'+

@@ -62,10 +62,9 @@
 					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                        <th width="5%;">#</th>
-	                        <th>Title</th>
-	                        <th>Content</th>
-	                        <th>Display Status</th>
-	                        <th>Posted By</th>
+	                        <th width="60%;">Title</th>
+	                        <th width="15%;">Display Status</th>
+	                        <th width="10%;">Posted By</th>
 							<th width="10%">Aksi</th>
 	                    </thead>
 	                    <tbody></tbody>
