@@ -56,7 +56,14 @@ class Information extends BackendController {
 		else{
 			$this->Crud_m->table = 'informations_v';
 			$information = $this->Crud_m->getById($id);
-			echo count($information);
+			if(count($information) > 0){
+				set_page_title('Detail Informasi');
+				$data['information'] = $information;
+				render_template('information_detail_v', $data);
+			}
+			else{
+				redirect($this->index());
+			}
 		}
 	}
 	public function save(){

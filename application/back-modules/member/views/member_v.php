@@ -14,21 +14,21 @@
 
 			<div class="x_content">
         		<div id="dtMember">
-					<table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%;">
-	                    <thead>
-	                      	<tr>
-		                        <th>#</th>
-		                        <th>Nama</th>
-		                        <th>Email</th>
-		                        <th>Foto</th>
-		                        <th>Tempat, tanggal lahir</th>
-		                        <th>Approval Status</th>
-								<th width="10%">Aksi</th>
-	                      	</tr>
-	                    </thead>
-	                    <tbody>
-	                    </tbody>
-	                </table>
+    					<table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%;">
+                <thead>
+                  <tr>
+	                   <th>#</th>
+	                   <th>Nama</th>
+	                   <th>Email</th>
+	                   <th>Foto</th>
+	                   <th>Tempat, tanggal lahir</th>
+	                   <th>Approval Status</th>
+							       <th width="10%">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
                 </div>
 			</div>
 

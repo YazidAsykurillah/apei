@@ -21,9 +21,14 @@ var table = $('#datatable-buttons').DataTable({
         	return row.birth_place+','+' '+row.birth_date;
         }},
         {data:'status', render:function(data, type, row, met){
+        	$("body").data("R" + row.id, row);
         	var status_display = '';
         	if(data == 'ak'){
         		status_display = 'Approved';
+        		status_display+= '<br/>';
+        		status_display+= '<a class="btn btn-default btn-sm btnSendActivationCode" href="#" data-id="'+row.id+'">';
+        		status_display+=  'Kirim Kode Aktivasi';
+        		status_display+= '</a>';
         	}
         	else{
         		status_display = 'N/A';
@@ -145,3 +150,25 @@ $('#form-disapprove-member').on('submit', function(event){
 	return false;
 });
 //##END Disapproval process --
+
+//Send activation control
+$('#dtMember').on('click', 'a[class~=btnSendActivationCode]', function (e){
+	e.preventDefault();
+	var member_id = $(this).attr('data-id');
+	$.ajax({
+        type    :"POST",
+        url     :baseURL+'member/send_activation_code',
+        data    :'member_id='+member_id,
+        success:function(response){
+            var obj = $.parseJSON(response);
+            if(obj.msg == 'success'){
+                alertify.success("Sukses mengirim kode aktivasi");
+                //window.location.reload();
+            }
+            else{
+                alertify.error(obj.msg);
+            }
+       }
+    });
+});
+//ENDSend activation control
