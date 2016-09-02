@@ -51,7 +51,7 @@
 				<li>
 					<a><i class="fa fa-bookmark"></i> Informasi <span class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu" style="display: none">
-						<!-- <li><?php echo anchor('information/', 'Informasi'); ?></li> -->
+						<li><?php echo anchor('information/','Informasi'); ?></li>
 						<li><?php echo anchor('information/certification_procedure', 'Prosedur Sertifikasi'); ?></li>
 						<li><?php echo anchor('information/news_event', 'Berita dan Kegiatan'); ?></li>
 					</ul>

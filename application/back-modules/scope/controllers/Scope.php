@@ -136,7 +136,7 @@ class Scope extends BackendController {
 			$this->jsonResponse['msg'] = validation_errors();
 		}
 		else{
-			//get the feature image in case we'll delete that.
+			//get the feature image
 			$this->old_feature_image_name = $this->db->select('feature_image')->from('scopes')
 			                               ->where('id', $postData['scope_id'])->get()->row()->feature_image;
 			//if we have a feature image uploaded, call function to upload to server,
