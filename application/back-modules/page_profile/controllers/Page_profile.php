@@ -28,7 +28,6 @@ class Page_profile extends BackendController {
 		'assets/js/tiny_mce/tiny_mce.js',
 
 	);
-
 	
 
 	public function __construct(){
@@ -51,8 +50,6 @@ class Page_profile extends BackendController {
 		$cpData = $this->Crud_m->getDataTableV10();
         $this->Crud_m->outputToJson( $cpData );
 	}
-
-	
 
 	public function save_page_as_file(){
 		$this->load->library('form_validation');

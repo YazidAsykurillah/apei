@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Member extends BackendController {
 	
 	protected $data = array();
+
 	protected $cust_css = array(
 		'assets/js/datatables/jquery.dataTables.min.css',
 		'assets/js/datatables/buttons.bootstrap.min.css',
@@ -27,7 +28,7 @@ class Member extends BackendController {
 
 	public function index(){
 		$this->load->helper('data_table_helper');
-		set_page_title('Members ');
+		set_page_title('Member terdaftar');
 		set_css($this->cust_css);
 		set_js($this->cust_js);
 		set_js(get_datatables_js());
@@ -42,6 +43,63 @@ class Member extends BackendController {
         $this->Crud_m->outputToJson( $cpData );
 	}
 
+	public function send_activation_code(){
+		$activation_code = '';
+		$id_members = $this->input->post('member_id');
+		$member_email = $this->db->select('email')->from('members')->where('id', $id_members)->get()->row()->email;
+		if($member_email != NULL){
+			$activation_code = sha1($member_email).time();
+			//set the activation code for this user
+			$set_activation_code = $this->db->set('activation_code', $activation_code)->where('id_members', $id_members)->update('users');
+			if($set_activation_code == TRUE){
+				$this->jsonResponse['msg'] = 'success';
+			}
+			else{
+				$this->jsonResponse['msg'] = $this->db->error();
+			}
+			
+		}
+		else{
+			$this->jsonResponse['msg'] = 'Email member kosong';
+		}
+		echo json_encode($this->jsonResponse);
+
+	}
+
+
+	protected function register_member_to_table_users(){
+		$data_to_register = [];
+		$member_id = $this->input->post('member_id');
+		$this->jsonResponse['msg'] = $member_id;
+		$member_columns = $this->db->select('id, email')->from('members')->where('id', $member_id)->get()->result();
+		foreach($member_columns as $mc){
+			$data_to_register['id_members'] = $mc->id;
+			$data_to_register['email'] = $mc->email;
+		}
+		//now register this member to table users
+		if(count($data_to_register) < 1){
+			exit('Kosong');
+		}
+		else{
+			//check if member is already registered to table user or not,
+			//if user is already exist yes, we dont need to insert it.
+			$user_exists = $this->db->select('id')->from('users')->where('id_members', $member_id)->get()->result();
+			if(count($user_exists) < 1){ //user is not exist yet
+				$register_member_to_table_users = $this->db->insert('users', $data_to_register);
+				if($register_member_to_table_users == TRUE){
+					return TRUE;
+				}
+				else{
+					$this->jsonResponse['msg'] = $this->db->error();
+					exit();
+				}
+			}
+			else{
+				return TRUE;
+			}
+			
+		}
+	}
 
 	public function approve(){
 
@@ -54,6 +112,8 @@ class Member extends BackendController {
 		}
 		$approve = $this->Member_m->approve($postData['member_id']);
 		if($approve == TRUE){
+			//register this member to table users;
+			$this->register_member_to_table_users();
 			$this->jsonResponse['msg'] = 'success';
 		}
 		else{
