@@ -16,75 +16,44 @@
     </section>
 
     <section id="portfolio" class="container">
-         <!-- <div class="row">
-             <div class="col-md-3">
-                   <div class="list-group portfolio-filter">
-                       <a href="#" class="list-group-item" data-filter="*">All</a>
-                       <a href="#" class="list-group-item" data-filter=".bootstrap">Bootstrap</a>
-                       <a href="#" class="list-group-item" data-filter=".html">Html</a>
-                       <a href="#" class="list-group-item" data-filter=".wordpress">Wordpress</a>
-                  </div>
-             </div>
-             <div class="col-md-9">
-                   <ul class="portfolio-items col-3">
-                      <li class="portfolio-item apps">
-                          <div class="item-inner"> -->
-                               <!-- <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/S8RNgeNcQSU"></iframe>
-                               </div> -->
-                              <!-- <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item1.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item1.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="portfolio-item joomla bootstrap">
-                          <div class="item-inner">
-                              <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item2.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item2.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="portfolio-item bootstrap wordpress">
-                          <div class="item-inner">
-                              <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item3.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item3.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="portfolio-item joomla wordpress apps">
-                          <div class="item-inner">
-                              <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item4.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item4.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="portfolio-item joomla html">
-                          <div class="item-inner">
-                              <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item5.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item5.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="portfolio-item wordpress html">
-                          <div class="item-inner">
-                              <img src="<?php echo base_url(get_front_images_path('portfolio/thumb/item6.jpg'))?>" alt="">
-                              <h5>Lorem ipsum dolor sit amet</h5>
-                              <div class="overlay">
-                                  <a class="preview btn btn-danger" href="<?php echo base_url(get_front_images_path('portfolio/thumb/item6.jpg'))?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                              </div>
-                          </div>
-                      </li>
-                  </ul>
-             </div>
-         </div> -->
+        <?php
+          $videos_display ='<div class="row">';
+          if(count($videos)){
+            $row_dispatcher = 0;
+            foreach($videos->result() as $video){
+              $row_dispatcher++;
+              $videos_display .='<div class="col-md-4">';
+              $videos_display .=  '<div class="panel panel-default">';
+              $videos_display .=    '<div class="panel-heading">';
+              $videos_display .=      '<h3 class="panel-title">'.$video->title.'</h3>';
+              $videos_display .=    '</div>';
+              $videos_display .=    '<div class="panel-body">';
+              $videos_display .=      $video->embed_code;
+              $videos_display .=    '</div>';
+              $videos_display .=    '<div class="panel-footer">';
+              $videos_display .=      '<button class="btn btn-xs btn-primary" data-toggle="collapse" data-target="#description_'.$video->id.'" aria-expanded="false" aria-controls="description_'.$video->id.'">';
+              $videos_display .=        'Deskripsi';
+              $videos_display .=      '</button><br/><br/>';
+              $videos_display .=      '<div id="description_'.$video->id.'" class="collapse">';
+              $videos_display .=        $video->description;
+              $videos_display .=      '</div>';
+              $videos_display .=    '</div>';
+              $videos_display .=  '</div>';
+              $videos_display .='</div>';
+
+              if($row_dispatcher % 3 == 0){
+              $videos_display .='</div>';
+              $videos_display .='<div class="row">';
+              }
+            }
+          }
+          
+          else{
+            $videos_display .= '<p class="alert alert-info">';
+            $videos_display .=   'Tidak ada video yang ditampilkan';
+            $videos_display .= '</p>';
+          }
+          $videos_display .='</div>';
+          echo $videos_display;
+        ?>
     </section>

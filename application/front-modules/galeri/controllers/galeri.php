@@ -33,8 +33,9 @@ class Galeri extends FrontendController {
      }
 
      public function video(){
-
-          set_front_js($this->mainJs);
-		render_front_template('video');
+     	$this->load->model('mGaleri');
+     	$data['videos'] = $this->mGaleri->getVideos();
+        set_front_js($this->mainJs);
+		render_front_template('video', $data);
      }
 }

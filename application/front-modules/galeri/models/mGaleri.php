@@ -46,4 +46,9 @@ class MGaleri extends MY_Model {
         }
     }
 
+    function getVideos(){
+      $videos = $this->db->get('videos');
+      return $videos;
+    }
+
 }

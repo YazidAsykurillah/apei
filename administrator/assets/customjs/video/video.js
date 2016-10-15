@@ -30,7 +30,8 @@ var table = $('#datatable').DataTable({
         {data: "#", orderable: false, searchable: false},
         {data: 'title', render:function(data, type, row, meta){
             $("body").data("R" + row.id, row);
-            return '<a title="Detail" href="'+baseURL+'gallery/video/detail/'+row.id+'">'+data+'</a>';
+            return data;
+            //return '<a title="Detail" href="'+baseURL+'gallery/video/detail/'+row.id+'">'+data+'</a>';
         }},
         {data: 'description'},
         {data: 'youtube_url'},

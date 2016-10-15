@@ -52,8 +52,8 @@
 					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                        <th width="5%;">#</th>
-	                        <th>Title</th>
-	                        <th>Description</th>
+	                        <th width="20%;">Title</th>
+	                        <th width="20%;">Description</th>
 	                        <th>URL</th>
 	                        <th>Embed</th>
 							<th width="10%">Aksi</th>

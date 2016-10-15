@@ -1,4 +1,5 @@
 <?php
+//die(sha1('administrator'));
 /**
  * CodeIgniter
  *
