@@ -7,7 +7,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="index.html"><img style="height:30px" src="<?php echo base_url(get_front_images_path('logo.png'));?>" alt="logo"></a>
+           <a class="navbar-brand" href="<?php echo base_url(); ?>"><img style="height:30px" src="<?php echo base_url(get_front_images_path('logo.png'));?>" alt="logo"></a>
        </div>
        <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav navbar-right">
