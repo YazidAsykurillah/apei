@@ -10,6 +10,16 @@ class Auth extends MY_Controller {
 
 	// redirect if needed, otherwise display the user list
 	function index(){
+		/*$username = 'yazid';
+		$password = 'yazid5150';
+		$email = 'yazid@email.com';
+		$additional_data = array(
+								'first_name' => 'Yazid',
+								'last_name' => 'Asykur',
+								);
+		$group = array('1'); // Sets user to admin.
+		$this->ion_auth->register($username, $password, $email, $additional_data, $group);*/
+
 		if (!$this->ion_auth->logged_in()){
 			redirect('auth/login', 'refresh');
 		}elseif (!$this->ion_auth->is_admin()){
@@ -22,6 +32,7 @@ class Auth extends MY_Controller {
 
 	// log the user in
 	function login(){
+
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');

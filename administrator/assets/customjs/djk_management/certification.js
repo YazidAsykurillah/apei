@@ -1,6 +1,3 @@
-// tinyMCE.init({
-//     selector: 'textarea',
-// });
 $('#description').summernote({
      toolbar: [
           ['paragraph', ['style','ol','ul','paragraph','height']],
@@ -31,8 +28,6 @@ var table = $('#datatable').DataTable({
     columns: [
         {data: "#", orderable: false, searchable: false},
         {data: 'title'},
-        {data: 'description'},
-        {data: 'accessor_name'},
         {data: 'supervisor_name'},
         {data: 'organizer'},
         {data: 'place'},
@@ -40,10 +35,10 @@ var table = $('#datatable').DataTable({
         {data: 'end_date'},
         {data: 'id', render:function(data, type, row, meta){
         	$("body").data("R" + row.id, row);
-            return '<a title="Edit" href="#" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+
-                '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
+            return  '<a title="View" href="'+baseURL+'djk_management/certification/detail/'+row.id+'" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>'+
+                    '<a title="Edit" href="certification/edit/'+row.id+'" class="btn btn-sm btn-warning" data-id="' + row.id + '"><i class="fa  fa-pencil"></i></a>'+
+                    '<a title="Delete" href="#" class="btn btn-sm btn-danger" data-id="' + row.id + '"><i class="fa fa-trash"></i></a>';
         }},
-        {data: 'accessor_id', visible: false, searchable: false, className: 'never'},
         {data: 'supervisor_id', visible: false, searchable: false, className: 'never'},
 /*      {data: 'id', visible: false, searchable: false, className: 'never'},*/
     ],
@@ -71,87 +66,6 @@ var table = $('#datatable').DataTable({
 		titleAttr: 'Print'
 	}]
 });
-
-$('#btn-add').click(function(){
-     $('#description').summernote('reset');
-     $('#form-certification')[0].reset();
-    $('#form-container').slideDown("slow");
-    //$(this).addClass('collapse');
-});
-
-$('#btnReset').click(function(){
-    $('#form-container').slideUp("slow");
-    $('#description').summernote('reset');
-    $('#form-certification')[0].reset();
-    $('#btn-add').removeClass('collapse');
-    //remove value of input id
-    $('#certification-id').val('');
-});
-
-$('#dtCertification').on('click', 'a[title~=Edit]', function (e){
-    e.preventDefault();
-    $('#description').summernote('reset');
-    var id = $(this).attr('data-id');
-    var d = $("body").data("R" + id);
-    $('#certification-id').val(d.id);
-    $('#title').val(d.title);
-
-    $('#description').summernote('code', d.description);
-
-    $('#organizer').val(d.organizer);
-    $('#place').val(d.place);
-    $('#start_date').val(d.start_date);
-    $('#end_date').val(d.end_date);
-    $('#form-container').slideDown('slow');
-
-
-
-});
-
-
-
-$('#form-certification').on('submit', function(event){
-    event.preventDefault();
-    // tinyMCE.triggerSave();
-    if($('#certification-id').val() != ''){
-        //--- Edit Mode
-        var id = $('#certification-id').val();
-        $.post('certification/update', $("#form-certification").serialize()+ "&id=" + id, function (obj) {
-            if (obj.msg == 'success') {
-                alertify.success("Update Data Success");
-                $('#form-certification')[0].reset();
-                $('#form-container').slideUp('slow');
-                $('#dtCertification .table').DataTable().ajax.reload();
-                //remove value of input id
-                $('#certification-id').val('');
-            }else{
-                alertifyError(obj.msg);
-
-            }
-        }, "json").fail(function () {
-            alertifyError();
-        });
-    }
-    else{
-        //--- Insert Mode
-        $.post('certification/save', $("#form-certification").serialize(), function (obj) {
-            if (obj.msg == 'success') {
-                alertify.success("Insert Data Success");
-                $('#form-certification')[0].reset();
-                $('#form-container').slideUp('slow');
-                $('#dtCertification .table').DataTable().ajax.reload();
-            } else {
-                alertifyError(obj.msg);
-            }
-        }, "json").fail(function () {
-            alertifyError();
-        });
-    }
-
-
-    return false;
-});
-
 
 //## Delete Certification --
 $('#dtCertification').on('click', 'a[title~=Delete]', function (e){

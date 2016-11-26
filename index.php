@@ -1,5 +1,6 @@
 <?php
 //die(sha1('administrator'));
+//$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36
 /**
  * CodeIgniter
  *

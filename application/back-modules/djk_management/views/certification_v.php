@@ -1,12 +1,12 @@
 <?php
-	$accessor_options = '<option value="">-- Pilih User --</option>';
-	if(count($accessors) != 0){
-		foreach($accessors->result() as $accessor){
-			$accessor_options .='<option value="'.$accessor->id.'">'.$accessor->first_name.' '.$accessor->last_name.'</option>';
+	$assesors_options = '<option value="">-- Pilih Asesor --</option>';
+	if(count($assesors) != 0){
+		foreach($assesors->result() as $assesors){
+			$assesors_options .='<option value="'.$assesors->id.'">'.$assesors->name.'</option>';
 		}
 	}
 	else{
-		$accessor_options = '<option value="">Tidak terdapat data asesor</option>';
+		$assesors_options = '<option value="">Tidak terdapat data asesor</option>';
 	}
 ?>
 <div class="page-title">
@@ -22,94 +22,25 @@
                 <h2><i class="fa fa-list"></i> <?php echo get_page_title(); ?></h2>
                 <div class="nav navbar-right">
 					<div class="btn-group">
-						<button id="btn-add" class="btn btn-sm btn-success" href="#"><i class="fa fa-plus"></i> Add</button>
+						<a title="Create new Certification" href="<?php echo base_url().'djk_management/certification/create';?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add</a>
 					</div>
                 </div>
 				<div class="clearfix"></div>
       		</div>
 
 			<div class="x_content">
-				<div id="form-container" class="collapse">
-					<input type="hidden" id="certification-id" value="" />
-					<form name="form-certification" class="form-horizontal" id="form-certification" method="post" action="certification/save">
-						<div class="form-group">
-						    <label for="title" class="col-sm-2 control-label">Title</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="description" class="col-sm-2 control-label">Rincian Acara</label>
-						    <div class="col-sm-6">
-						    	<textarea id="description" name="description" class="form-control" placeholder="Description" style="width:100%;"></textarea>
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="accessor_id" class="col-sm-2 control-label">Asesor</label>
-						    <div class="col-sm-6">
-						    	<select name="accessor_id" id="accessor_id" class="form-control" style="width:100%;">
-						    		<?php echo $accessor_options; ?>
-						    	</select>
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="supervisor_id" class="col-sm-2 control-label">Pengawas</label>
-						    <div class="col-sm-6">
-						    	<select id="supervisor_id" name="supervisor_id" class="form-control" style="width:100%;">
-						    		<?php echo $accessor_options; ?>
-						    	</select>
-						    </div>
-						</div>
-	                    <div class="form-group">
-						    <label for="organizer" class="col-sm-2 control-label">Organizer</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="organizer" name="organizer" placeholder="Organizer">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="place" class="col-sm-2 control-label">Place</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="place" name="place" placeholder="Place">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="start_date" class="col-sm-2 control-label">Start Date</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="start_date" name="start_date" placeholder="Start date">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label for="end_date" class="col-sm-2 control-label">End Date</label>
-						    <div class="col-sm-6">
-						    	<input type="text" class="form-control" id="end_date" name="end_date" placeholder="End date">
-						    </div>
-						</div>
-						<div class="form-group">
-	                    	<label for="" class="col-sm-2 control-label"></label>
-	                      	<div class="col-md-6">
-	                        	<button type="submit" class="btn btn-success">Submit</button>
-	                        	<button id="btnReset" type="reset" class="btn btn-primary">Cancel</button>
-	                      	</div>
-	                    </div>
-
-					</form>
-
-					<div class="clearfix"></div>
-				  	<hr>
-				</div>
+				
         		<div id="dtCertification">
 					<table id="datatable" class="table table-striped table-bordered" style="width:100%;">
 	                    <thead>
 	                        <th width="5%;">#</th>
-	                        <th>Title</th>
-	                        <th>Description</th>
-	                        <th>Asesor</th>
+	                        <th width="15%;">Title</th>
 	                        <th>Pengawas</th>
 	                        <th>Organizer</th>
 	                        <th>Place</th>
 	                        <th>Start Date</th>
 	                        <th>End Date</th>
-							<th width="10%">Aksi</th>
+							<th width="15%">Aksi</th>
 	                    </thead>
 	                    <tbody></tbody>
 	                </table>
