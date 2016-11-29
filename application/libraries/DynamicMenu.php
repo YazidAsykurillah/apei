@@ -17,7 +17,7 @@ class DynamicMenu {
           return $query->result();
      }
 
-     public function ruang_lingkup(){
+     public function ruanglingkup(){
           $query = $this->ci->db->query("select id,title,slug from scopes ORDER BY page_order ASC");
           return $query->result();
      }

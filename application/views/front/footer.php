@@ -11,11 +11,12 @@
                     <div>
                         <ul class="arrow">
                              <?php
-                                   $rls = $this->dynamicmenu->ruang_lingkup();
+                                   $rls = $this->dynamicmenu->ruanglingkup();
                                    if($rls):
                                         foreach ($rls as $rl) :
                               ?>
-                                   <li><a href="<?php echo base_url('ruang-lingkup/'.$rl->slug);?>"><?php echo $rl->title; ?></a></li>
+
+                                   <li><a href="<?php echo base_url('ruanglingkup/?slug='.$rl->slug);?>"><?php echo $rl->title; ?></a></li>
                               <?php
                                         endforeach;
                                    endif;

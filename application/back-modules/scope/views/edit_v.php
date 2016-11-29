@@ -57,12 +57,7 @@
 							    	<input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?php echo $scope['title'];?>">
 							    </div>
 							</div>
-		                    <div class="form-group">
-							    <label for="slug" class="col-sm-2 control-label">Slug</label>
-							    <div class="col-sm-9">
-							    	<input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="<?php echo $scope['slug'];?>">
-							    </div>
-							</div>
+		                    
 							<div class="form-group">
 							    <label for="content" class="col-sm-2 control-label">Isi</label>
 							    <div class="col-sm-9">

@@ -27,12 +27,12 @@
 						    	<input type="text" class="form-control" id="title" name="title" placeholder="Title">
 						    </div>
 						</div>
-	                    <div class="form-group">
+	                    <!-- <div class="form-group">
 						    <label for="slug" class="col-sm-2 control-label">Slug</label>
 						    <div class="col-sm-9">
 						    	<input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
 						    </div>
-						</div>
+						</div> -->
 						<div class="form-group">
 						    <label for="content" class="col-sm-2 control-label">Isi</label>
 						    <div class="col-sm-9">
@@ -103,7 +103,7 @@
       	<div class="modal-body">
        		<p>Klik tombol Delete untuk menghapus Halaman Ini</p>
        		<p>atau klik Cancel untuk membatalkan</p>
-			<input type="text" name="scope_id" id="scope_id" value="">
+			<input type="hidden" name="scope_id" id="scope_id" value="">
       	</div>
       	<div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

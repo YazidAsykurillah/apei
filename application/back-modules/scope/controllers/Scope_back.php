@@ -51,36 +51,11 @@ class Scope extends BackendController {
         $this->Crud_m->outputToJson( $cpData );
 	}
 
-	//Function to build slug
-	protected function build_slug(){
-		$posted_title = preg_replace('/\s+/', '-', $this->input->post('title'));
-		$posted_title = iconv('utf-8', 'us-ascii//TRANSLIT', $posted_title);
-		$posted_title = strtolower($posted_title);
-		$posted_title = preg_replace('~[^-\w]+~', '', $posted_title);
-		$slug_is_exist = $this->db->select('id')->from('scopes')
-						->where('slug',$posted_title)->where('id !=', $this->input->post('scope_id'))->get()->row();
-		if (count($slug_is_exist) > 0){
-			$max_scope_id = $this->db->select_max('id')->from('scopes')->get()->row()->id;
-			$new_slug_suffix = $max_scope_id+1;
-			$this->slug_to_be_inserted = $posted_title.'-'.$new_slug_suffix;
-		}
-		else{
-			$this->slug_to_be_inserted = $posted_title;	
-		}
-		
-		
-		/*$this->jsonResponse['msg'] = $this->slug_to_be_inserted;
-		echo json_encode($this->jsonResponse);*/
-	}
-	//ENDFunction to build slug
-
 	public function save(){
-		//$this->build_slug();
-
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
-		//$this->form_validation->set_rules('slug', 'Slug', 'required');
+		$this->form_validation->set_rules('slug', 'Slug', 'required');
 		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
 		$this->form_validation->set_rules('page_order', 'Page Order', 'integer');
 		if($this->form_validation->run() == FALSE){
@@ -153,6 +128,7 @@ class Scope extends BackendController {
 		$this->load->library('form_validation');
 		$postData = $this->input->post();
 		$this->form_validation->set_rules('title', 'Judul', 'required|min_length[3]');
+		$this->form_validation->set_rules('slug', 'Slug', 'required');
 		$this->form_validation->set_rules('content', 'Isi', 'required|min_length[3]');
 		$this->form_validation->set_rules('page_order', 'Page Order', 'integer');
 		$this->form_validation->set_rules('scope_id', 'ID', 'integer|required');
@@ -280,7 +256,22 @@ class Scope extends BackendController {
 	}
 	//ENDFunction to upload file
 
-	
+	//Function to build slug
+	protected function build_slug(){
+		$posted_slug = preg_replace('/\s+/', '-', $this->input->post('slug'));
+		$slug_is_exist = $this->db->select('id')->from('scopes')
+						->where('slug',$posted_slug)->where('id !=', $this->input->post('scope_id'))->get()->row();
+		if(count($slug_is_exist) > 0){
+			$this->jsonResponse['msg']='Slug sudah ada, silahkan ganti';
+			echo json_encode($this->jsonResponse);
+			exit();
+		}
+		else{
+			$this->slug_to_be_inserted = trim($posted_slug);
+			return TRUE;
+		}
+	}
+	//ENDFunction to build slug
 
 
 	//Function to build page order
