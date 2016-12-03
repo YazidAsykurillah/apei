@@ -52,7 +52,7 @@ tableAssesors.on('click', 'tr', function(){
         $('#table-selected-assesors').append(
               '<tr id="tr_assesor_'+id+'">'+
                 '<td>'+
-                  '<input type="text" name="assesor_id[]" value="'+id+'" />'+
+                  '<input type="hidden" name="assesor_id[]" value="'+id+'" />'+
                   tableAssesors.row(this).data().name+
                 '</td>'+
                 '<td>'+
@@ -134,7 +134,7 @@ tableCompetencies.on('click', 'tr', function(){
         $('#table-selected-competencies').append(
               '<tr id="tr_competency_'+id+'">'+
                 '<td>'+
-                  '<input type="text" name="competency_id[]" value="'+id+'" />'+
+                  '<input type="hidden" name="competency_id[]" value="'+id+'" />'+
                   tableCompetencies.row(this).data().name+
                 '</td>'+
               '</tr>'

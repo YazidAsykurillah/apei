@@ -169,7 +169,7 @@
 						            			foreach($certification_competency as $cert_comp){
 						            				$row_certification_competency .='<tr class="tr_competency_'.$cert_comp['competency_id'].'">';
 						            				$row_certification_competency .=	'<td>';
-						            				$row_certification_competency .=		'<input type="text" name="competency_id[]" value="'.$cert_comp['competency_id'].'" class="selected_competencies" />';
+						            				$row_certification_competency .=		'<input type="hidden" name="competency_id[]" value="'.$cert_comp['competency_id'].'" class="selected_competencies" />';
 						            				$row_certification_competency .=		competency_detail($cert_comp['competency_id'])->name;
 						            				$row_certification_competency .=	'</td>';
 						            				$row_certification_competency .='</tr>';

@@ -155,7 +155,7 @@ tableCompetencies.on('click', 'tr', function(){
         $('#table-selected-competencies').append(
               '<tr id="tr_competency_'+id+'">'+
                 '<td>'+
-                  '<input type="text" name="competency_id[]" value="'+id+'" />'+
+                  '<input type="hidden" name="competency_id[]" value="'+id+'" />'+
                   tableCompetencies.row(this).data().name+
                 '</td>'+
               '</tr>'
