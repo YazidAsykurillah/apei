@@ -1,5 +1,5 @@
 <?php
-	$supervisor_options = '<option value="">-- Pilih Asesor --</option>';
+	$supervisor_options = '<option value="">-- Pilih Pengawas --</option>';
 	if(count($supervisors) != 0){
 		foreach($supervisors->result() as $supervisor){
 			$supervisor_options .='<option value="'.$supervisor->id.'">'.$supervisor->first_name.'</option>';
@@ -34,6 +34,7 @@
 						  	<li><a href="#tabMain" data-toggle="tab">1. General</a></li>
 						  	<li><a href="#tabPlaceAndTime" data-toggle="tab">2. Waktu dan Tempat</a></li>
 							<li><a href="#tabAssesor" data-toggle="tab">3. Daftar Asesor</a></li>
+							<li><a href="#tabCompetency" data-toggle="tab">4. Uji Kompetensi</a></li>
 						</ul>
 						 </div>
 						  </div>
@@ -109,6 +110,23 @@
 						            </table>
 						        </div>
 						    </div>
+						    <div class="tab-pane" id="tabCompetency">
+						    	<a href="#" id="btn-display-competency-datatables" class="btn btn-link" title="Select competencys to be added">
+						            <i class="fa fa-list"></i>&nbsp;Select Competency
+						        </a>
+						        <br/>
+						        <div class="table-responsive">
+						            <table class="table" id="table-selected-competencies" style="width:100%;">
+						              <tr>
+						                <th style="width:100%;">Competency Name</th>
+						                
+						              </tr>
+						              <tr id="tr-no-competency-selected">
+						                <td colspan="2">No competency selected</td>
+						              </tr>
+						            </table>
+						        </div>
+						    </div>
 
 						    <div class="form-group">
 		                    	<label for="" class="col-sm-2 control-label"></label>
@@ -172,3 +190,37 @@
     </div>
   </div>
 <!--ENDModal Display assesors datatables-->
+
+
+<!--Modal Display competencies datatables-->
+  <div class="modal fade" id="modal-display-competencies" tabindex="-1" role="dialog" aria-labelledby="modal-display-competenciesLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modal-display-competenciesLabel">Competencies list</h4>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            
+				<table id="datatableCompetency" class="table table-bordered" style="width:100%;">
+
+                    <thead>
+                        <th>#</th>
+                        <th>Name</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-info" id="btn-set-competencies">Set selected competencies</button>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+<!--ENDModal Display competencies datatables-->

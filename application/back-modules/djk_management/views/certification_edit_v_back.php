@@ -36,7 +36,6 @@
 						  	<li><a href="#tabMain" data-toggle="tab">1. General</a></li>
 						  	<li><a href="#tabPlaceAndTime" data-toggle="tab">2. Waktu dan Tempat</a></li>
 							<li><a href="#tabAssesor" data-toggle="tab">3. Daftar Asesor</a></li>
-							<li><a href="#tabCompetency" data-toggle="tab">4. Uji Kompetensi</a></li>
 						</ul>
 						 </div>
 						  </div>
@@ -153,38 +152,6 @@
 						            </table>
 						        </div>
 						    </div>
-						    <div class="tab-pane" id="tabCompetency">
-						    	<a href="#" id="btn-display-competency-datatables" class="btn btn-link" title="Select competencys to be added">
-						            <i class="fa fa-list"></i>&nbsp;Select Competency
-						        </a>
-						        <br/>
-						        <div class="table-responsive">
-						            <table class="table" id="table-selected-competencies" style="width:100%;">
-						            	<tr>
-						            		<th>Name</th>
-						            	</tr>
-						            	<?php
-						            		$row_certification_competency = '';
-						            		if(count($certification_competency)){
-						            			foreach($certification_competency as $cert_comp){
-						            				$row_certification_competency .='<tr class="tr_competency_'.$cert_comp['competency_id'].'">';
-						            				$row_certification_competency .=	'<td>';
-						            				$row_certification_competency .=		'<input type="text" name="competency_id[]" value="'.$cert_comp['competency_id'].'" class="selected_competencies" />';
-						            				$row_certification_competency .=		competency_detail($cert_comp['competency_id'])->name;
-						            				$row_certification_competency .=	'</td>';
-						            				$row_certification_competency .='</tr>';
-						            			}
-						            		}
-						            		else{
-						            			$row_certification_competency .= '<tr>';
-						            			$row_certification_competency .=	'<td colspan="2">There are no selected competency</td>';
-												$row_certification_competency .='</tr>';
-						            		}
-						            		echo $row_certification_competency;
-						            	?>
-						            </table>
-						        </div>
-						    </div>
 
 						    <div class="form-group">
 		                    	<label for="" class="col-sm-2 control-label"></label>
@@ -248,36 +215,3 @@
     </div>
   </div>
 <!--ENDModal Display assesors datatables-->
-
-<!--Modal Display competencies datatables-->
-  <div class="modal fade" id="modal-display-competencies" tabindex="-1" role="dialog" aria-labelledby="modal-display-competenciesLabel">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-      
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="modal-display-competenciesLabel">Competencies list</h4>
-        </div>
-        <div class="modal-body">
-          <div class="table-responsive">
-            
-				<table id="datatableCompetency" class="table table-bordered" style="width:100%;">
-
-                    <thead>
-                        <th>#</th>
-                        <th>Name</th>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            
-          </div>
-        </div>
-        <div class="modal-footer">
-          
-          <button type="button" class="btn btn-info" id="btn-set-competencies">Set selected competencies</button>
-        </div>
-      
-      </div>
-    </div>
-  </div>
-<!--ENDModal Display competencies datatables-->

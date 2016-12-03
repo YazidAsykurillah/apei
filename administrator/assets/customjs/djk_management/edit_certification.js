@@ -16,8 +16,9 @@ $('#end_date').daterangepicker({
     "showDropdowns": true
 });
 
-
 $('#form-certification-wizard').bootstrapWizard();
+
+//Block Assesor Selection
 
 var selected = [];
 
@@ -46,7 +47,7 @@ var tableAssesors = $('#datatable').DataTable({
         if($.inArray(data.id, selected) !== -1){
           $(row).addClass('selected');
         }
-        console.log(selected);
+        //console.log(selected);
     },
     order: [[1, 'asc']],
     dom: 'Bfrtip',
@@ -92,7 +93,7 @@ tableAssesors.on('click', 'tr', function(){
     }
 
     $(this).toggleClass('selected');
-    console.log(selected);
+    //console.log(selected);
     
 } );
 
@@ -110,10 +111,82 @@ $('#btn-set-assesors').on('click', function(){
 
 
 $('#btn-display-assesor-datatables').on('click', function(event){
-      event.preventDefault();
-      
-      $('#modal-display-assesors').modal('show');
-    });
+  event.preventDefault();
+  
+  $('#modal-display-assesors').modal('show');
+});
+
+//ENDBlock Assesor Selection
+
+//Block Competency selection
+var selected_competency = [];
+$('.selected_competencies').each(function(){
+  selected_competency.push(this.value);
+});
+var tableCompetencies = $('#datatableCompetency').DataTable({
+    serverSide: true,
+    processing: true,
+    ajax: {
+        url: baseURL+'competency/get_competency',
+        type: 'POST'
+    },
+    columns: [
+        {data: "#", orderable: false, searchable: false},
+        {data: 'name'},
+        {data: 'id', visible: false, searchable: false, className: 'never'}
+    ],
+    rowCallback: function(row, data){
+        if($.inArray(data.id, selected_competency) !== -1){
+          $(row).addClass('selected');
+        }
+        //console.log(selected_competency);
+    },
+    order: [[1, 'asc']],
+    dom: 'Bfrtip',
+    buttons: []
+});
+
+tableCompetencies.on('click', 'tr', function(){
+    //var id = this.id;
+    var id = tableCompetencies.row(this).data().id;
+    var index = $.inArray(id, selected_competency);
+    if ( index === -1 ) {
+        selected_competency.push(id);
+        $('#table-selected-competencies').append(
+              '<tr id="tr_competency_'+id+'">'+
+                '<td>'+
+                  '<input type="text" name="competency_id[]" value="'+id+'" />'+
+                  tableCompetencies.row(this).data().name+
+                '</td>'+
+              '</tr>'
+        );
+    } else {
+        selected_competency.splice( index, 1 );
+        $('.tr_competency_'+id).remove();
+    }
+
+    $(this).toggleClass('selected');
+    
+    //console.log(selected_competency);
+} );
+
+$('#btn-set-competencies').on('click', function(){
+  if(selected_competency.length !== 0){
+    $('#tr-no-competency-selected').hide();
+  }
+  else{
+    $('#tr-no-competency-selected').show(); 
+  }
+  $('#modal-display-competencies').modal('hide');
+});
+
+
+$('#btn-display-competency-datatables').on('click', function(event){
+  event.preventDefault();
+  $('#modal-display-competencies').modal('show');
+});
+
+//ENDBlock Competency selection
 
 $('#form-certification').on('submit', function(event){
     event.preventDefault();

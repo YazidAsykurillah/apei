@@ -97,6 +97,44 @@
 						</div>
 					</div>
 				</div>
+				<!-- Panel Competency-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Daftar Uji Kompetensi</h3>
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+			                        <th width="">Nama Kompetensi</th>
+			                    </thead>
+			                    <tbody>
+								<?php
+									$table_cert_comp = '';
+									if(count($certification_competency)){
+										foreach($certification_competency as $cert_comp){
+											$table_cert_comp .='<tr>';
+											$table_cert_comp .=	'<td>';
+											$table_cert_comp .=		competency_detail($cert_comp['competency_id'])->name;
+											$table_cert_comp .=	'</td>';
+											$table_cert_comp .='</tr>';
+										}
+									}
+									else{
+										$table_cert_comp .='<tr>';
+										$table_cert_comp .=	'<td colspan="2">';
+										$table_cert_comp .=		'Tidak ada kompetensi terdaftar';
+										$table_cert_comp .=	'</td>';
+										$table_cert_comp .='</tr>';
+									}
+									echo $table_cert_comp;
+								?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- ENDPanel Competency-->
 			</div>
 
 			<div class="clearfix"></div>

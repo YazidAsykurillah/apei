@@ -86,6 +86,7 @@ class Certification extends BackendController {
 		$this->form_validation->set_rules('end_date', 'Tanggal Selesai', 'required');
 		$this->form_validation->set_rules('assesor_id[]', 'Asesor', 'required');
 		$this->form_validation->set_rules('position[]', 'Jabatan', 'required');
+		$this->form_validation->set_rules('competency_id[]', 'Kompetensi', 'required');
 		if($this->form_validation->run() == FALSE){
 			$this->jsonResponse['msg'] = validation_errors();
 		}
@@ -105,6 +106,7 @@ class Certification extends BackendController {
 			$certification_id = $this->db->insert_id();
 			if($save === TRUE){
 				$this->sync_certification_assesor($certification_id);
+				$this->sync_certification_competency($certification_id);
 				$this->jsonResponse['msg'] = 'success';
 			}
 			else{
@@ -114,6 +116,29 @@ class Certification extends BackendController {
 		echo json_encode($this->jsonResponse);
 	}
 
+	//Function to synchronize certification and competency
+	protected function sync_certification_competency($certification_id)
+	{
+		
+		$postData = $this->input->post();
+
+		$row_certification_competency = [];
+		
+		foreach($postData['competency_id'] as $key=>$value){
+
+			array_push($row_certification_competency, [
+				'certification_id'=>$certification_id,
+				'competency_id'=>$postData['competency_id'][$key],
+			]);
+		}
+
+		$insert = $this->db->insert_batch('certification_competency', $row_certification_competency);
+		return TRUE;
+
+	}
+	//ENDFunction to synchronize certification and competency
+
+	//Function to synchronize certification and assesor
 	protected function sync_certification_assesor($certification_id)
 	{
 		
@@ -134,12 +159,16 @@ class Certification extends BackendController {
 		return TRUE;
 
 	}
+	//ENDFunction to synchronize certification and assesor
+
+
 
 
 
 	public function detail($id =NULL)
 	{
 		$this->load->helper('assesor_helper');
+		$this->load->helper('competency_helper');
 		if(is_null($id)){
 			redirect('/');
 		}else{
@@ -149,6 +178,7 @@ class Certification extends BackendController {
 				set_css($this->cust_css);
 				set_js($this->cust_js);
 				$data['certification_assesor'] = $this->db->get_where('certification_assesor',['certification_id'=>$id])->result_array();
+				$data['certification_competency'] = $this->db->get_where('certification_competency',['certification_id'=>$id])->result_array();
 				$data['certification'] = $certification;
 				render_template('certification_detail_v', $data);
 			}
@@ -165,6 +195,7 @@ class Certification extends BackendController {
 			redirect('/');
 		}else{
 			$this->load->helper('assesor_helper');
+			$this->load->helper('competency_helper');
 			$certification = $this->db->get_where('certifications', ['id'=>$id])->row();
 			if(count($certification)){
 				$this->load->helper('data_table_helper');
@@ -176,6 +207,7 @@ class Certification extends BackendController {
 				set_page_title('Edit Acara Sertifikasi');
 				$data['supervisors'] = $this->getSupervisors();
 				$data['certification_assesor'] = $this->db->get_where('certification_assesor',['certification_id'=>$id])->result_array();
+				$data['certification_competency'] = $this->db->get_where('certification_competency',['certification_id'=>$id])->result_array();
 				$data['certification'] = $certification;
 				render_template('certification_edit_v', $data);
 			}
@@ -196,6 +228,7 @@ class Certification extends BackendController {
 		$this->form_validation->set_rules('end_date', 'Tanggal Mulai', 'required');
 		$this->form_validation->set_rules('assesor_id[]', 'Asesor', 'required');
 		$this->form_validation->set_rules('position[]', 'Jabatan', 'required');
+		$this->form_validation->set_rules('competency_id[]', 'Kompetensi', 'required');
 
 		$this->form_validation->set_rules('id', 'ID', 'required|integer');
 
@@ -213,11 +246,19 @@ class Certification extends BackendController {
 					  ->where('id', $postData['id'])
 					  ->update('certifications');
 			if($update == TRUE){
-				//update certification_assesor relation
-				//first delete it for convenience
-				$del_cert_ass = $this->db->delete('certification_assesor', array('certification_id'=>$postData['id']));
-				//now sync it
-				$this->sync_certification_assesor($postData['id']);
+				//Block update certification_assesor relation
+					//first delete it for convenience
+					$del_cert_ass = $this->db->delete('certification_assesor', array('certification_id'=>$postData['id']));
+					//now sync it
+					$this->sync_certification_assesor($postData['id']);
+				//ENDBlock update certification_assesor relation
+					//delete relation
+					$del_cert_comp = $this->db->delete('certification_competency', array('certification_id'=>$postData['id']));
+					//sync
+					$this->sync_certification_competency($postData['id']);
+				//Block update certifcation competency relation
+
+				//ENDBlock update certifcation competency relation
 				$this->jsonResponse['msg'] = 'success';
 			}
 			else{
@@ -233,8 +274,10 @@ class Certification extends BackendController {
 		$id = $postData['certification_id'];
 		$delete = $this->db->delete('certifications', array('id'=>$id));
 		if($delete == TRUE){
-			//also delete the certification relation to the assesor
+			//delete the certification relation to the assesor
 			$del_cert_ass = $this->db->delete('certification_assesor', array('certification_id'=>$id));
+			//delete certification relationto the competency
+			$del_cert_comp = $this->db->delete('certification_competency', array('certification_id'=>$id));
 			$this->jsonResponse['msg'] = 'success';
 		}
 		else{
